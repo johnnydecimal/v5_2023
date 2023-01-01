@@ -6,6 +6,7 @@ export interface Props {
 const { title } = Astro.props;
 
 import "@fontsource/Bitter";
+import "../styles/global.css";
 ---
 
 <!DOCTYPE html>
@@ -21,23 +22,3 @@ import "@fontsource/Bitter";
 		<slot />
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			#da62c4 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: Bitter, system-ui, sans-serif;
-		background-color: #f6f6f6;
-	}
-	code {
-		font-family: "Berkeley Mono Trial", Menlo, Monaco, Lucida Console,
-			Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
-			monospace;
-	}
-</style>
