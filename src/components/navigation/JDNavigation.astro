@@ -1,0 +1,27 @@
+---
+/**
+	# JDNavigation
+
+	This will be the component that scrapes the site and returns a complete
+	navigation section.
+
+	*/
+
+const allPosts = await Astro.glob("../../pages/**/*.md");
+
+import JDNavItem from "./JDNavItem.astro";
+---
+
+<nav>
+	<!-- Make me an <ol>? So don't forget to make JDNavItem return <li>. -->
+	{
+		allPosts.map((post) => (
+			<JDNavItem
+				number={post.frontmatter.number}
+				title={post.frontmatter.title}
+				acid={post.frontmatter.acid}
+				active={post.frontmatter.active}
+			/>
+		))
+	}
+</nav>
