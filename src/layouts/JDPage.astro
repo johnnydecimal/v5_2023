@@ -6,14 +6,53 @@ export interface Props {
 	category: string;
 }
 
+import Layout from "./Layout.astro";
+
 const { number, title, area, category } = Astro.props.frontmatter;
 
 import "@fontsource/Bitter";
+import "../styles/normalize.css";
 import "../styles/global.css";
 ---
 
-<div class="border-2 font-mono">{number} {title}</div>
-<div class="border font-mono">{area} &gt; {category}</div>
-<div class="border">
-	<slot />
-</div>
+<Layout title={`${number} ${title}`}>
+	<div class="p-8">
+		<!-- p-8 spacing just for visual help while building; remove -->
+		<div class="jdid monospace">
+			{number}
+			{title}
+		</div>
+		<div class="jdac monospace">
+			{area} &gt; {category}
+		</div>
+		<div class="jdcontent">
+			<slot />
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.monospace {
+		font-family: "Berkeley Mono Trial", ui-monospace, SFMono-Regular, Menlo,
+			Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	}
+
+	.jdid {
+		border: 2px solid red;
+		font-size: 2rem;
+		padding: 1rem;
+	}
+
+	.jdac {
+		border: 1px solid red;
+		font-size: 1rem;
+		padding: 1rem;
+	}
+
+	/* https://docs.astro.build/en/guides/styling/#global-styles */
+	.jdcontent :global(p) {
+		color: blue;
+		line-height: 2rem;
+		margin: 10px 0;
+	}
+</style>
