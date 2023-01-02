@@ -1,15 +1,26 @@
 ---
-{
-	/**
+/**
 	# JDNavigation
 
 	This will be the component that scrapes the site and returns a complete
 	navigation section.
 
 	*/
-}
+
+const allPosts = await Astro.glob("../../pages/**/*.md");
 ---
 
 <nav>
-	<p>No nav here yet!</p>
+	<p>Nav coming!</p>
+
+	<ul>
+		{
+			allPosts.map((post) => (
+				<>
+					<p>Post URL: {post.url}</p>
+					<p>Title: {post.frontmatter.title} </p>
+				</>
+			))
+		}
+	</ul>
 </nav>
