@@ -1,0 +1,14 @@
+---
+import JDNavItem from "@components/navigation/JDNavItem.astro";
+
+const allPages = await Astro.glob("./*.*");
+---
+
+<JDNavItem number="09.02" title="JDNavItem test" acid="area" active={true} />
+<div>
+	{
+		allPages.map((page) => {
+			console.log(page.url);
+		})
+	}
+</div>

@@ -1,0 +1,19 @@
+---
+export interface Props {
+	number: string;
+	title: string;
+	area: string;
+	category: string;
+}
+
+const { number, title, area, category } = Astro.props.frontmatter;
+
+import "@fontsource/Bitter";
+import "../styles/global.css";
+---
+
+<div class="border-2 font-mono">{number} {title}</div>
+<div class="border font-mono">{area} &gt; {category}</div>
+<div class="border">
+	<slot />
+</div>
