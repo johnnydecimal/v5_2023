@@ -8,19 +8,20 @@
 	*/
 
 const allPosts = await Astro.glob("../../pages/**/*.md");
+
+import JDNavItem from "./JDNavItem.astro";
 ---
 
 <nav>
-	<p>Nav coming!</p>
-
-	<ul>
-		{
-			allPosts.map((post) => (
-				<>
-					<p>Post URL: {post.url}</p>
-					<p>Title: {post.frontmatter.title} </p>
-				</>
-			))
-		}
-	</ul>
+	<!-- Make me an <ol>? So don't forget to make JDNavItem return <li>. -->
+	{
+		allPosts.map((post) => (
+			<JDNavItem
+				number={post.frontmatter.number}
+				title={post.frontmatter.title}
+				acid={post.frontmatter.acid}
+				active={post.frontmatter.active}
+			/>
+		))
+	}
 </nav>
