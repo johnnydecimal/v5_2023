@@ -9,23 +9,10 @@
 
 	# Sorting it
 
-  Our `page.frontmatter.number` can look like:
-	- 00-09
-	- 09
-	- 09.01
-
-	And we need to be able to sort it so that it appears in that order.
-
-	https://caseyjamesperno.com/blog/sort-astro-glob/
-
-	Let's just see if JS' default sort works that out for us, and if not it's
-	a tomorrow-task to figure out.
+	See /doco/frontmatter.sort.md.
 	*/
 
 const pages = await Astro.glob("../../pages/**/*.md");
-console.log("😛 go!");
-console.log("before sort:");
-console.log(pages.map((page) => page.frontmatter.sort));
 
 pages.sort(
 	(a, b) =>
@@ -34,9 +21,6 @@ pages.sort(
 		// @ts-ignore
 		(a.frontmatter.sort < b.frontmatter.sort)
 );
-
-console.log("after sort:");
-console.log(pages.map((page) => page.frontmatter.sort));
 
 import JDNavItem from "./JDNavItem.astro";
 ---
