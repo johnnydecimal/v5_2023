@@ -33,11 +33,11 @@ console.log(number, title, acid);
 
 <div class="jdnavitem">
 	<a href={url}>
-		<span
-			>{acid === "category" && "\u00A0\u00A0\u00A0"}{
+		<div>
+			{acid === "category" && "\u00A0\u00A0\u00A0"}{
 				acid === "id" && "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"
-			}{number}&nbsp;{title}</span
-		>
+			}{number}&nbsp;{title}
+		</div>
 	</a>
 </div>
 
