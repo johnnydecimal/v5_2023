@@ -28,7 +28,6 @@ interface Props {
 }
 
 const { number, title, acid, active = true, url } = Astro.props;
-console.log(number, title, acid);
 ---
 
 {
@@ -64,6 +63,7 @@ console.log(number, title, acid);
 
 <style>
 	.jdnavitem {
+		background-color: rgb(240, 240, 240);
 		border: 1px solid black;
 		border-collapse: collapse;
 		font-family: "Berkeley Mono Trial";
