@@ -36,23 +36,31 @@ console.log(number, title, acid);
 	  has a different class so the hanging indents work. */
 }
 
-{
-	acid === "id" && (
-		<div class="jdnavitem jdid">
-			{number}&nbsp;{title}
-		</div>
-	)
-}
+<a href={url}>
+	{
+		acid === "area" && (
+			<div class="jdnavitem jdarea">
+				{number}&nbsp;{title}
+			</div>
+		)
+	}
 
-<div class="jdnavitem">
-	<a href={url}>
-		<div>
-			{acid === "category" && "\u00A0\u00A0\u00A0"}{
-				acid === "id" && "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"
-			}{number}&nbsp;{title}
-		</div>
-	</a>
-</div>
+	{
+		acid === "category" && (
+			<div class="jdnavitem jdcategory">
+				{number}&nbsp;{title}
+			</div>
+		)
+	}
+
+	{
+		acid === "id" && (
+			<div class="jdnavitem jdid">
+				{number}&nbsp;{title}
+			</div>
+		)
+	}
+</a>
 
 <style>
 	.jdnavitem {
@@ -62,9 +70,16 @@ console.log(number, title, acid);
 		padding: 0.75rem;
 	}
 
+	.jdarea {
+		padding-left: 7ch;
+		text-indent: -6ch;
+	}
+	.jdcategory {
+		padding-left: 7ch;
+		text-indent: -3ch;
+	}
 	.jdid {
-		background-color: pink;
-		padding-left: 12ch;
+		padding-left: 13ch;
 		text-indent: -6ch;
 	}
 </style>
