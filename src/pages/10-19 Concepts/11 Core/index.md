@@ -1,18 +1,18 @@
 ---
 # == JDPage frontmatter: snippet `jd_jdpage_front` ==
 # Choose the `JDPage` layout
-layout: ../../layouts/JDPage.astro
+layout: ../../../layouts/JDPage.astro
 # The JD number: mandatory, used on JDPage
-number: 00-09
+number: 11
 # The JD title: mandatory, used on JDPage
-title: System (area)
+title: Core (area)
 # The area that this ID relates to: mandatory, used on JDPage
-area: 00-09 System
+area: 10-19 Concepts
 # The category that this ID relates to: mandatory, used on JDPage
-# category: 09 Test
+category: 11 Core
 
 # Sort: areas get '00a', categories '00c', IDs just the ID.
-sort: acid0000
+sort: acid11
 ---
 
 # 09 Test (category page)

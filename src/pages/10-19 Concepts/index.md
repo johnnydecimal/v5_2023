@@ -3,16 +3,16 @@
 # Choose the `JDPage` layout
 layout: ../../layouts/JDPage.astro
 # The JD number: mandatory, used on JDPage
-number: 00-09
+number: 10-19
 # The JD title: mandatory, used on JDPage
-title: System (area)
+title: Concepts (area)
 # The area that this ID relates to: mandatory, used on JDPage
-area: 00-09 System
+area: 10-19 System
 # The category that this ID relates to: mandatory, used on JDPage
 # category: 09 Test
 
 # Sort: areas get '00a', categories '00c', IDs just the ID.
-sort: acid0000
+sort: acid1000
 ---
 
 # 09 Test (category page)

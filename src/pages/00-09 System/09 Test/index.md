@@ -12,7 +12,7 @@ area: 00-09 System
 category: 09 Test
 
 # Sort: areas get '00a', categories '00c', IDs just the ID.
-sort: 09
+sort: acid09
 ---
 
 # 09 Test (category page)
