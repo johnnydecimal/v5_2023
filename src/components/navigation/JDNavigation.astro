@@ -23,7 +23,14 @@
 	*/
 
 const pages = await Astro.glob("../../pages/**/*.md");
-pages.sort((a, b) => a.frontmatter.sort - b.frontmatter.sort);
+console.log("😛 go!");
+console.log(pages.map((page) => page.frontmatter.sort));
+pages.sort((a, b) => {
+	return a.frontmatter.sort - b.frontmatter.sort;
+	// console.log(a.frontmatter.sort.localeCompare(b));
+	// return a.frontmatter.sort.localeCompare(b);
+});
+console.log(pages.map((page) => page.frontmatter.sort));
 
 import JDNavItem from "./JDNavItem.astro";
 ---
