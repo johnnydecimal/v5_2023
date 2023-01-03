@@ -5,24 +5,38 @@
 	This will be the component that scrapes the site and returns a complete
 	navigation section.
 
+	We've already wrapped this in a <nav> up in <Layout>.
+
+	# Sorting it
+
+  Our `page.frontmatter.number` can look like:
+	- 00-09
+	- 09
+	- 09.01
+
+	And we need to be able to sort it so that it appears in that order.
+
+	https://caseyjamesperno.com/blog/sort-astro-glob/
+
+	Let's just see if JS' default sort works that out for us, and if not it's
+	a tomorrow-task to figure out.
 	*/
 
-const allPosts = await Astro.glob("../../pages/**/*.md");
+const pages = await Astro.glob("../../pages/**/*.md");
+pages.sort((a, b) => a.frontmatter.sort - b.frontmatter.sort);
 
 import JDNavItem from "./JDNavItem.astro";
 ---
 
-<nav>
-	<!-- Make me an <ol>? So don't forget to make JDNavItem return <li>. -->
-	{
-		allPosts.map((post) => (
-			<JDNavItem
-				number={post.frontmatter.number}
-				title={post.frontmatter.title}
-				acid={post.frontmatter.acid}
-				active={post.frontmatter.active}
-				url={post.url}
-			/>
-		))
-	}
-</nav>
+{
+	/* Make me an <ol>? So don't forget to make JDNavItem return <li>. */
+	pages.map((page) => (
+		<JDNavItem
+			number={page.frontmatter.number}
+			title={page.frontmatter.title}
+			acid={page.frontmatter.acid}
+			active={page.frontmatter.active}
+			url={page.url}
+		/>
+	))
+}

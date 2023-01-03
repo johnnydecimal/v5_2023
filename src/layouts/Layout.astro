@@ -22,8 +22,30 @@ import JDNavigation from "@components/navigation/JDNavigation.astro";
 		<title>{title}</title>
 	</head>
 	<body>
-		<h1>Johnny.Decimal</h1>
-		<JDNavigation />
-		<slot />
+		<header>
+			<h1>Johnny.Decimal</h1>
+		</header>
+		<div class="nav-main">
+			<nav>
+				<JDNavigation />
+			</nav>
+			<main>
+				<slot />
+			</main>
+		</div>
 	</body>
 </html>
+
+<style>
+	/* Mobile-first, remember. So define everything for phone, then use
+	   @media queries to re-define for tablet+ or whatever. */
+	.nav-main {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	/* Mobile-first. So that m */
+	/* https://getbootstrap.com/docs/5.0/layout/breakpoints/#max-width */
+	@media screen and (max-width: 991.98px) {
+	}
+</style>
