@@ -28,11 +28,16 @@ interface Props {
 }
 
 const { number, title, acid, active = true, url } = Astro.props;
+console.log(number, title, acid);
 ---
 
 <div class="jdnavitem">
 	<a href={url}>
-		<span>{number}</span><span>&nbsp;</span><span>{title}</span>
+		<span
+			>{acid === "category" ? "..." : ""}{acid === "id" ? "......" : ""}{
+				number
+			}&nbsp;{title}</span
+		>
 	</a>
 </div>
 

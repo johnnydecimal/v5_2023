@@ -11,6 +11,9 @@ area: 00-09 System
 # The category that this ID relates to: mandatory, used on JDPage
 # category: 09 Test
 
+# What is this thing?
+acid: area
+
 # Sort: areas get '00a', categories '00c', IDs just the ID.
 sort: 00a
 ---
