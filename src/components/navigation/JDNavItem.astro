@@ -61,7 +61,44 @@ const { number, title, acid, active = true, url } = Astro.props;
 	}
 </a>
 
+<script>
+	// Give the active link an 'active' class.
+	// https://www.cyishere.dev/blog/astro-active-nav-item
+	const navLinks = document.querySelectorAll(".jdnavigation a");
+
+	navLinks.forEach((link) => {
+		link.classList.remove("active");
+
+		// `slice` here to remove the first `/` in pathname
+		/**
+
+			==== WEDNESDAY'S JOB ====
+			The script you've copied assumes a simple path where everything matches after the first /.
+			Yours isn't like that. See the console output. You need to match the *last* part after the
+			*last* /. And that should work.
+			=========================
+
+		  */
+		const currentPath = window.location.pathname.slice(1);
+		console.log("currentPath:", currentPath);
+
+		// `link.href` returns a whole url, such as: "https://somedomain.com/posts" and we only need the last part
+		// @ts-ignore
+		const hrefArray = link.href.split("/");
+		const thisPath = hrefArray[hrefArray.length - 1];
+		console.log("thisPath:", thisPath);
+
+		if (currentPath === thisPath) {
+			link.classList.add("active");
+		}
+	});
+</script>
+
 <style>
+	.active {
+		border: 2px solid red !important;
+	}
+
 	.jdnavitem {
 		background-color: rgb(240, 240, 240);
 		border: 1px solid black;
