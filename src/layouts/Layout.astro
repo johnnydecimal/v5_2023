@@ -25,8 +25,8 @@ import JDNavigation from "@components/navigation/JDNavigation.astro";
 		<header>
 			<h1>Johnny.Decimal</h1>
 		</header>
-		<div class="nav-main">
-			<nav class="mb-8">
+		<div class="nav-main-flex">
+			<nav class="jdnavigation">
 				<JDNavigation />
 			</nav>
 			<main>
@@ -39,7 +39,7 @@ import JDNavigation from "@components/navigation/JDNavigation.astro";
 <style>
 	/* Mobile-first, remember. So define everything for phone, then use
 	   @media queries to re-define for tablet+ or whatever. */
-	.nav-main {
+	.nav-main-flex {
 		display: flex;
 		flex-direction: column-reverse;
 	}
