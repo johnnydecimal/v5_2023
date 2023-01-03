@@ -11,6 +11,9 @@ area: 10-19 Concepts
 # The category that this ID relates to: mandatory, used on JDPage
 category: 11 Core
 
+# What is this thing?
+acid: category
+
 # Sort: areas get '00a', categories '00c', IDs just the ID.
 sort: 11c
 ---

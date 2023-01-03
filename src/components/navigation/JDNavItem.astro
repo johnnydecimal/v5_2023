@@ -34,9 +34,9 @@ console.log(number, title, acid);
 <div class="jdnavitem">
 	<a href={url}>
 		<span
-			>{acid === "category" ? "..." : ""}{acid === "id" ? "......" : ""}{
-				number
-			}&nbsp;{title}</span
+			>{acid === "category" && "\u00A0\u00A0\u00A0"}{
+				acid === "id" && "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"
+			}{number}&nbsp;{title}</span
 		>
 	</a>
 </div>
