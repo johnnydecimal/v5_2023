@@ -1,4 +1,46 @@
 ---
+/**
+	# JDNavItem
+
+	A component which renders the items which make up the JD-tree navigation bar.
+
+	Each might be an area, category, or ID. It might be active, or not.
+
+	They're probably going to end up being grid items but just add that as a CSS class later. (Although what's wrong with a bunch of <div>s?)
+
+	# Constructing it
+	So a JDNavItem is just a box with some text in it.
+
+	If the item is an Area, just display {number} {title}.
+	If it's a Category, indent by 3 spaces {'   '}.
+	If it's an ID, indent by 6 spaces {'      '}.
+
+	It links to the page that it represents.
+  */
+
+interface Props {
+	number: string; // For display
+	title: string; // For display
+	acid: "area" | "category" | "id"; // For indentation
+	active: boolean; // So we can temporarily disable stuff; default to `true`
+	// TODO: fix the 'any' typing here
+	url: any; // So we can use it in an <a href>
+}
+
+const { number, title, acid, active = true, url } = Astro.props;
 ---
 
-<div>nav item</div>
+<div class="jdnavitem">
+	<a href={url}>
+		<span>{number}</span><span>&nbsp;</span><span>{title}</span>
+	</a>
+</div>
+
+<style>
+	.jdnavitem {
+		border: 1px solid black;
+		border-collapse: collapse;
+		font-family: "Berkeley Mono Trial";
+		padding: 0.25rem;
+	}
+</style>
