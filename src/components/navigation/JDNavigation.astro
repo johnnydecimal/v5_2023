@@ -24,14 +24,17 @@
 
 const pages = await Astro.glob("../../pages/**/*.md");
 console.log("😛 go!");
-console.log(pages);
 console.log("before sort:");
 console.log(pages.map((page) => page.frontmatter.sort));
+
 pages.sort(
 	(a, b) =>
+		// @ts-ignore
 		(a.frontmatter.sort > b.frontmatter.sort) -
+		// @ts-ignore
 		(a.frontmatter.sort < b.frontmatter.sort)
 );
+
 console.log("after sort:");
 console.log(pages.map((page) => page.frontmatter.sort));
 
