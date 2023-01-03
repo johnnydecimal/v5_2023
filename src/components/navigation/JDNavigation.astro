@@ -25,15 +25,23 @@ pages.sort(
 import JDNavItem from "./JDNavItem.astro";
 ---
 
-{
-	/* Make me an <ol>? So don't forget to make JDNavItem return <li>. */
-	pages.map((page) => (
-		<JDNavItem
-			number={page.frontmatter.number}
-			title={page.frontmatter.title}
-			acid={page.frontmatter.acid}
-			active={page.frontmatter.active}
-			url={page.url}
-		/>
-	))
-}
+<div class="jdnavigation">
+	{
+		/* Make me an <ol>? So don't forget to make JDNavItem return <li>. */
+		pages.map((page) => (
+			<JDNavItem
+				number={page.frontmatter.number}
+				title={page.frontmatter.title}
+				acid={page.frontmatter.acid}
+				active={page.frontmatter.active}
+				url={page.url}
+			/>
+		))
+	}
+</div>
+
+<style>
+	.jdnavigation {
+		border: 2px solid black;
+	}
+</style>

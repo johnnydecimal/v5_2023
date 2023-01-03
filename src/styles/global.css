@@ -18,6 +18,11 @@
 	);
 }
 
+body {
+	max-width: 64rem;
+	padding: 1rem;
+}
+
 html {
 	font-family: Bitter, system-ui, sans-serif;
 	background-color: #f6f6f6;
