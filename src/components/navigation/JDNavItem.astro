@@ -46,8 +46,9 @@ const { number, title, acid, active = true, url } = Astro.props;
 // const pathname = Astro.url.pathname; // Doesn't work on Netlify
 const pathname = new URL(Astro.request.url).pathname;
 // console.log("pathname", pathname);
-const currentPath = pathname.slice(1);
-const urlNoSlash = url.slice(1);
+// const currentPath = pathname.slice(1);
+const currentPath = pathname.slice(1).replaceAll("/", "");
+const urlNoSlash = url.slice(1).replaceAll("/", "");
 console.log("currentPath", currentPath);
 console.log("urlNoSlash", urlNoSlash);
 
