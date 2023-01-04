@@ -28,6 +28,30 @@ interface Props {
 }
 
 const { number, title, acid, active = true, url } = Astro.props;
+
+/**
+  Try this https://www.cyishere.dev/blog/astro-active-nav-item 'the Astro way'.
+
+	Remember, when the site is generated, every page is statically rendered out.
+	There is no runtime collation of components. Every page has the navigation
+	section baked in. That section is created x times, where x is how many pages
+	your site has. That's done here.
+
+	So if you want a <div> to have an 'active' class, do the analysis and assign
+	it here.
+
+	This will work for browsers that have JS disabled, whereas the method which
+	relies on script tags will not (and is more expensive).
+  */
+const pathname = Astro.url.pathname;
+// console.log("pathname", pathname);
+const currentPath = pathname.slice(1);
+const urlNoSlash = url.slice(1);
+console.log("currentPath", currentPath);
+console.log("urlNoSlash", urlNoSlash);
+
+// If currentPath === url, this is the active page.
+console.log("currentPath === urlNoSlash?", currentPath === urlNoSlash);
 ---
 
 {
@@ -38,7 +62,9 @@ const { number, title, acid, active = true, url } = Astro.props;
 <a href={url}>
 	{
 		acid === "area" && (
-			<div class="jdnavitem jdarea">
+			<div
+				class={`jdnavitem jdarea ${currentPath === urlNoSlash ? "active" : ""}`}
+			>
 				{number}&nbsp;{title}
 			</div>
 		)
@@ -46,7 +72,11 @@ const { number, title, acid, active = true, url } = Astro.props;
 
 	{
 		acid === "category" && (
-			<div class="jdnavitem jdcategory">
+			<div
+				class={`jdnavitem jdcategory ${
+					currentPath === urlNoSlash ? "active" : ""
+				}`}
+			>
 				{number}&nbsp;{title}
 			</div>
 		)
@@ -54,7 +84,9 @@ const { number, title, acid, active = true, url } = Astro.props;
 
 	{
 		acid === "id" && (
-			<div class="jdnavitem jdid">
+			<div
+				class={`jdnavitem jdid ${currentPath === urlNoSlash ? "active" : ""}`}
+			>
 				{number}&nbsp;{title}
 			</div>
 		)
