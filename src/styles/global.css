@@ -21,3 +21,18 @@ body {
 	max-width: 64rem;
 	padding: 1rem;
 }
+
+a {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+/* Override modern-normalize */
+code,
+kbd,
+samp,
+pre {
+	font-family: Berkeley Mono Trial, ui-monospace, SFMono-Regular, Menlo, Monaco,
+		Consolas, Liberation Mono, Courier New, monospace;
+	font-size: 1em;
+}
