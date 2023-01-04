@@ -9,10 +9,6 @@ export interface Props {
 import Layout from "./Layout.astro";
 
 const { number, title, area, category } = Astro.props.frontmatter;
-
-import "@fontsource/bitter";
-import "../styles/normalize.css";
-import "../styles/global.css";
 ---
 
 <Layout title={`${number} ${title}`}>
