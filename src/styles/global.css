@@ -1,4 +1,8 @@
+/* Pull in Sindrus' modern-normalize */
+@import "/node_modules/modern-normalize/modern-normalize.css";
+
 /* Register our custom font family and tell the browser where to find it. */
+/* TODO: replace this with the proper font when you buy it */
 @font-face {
 	font-family: "Berkeley Mono Trial";
 	src: url("/fonts/BerkeleyMonoTrial-Regular.otf") format("opentype");
@@ -7,29 +11,28 @@
 	font-display: swap;
 }
 
-/* Astro default; remove */
-:root {
-	--accent: 124, 58, 237;
-	--accent-gradient: linear-gradient(
-		45deg,
-		rgb(var(--accent)),
-		#da62c4 30%,
-		white 60%
-	);
+/* https://css-tricks.com/html-vs-body-in-css/ */
+html {
+	background-color: #f6f6f6;
 }
 
 body {
+	font-family: "Bitter", system-ui, sans-serif;
 	max-width: 64rem;
 	padding: 1rem;
 }
 
-html {
-	font-family: "Bitter", system-ui, sans-serif;
-	background-color: #f6f6f6;
+a {
+	color: inherit;
+	text-decoration: inherit;
 }
 
-code {
-	font-family: "Berkeley Mono Trial", Menlo, Monaco, Lucida Console,
-		Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
-		monospace;
+/* Override modern-normalize */
+code,
+kbd,
+samp,
+pre {
+	font-family: Berkeley Mono Trial, ui-monospace, SFMono-Regular, Menlo, Monaco,
+		Consolas, Liberation Mono, Courier New, monospace;
+	font-size: 1em;
 }
