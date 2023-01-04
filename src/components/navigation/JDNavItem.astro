@@ -43,7 +43,8 @@ const { number, title, acid, active = true, url } = Astro.props;
 	This will work for browsers that have JS disabled, whereas the method which
 	relies on script tags will not (and is more expensive).
   */
-const pathname = Astro.url.pathname;
+// const pathname = Astro.url.pathname; // Doesn't work on Netlify
+const pathname = new URL(Astro.request.url).pathname;
 // console.log("pathname", pathname);
 const currentPath = pathname.slice(1);
 const urlNoSlash = url.slice(1);
