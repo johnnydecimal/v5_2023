@@ -1,0 +1,11 @@
+[[redirects]]
+	from = "/"
+	to = "/00-09_System/"
+	status = 301
+	force = true
+
+[[redirects]]
+  from = "/test"
+	to = "/00-09_System/"
+	status = 301
+	force = true
