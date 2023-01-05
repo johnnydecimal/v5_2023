@@ -1,7 +1,7 @@
 ---
 # == JDPage frontmatter: snippet `jd_jdpage_front` ==
 # Choose the `JDPage` layout
-layout: ../../../layouts/JDPage.astro
+layout: ../layouts/JDPage.astro
 # The JD number: mandatory, used on JDPage
 number: 09.03
 # The JD title: mandatory, used on JDPage
