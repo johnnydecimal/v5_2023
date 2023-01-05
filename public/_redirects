@@ -1,0 +1,3 @@
+# https://docs.netlify.com/routing/redirects/
+
+/					/00-09_System			301
