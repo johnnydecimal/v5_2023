@@ -6,10 +6,6 @@
 	navigation section.
 
 	We've already wrapped this in a <nav> up in <Layout>.
-
-	# Sorting it
-
-	See /doco/frontmatter.sort.md.
 	*/
 
 const pages = await Astro.glob("../../pages/**/*.md");
@@ -23,15 +19,6 @@ pages.sort(
 );
 
 import JDNavItem from "./JDNavItem.astro";
-
-/**
-  Building the highlighting of the active JDNavItem.
-
-  Ah now remember, this whole thing is statically generated. So on this page,
-	where you're building the *static* HTML that will be deployed, you can't
-	possibly know which is the active route.
-  */
-// console.log(Astro.url);
 ---
 
 {
@@ -46,61 +33,6 @@ import JDNavItem from "./JDNavItem.astro";
 		/>
 	))
 }
-
-<script>
-	// Give the active link an 'active' class. Adapted from
-	// https://www.cyishere.dev/blog/astro-active-nav-item
-
-	const navLinks = document.querySelectorAll(".jdnavigation a");
-
-	navLinks.forEach((link) => {
-		console.log("🔗 forEach(link)");
-		link.classList.remove("active");
-
-		/**
-
-			==== WEDNESDAY'S JOB ====
-			The script you've copied assumes a simple path where everything matches after the first /.
-			Yours isn't like that. See the console output. You need to match the *last* part after the
-			*last* /. And that should work.
-			=========================
-
-		  */
-
-		/**
-		  Get the current path and split it in to an array.
-
-			currentPathArray[0] = ""
-			currentPathArray[1] = The area - this at least must exist; there is no true 'root'
-			currentPathArray[2] = The category, if it exists
-			currentPathArray[3] = The ID, if it exists
-			*/
-		const currentPathArray = window.location.pathname.split("/");
-		console.log("currentPathArray:", currentPathArray);
-
-		// `link.href` returns a whole url, such as: "https://somedomain.com/posts" and we only need the last part
-		// @ts-ignore
-		const jdNavItemArray = link.href.split("/");
-		console.log("jdNavItemArray:", jdNavItemArray);
-
-		/**
-		  Get the link from this specific JDNavItem and split it in to an array.
-
-			jdNavItemArray[0] = "http:"
-			jdNavItemArray[1] = ""
-			jdNavItemArray[2] = "host:port"
-			jdNavItemArray[3] = The area - this must exist
-			jdNavItemArray[4] = The category, if it exists
-			jdNavItemArray[5] = The ID, if it exists
-		  */
-
-		// const thisPath = jdNavItemArray[jdNavItemArray.length - 1];
-		// console.log("thisPath:", thisPath);
-		// if (currentPath === thisPath) {
-		// 	link.classList.add("active");
-		// }
-	});
-</script>
 
 <style>
 	.jdnavigation {

@@ -13,11 +13,14 @@
 
 /* https://css-tricks.com/html-vs-body-in-css/ */
 html {
-	background-color: #f6f6f6;
+	background-color: #f9f9f9;
+	color: #111;
 }
 
 body {
 	font-family: "Bitter", system-ui, sans-serif;
+	margin-left: auto;
+	margin-right: auto;
 	max-width: 64rem;
 	padding: 1rem;
 }
@@ -35,4 +38,18 @@ pre {
 	font-family: Berkeley Mono Trial, ui-monospace, SFMono-Regular, Menlo, Monaco,
 		Consolas, Liberation Mono, Courier New, monospace;
 	font-size: 1em;
+}
+
+/**
+  Style main content window. Brought up here otherwise the h1 style doesn't
+	apply as that's in a <slot />.
+  */
+.jdcontent {
+	line-height: 1.75rem;
+	/* margin: 1.5rem 0; */
+	padding: 1rem;
+}
+
+.jdcontent h1:first-of-type {
+	margin-top: 0;
 }

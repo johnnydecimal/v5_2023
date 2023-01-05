@@ -43,8 +43,14 @@ import JDNavigation from "@components/navigation/JDNavigation.astro";
 		flex-direction: column-reverse;
 	}
 
-	/* Mobile-first. So that m */
+	/* Mobile-first. */
 	/* https://getbootstrap.com/docs/5.0/layout/breakpoints/#max-width */
-	@media screen and (max-width: 991.98px) {
+	@media screen and (min-width: 991.98px) {
+		.nav-main-flex {
+			flex-direction: row;
+		}
+		.jdnavigation {
+			margin-right: 1rem;
+		}
 	}
 </style>
