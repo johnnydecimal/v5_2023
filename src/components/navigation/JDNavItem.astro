@@ -7,15 +7,6 @@
 	Each might be an area, category, or ID. It might be active, or not.
 
 	They're probably going to end up being grid items but just add that as a CSS class later. (Although what's wrong with a bunch of <div>s?)
-
-	# Constructing it
-	So a JDNavItem is just a box with some text in it.
-
-	If the item is an Area, just display {number} {title}.
-	If it's a Category, indent by 3 spaces {'   '}.
-	If it's an ID, indent by 6 spaces {'      '}.
-
-	It links to the page that it represents.
   */
 
 interface Props {
@@ -42,18 +33,14 @@ const { number, title, acid, active = true, url } = Astro.props;
 
 	This will work for browsers that have JS disabled, whereas the method which
 	relies on script tags will not (and is more expensive).
+
+	See /doco/frontmatter.sort.md.
   */
-// const pathname = Astro.url.pathname; // Doesn't work on Netlify
+
 const pathname = new URL(Astro.request.url).pathname;
-// console.log("pathname", pathname);
-// const currentPath = pathname.slice(1);
 const currentPath = pathname.slice(1).replaceAll("/", "");
 const urlNoSlash = url.slice(1).replaceAll("/", "");
-console.log("currentPath", currentPath);
-console.log("urlNoSlash", urlNoSlash);
-
-// If currentPath === url, this is the active page.
-console.log("currentPath === urlNoSlash?", currentPath === urlNoSlash);
+// If currentPath === urlNoSlash, this is the active page. Computed inline.
 ---
 
 {

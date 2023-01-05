@@ -6,10 +6,6 @@
 	navigation section.
 
 	We've already wrapped this in a <nav> up in <Layout>.
-
-	# Sorting it
-
-	See /doco/frontmatter.sort.md.
 	*/
 
 const pages = await Astro.glob("../../pages/**/*.md");
@@ -23,15 +19,6 @@ pages.sort(
 );
 
 import JDNavItem from "./JDNavItem.astro";
-
-/**
-  Building the highlighting of the active JDNavItem.
-
-  Ah now remember, this whole thing is statically generated. So on this page,
-	where you're building the *static* HTML that will be deployed, you can't
-	possibly know which is the active route.
-  */
-// console.log(Astro.url);
 ---
 
 {
