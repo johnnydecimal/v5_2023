@@ -8,17 +8,13 @@
 	We've already wrapped this in a <nav> up in <Layout>.
 	*/
 
-const pages = await Astro.glob("../../pages/**/*.md");
-
-pages.sort(
-	(a, b) =>
-		// @ts-ignore
-		(a.frontmatter.sort > b.frontmatter.sort) -
-		// @ts-ignore
-		(a.frontmatter.sort < b.frontmatter.sort)
-);
-
+import jdSort from "@js/jdSort.js";
 import JDNavItem from "./JDNavItem.astro";
+
+const pages = await Astro.glob("../../pages/**/*.{md,mdx}");
+
+// You need to sort on frontmatter.number
+pages.sort(jdSort);
 ---
 
 {
