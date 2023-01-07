@@ -1,0 +1,23 @@
+---
+number: 00.00
+---
+
+import JDBlock from "@components/jd/JDBlock.astro";
+
+# A test page so you can mount whatever here
+
+Hmm but if this block isn't inheriting layout ... or is the point of Astro that things shouldn't worry about inheritance? Just have components with their own style?
+
+Yeah that's how they want you to do it, so you can 'use low-specificity selectors' and so on. So let's stick with that.
+
+<JDBlock
+	jdSystem={`
+10-19 Administration
+   14 Timesheets & expenses
+	    14.11 Timesheets
+			14.12 Expenses
+	 16 Travel
+	    16.01 First trip
+			16.02 Second trip
+`}
+/>
