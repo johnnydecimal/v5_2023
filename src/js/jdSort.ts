@@ -6,12 +6,10 @@ const jdSort = (aObj, bObj) => {
 
 	let a = aObj.frontmatter.number.toString();
 	let b = bObj.frontmatter.number.toString();
-	console.log("-=-=-=-=-=-=-=-=-=-=-=-");
-	console.log("a", a, "b", b);
-
-	console.log(typeof a);
-	console.log(typeof b);
-	/**
+	// console.log("-=-=-=-=-=-=-=-=-=-=-=-");
+	// console.log("a", a, "b", b);
+	// console.log(typeof a);
+	// console.log(typeof b);
 
 	let x, y; // the new a, b
 
@@ -52,8 +50,8 @@ const jdSort = (aObj, bObj) => {
 	}
 
 	// Sort 'em
+	// console.log("x", x, "y", y, "localeCompare", x.localeCompare(y));
 	return x.localeCompare(y);
-	*/
 };
 
 export { jdSort as default };
