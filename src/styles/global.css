@@ -11,10 +11,20 @@
 	font-display: swap;
 }
 
+:root {
+	/* Site-wide */
+	--offblack: #211;
+	--offwhite: #f9f9f9;
+
+	/* JD block styling */
+	--jd-bg-colour: #450502;
+	--jd-highlight-colour: #db170e;
+}
+
 /* https://css-tricks.com/html-vs-body-in-css/ */
 html {
-	background-color: #f9f9f9;
-	color: #111;
+	background-color: var(--offwhite);
+	color: var(--offblack);
 }
 
 body {
@@ -54,4 +64,12 @@ pre {
 
 .jdcontent h1:first-of-type {
 	margin-top: 0;
+}
+
+.jdcontent code {
+	background-color: var(--jd-bg-colour);
+	border-bottom: 2px solid var(--jd-highlight-colour);
+	border-radius: 2px;
+	color: var(--offwhite);
+	padding-inline: 0.25rem;
 }
