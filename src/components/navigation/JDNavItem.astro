@@ -18,7 +18,7 @@ interface Props {
 	url: any; // So we can use it in an <a href>
 }
 
-const { number, title, acid, active = true, url } = Astro.props;
+const { number, title, active = true, url } = Astro.props;
 
 /**
   Try this https://www.cyishere.dev/blog/astro-active-nav-item 'the Astro way'.
@@ -41,6 +41,10 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1).replaceAll("/", "");
 const urlNoSlash = url.slice(1).replaceAll("/", "");
 // If currentPath === urlNoSlash, this is the active page. Computed inline.
+
+// What is this item?
+import jdDetect from "@js/jdDetect";
+const acid = jdDetect(number);
 ---
 
 {
