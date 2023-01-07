@@ -100,3 +100,7 @@ http://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr
 So this thing needs to be super flexible. You won't know what you want until later. So build it with that in mind.
 
 Let's convert to MDX mode and bang up the simplest component in the world just to get in the mood.
+
+# JD code blocks v1.0 complete
+
+Rudimentary, sure. But they work. Let's copy over a bunch of real content now and make it look A-OK.
