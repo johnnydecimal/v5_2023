@@ -29,7 +29,7 @@ const jdSystemArray = jdSystemArrayUntrimmed.map((jdLine: string) =>
 	jdLine.trim()
 );
 
-console.log("jdSystemArray", jdSystemArray);
+// console.log("jdSystemArray", jdSystemArray);
 
 const acidDetect = (jdLine: string) => {
 	// This is pretty dumb but good enough for now.
@@ -46,10 +46,10 @@ const acidDetect = (jdLine: string) => {
 	return acid;
 };
 
-console.log(acidDetect("00-09 blah"));
-console.log(acidDetect("00 blah"));
-console.log(acidDetect("00.09 blah"));
-console.log(acidDetect("nonsense"));
+// console.log(acidDetect("00-09 blah"));
+// console.log(acidDetect("00 blah"));
+// console.log(acidDetect("00.09 blah"));
+// console.log(acidDetect("nonsense"));
 ---
 
 <div class="jdSystem">
