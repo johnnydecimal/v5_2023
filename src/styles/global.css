@@ -29,8 +29,8 @@ html {
 
 body {
 	/* font-family: "Bitter", system-ui, sans-serif; */
-	font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-family: "IBM Plex Sans", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+		sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	margin-left: auto;
 	margin-right: auto;
 	max-width: 72rem;
