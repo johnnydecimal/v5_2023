@@ -34,15 +34,21 @@ const { number, title, area, category } = Astro.props.frontmatter;
 	}
 
 	.jdid {
-		border: 2px solid red;
+		border: 2px solid var(--jd-highlight-colour);
+		box-shadow: 3px -1px rgba(82, 5, 2, 1);
+		color: var(--jd-bg-colour);
 		font-size: 2rem;
 		padding: 1rem;
+		margin-left: -2px;
+		margin-top: 1px;
+		background-color: rgb(252, 247, 246);
 	}
 
 	.jdac {
-		border: 1px solid red;
-		font-size: 1rem;
-		padding: 1rem;
+		border-bottom: 1px solid var(--jd-highlight-colour);
+		font-size: 0.9rem;
+		padding: 0.5rem 0.5rem 0.5rem 1rem;
+		/* background-color: rgb(252, 247, 246); */
 	}
 
 	/* See global.css for .jdcontent styles */

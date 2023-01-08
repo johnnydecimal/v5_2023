@@ -21,7 +21,6 @@ import JDNavigation from "@components/navigation/JDNavigation.astro";
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans"
 		/>
-
 		<meta name="generator" content={Astro.generator} />
 		<meta
 			name="description"
@@ -62,5 +61,18 @@ import JDNavigation from "@components/navigation/JDNavigation.astro";
 			margin-right: 1rem;
 			width: 30%;
 		}
+	}
+
+	header > h1 {
+		border-bottom: 1px solid var(--jd-bg-colour);
+		/* border-top: 1px solid var(--jd-bg-colour); */
+		/* border-radius: 3px; */
+		font-family: Berkeley Mono Trial, ui-monospace, SFMono-Regular, Menlo,
+			Monaco, Consolas, Liberation Mono, Courier New, monospace;
+		font-size: 1rem;
+		/* font-variant-caps: small-caps; */
+		margin-top: 0;
+		padding-bottom: 0.5rem;
+		text-align: center;
 	}
 </style>
