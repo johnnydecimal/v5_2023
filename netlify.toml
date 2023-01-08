@@ -1,6 +1,6 @@
 [[redirects]]
 	from = "/"
-	to = "/00-09_System/"
+	to = "/10-19_Concepts/11_Core/11.01_Home_page/"
 	status = 301
 	force = true
 
