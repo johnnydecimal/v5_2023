@@ -49,11 +49,14 @@ import JDNavigation from "@components/navigation/JDNavigation.astro";
 	}
 
 	html {
-		color: var(--offblack);
+		background-color: white;
 	}
 
 	body {
 		background-color: var(--offwhite);
+		border-left: 1px dotted var(--jd-bg-colour);
+		border-right: 1px dotted var(--jd-bg-colour);
+		color: var(--offblack);
 		font-family: "IBM Plex Sans", system-ui, "Segoe UI", Roboto, Helvetica,
 			Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
 			"Segoe UI Symbol";
@@ -70,7 +73,7 @@ import JDNavigation from "@components/navigation/JDNavigation.astro";
 			Monaco, Consolas, Liberation Mono, Courier New, monospace;
 		font-size: 1rem;
 		margin-top: 0;
-		padding-bottom: 0.5rem;
+		padding-bottom: 1rem;
 		text-align: center;
 	}
 
