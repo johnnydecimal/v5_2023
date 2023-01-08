@@ -22,20 +22,6 @@
 }
 
 /* https://css-tricks.com/html-vs-body-in-css/ */
-html {
-	background-color: var(--offwhite);
-	color: var(--offblack);
-}
-
-body {
-	/* font-family: "Bitter", system-ui, sans-serif; */
-	font-family: "IBM Plex Sans", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
-		sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 72rem;
-	padding: 1rem;
-}
 
 a {
 	color: inherit;
@@ -52,31 +38,8 @@ pre {
 	font-size: 1em;
 }
 
-/**
-  Style main content window. Brought up here otherwise the h1 style doesn't
-	apply as that's in a <slot />.
-  */
-.jdcontent {
-	line-height: 1.75rem;
-	/* margin: 1.5rem 0; */
-	padding: 1rem;
-}
-
-.jdcontent h1:first-of-type {
-	margin-top: 0;
-}
-
-.jdcontent h1 {
-	line-height: 2.5rem;
-	font-family: "IBM Plex Sans", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
-		sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-	font-weight: normal;
-}
-
-.jdcontent code {
-	background-color: var(--jd-bg-colour);
-	border-bottom: 2px solid var(--jd-highlight-colour);
-	border-radius: 2px;
-	color: var(--offwhite);
-	padding-inline: 0.25rem;
+hr {
+	border: 1px solid var(--jd-bg-colour);
+	box-shadow: 3px -1px var(--jd-highlight-colour);
+	margin-left: -2px;
 }
