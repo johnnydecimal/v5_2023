@@ -67,9 +67,10 @@ pre {
 }
 
 .jdcontent h1 {
-	/* line-height: 2.5rem; */
+	line-height: 2.5rem;
 	font-family: "IBM Plex Sans", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
 		sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-weight: normal;
 }
 
 .jdcontent code {
