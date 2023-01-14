@@ -32,6 +32,7 @@ import JDNavigation from "@components/navigation/JDNavigation.astro";
 			<nav class="jdnavigation">
 				<JDNavigation />
 			</nav>
+			<div class="divider"></div>
 			<main class="main">
 				<slot />
 			</main>
@@ -45,7 +46,6 @@ import JDNavigation from "@components/navigation/JDNavigation.astro";
 	.nav-main-flex {
 		display: flex;
 		flex-direction: column-reverse;
-		padding: 0 0.5rem;
 	}
 
 	html {
@@ -77,6 +77,10 @@ import JDNavigation from "@components/navigation/JDNavigation.astro";
 		text-align: center;
 	}
 
+	.divider {
+		display: none;
+	}
+
 	/* Style for iPad-landscape+. */
 	/* https://getbootstrap.com/docs/5.0/layout/breakpoints/#max-width */
 	@media screen and (min-width: 991.98px) {
@@ -87,8 +91,12 @@ import JDNavigation from "@components/navigation/JDNavigation.astro";
 			flex-grow: 0; /* do not grow   - initial value: 0 */
 			flex-shrink: 0; /* do not shrink - initial value: 1 */
 			flex-basis: 20rem; /* width/height  - initial value: auto */
-			margin-right: 1rem;
 			padding-top: 1px; /* Lines it up with the header */
+		}
+		.divider {
+			display: block;
+			border-right: 1px dotted var(--jd-bg-colour);
+			margin: 1px 15px 0 14px;
 		}
 	}
 </style>

@@ -10,12 +10,12 @@
   */
 
 interface Props {
-  number: string; // For display
-  title: string; // For display
-  acid: "area" | "category" | "id"; // For indentation
-  active: boolean; // So we can temporarily disable stuff; default to `true`
-  // TODO: fix the 'any' typing here
-  url: any; // So we can use it in an <a href>
+	number: string; // For display
+	title: string; // For display
+	acid: "area" | "category" | "id"; // For indentation
+	active: boolean; // So we can temporarily disable stuff; default to `true`
+	// TODO: fix the 'any' typing here
+	url: any; // So we can use it in an <a href>
 }
 
 const { number, title, active = true, url } = Astro.props;
@@ -48,68 +48,67 @@ const acid = jdDetect(number);
 ---
 
 {
-  /* We need to create a component per AC.ID type of thing because each one
+	/* We need to create a component per AC.ID type of thing because each one
 	  has a different class so the hanging indents work. */
 }
 
 <a href={url}>
-  {
-    acid === "area" && (
-      <div
-        class={`jdnavitem jdarea ${currentPath === urlNoSlash ? "active" : ""}`}
-      >
-        {number}&nbsp;{title}
-      </div>
-    )
-  }
+	{
+		acid === "area" && (
+			<div
+				class={`jdnavitem jdarea ${currentPath === urlNoSlash ? "active" : ""}`}
+			>
+				{number}&nbsp;{title}
+			</div>
+		)
+	}
 
-  {
-    acid === "category" && (
-      <div
-        class={`jdnavitem jdcategory ${
-          currentPath === urlNoSlash ? "active" : ""
-        }`}
-      >
-        {number}&nbsp;{title}
-      </div>
-    )
-  }
+	{
+		acid === "category" && (
+			<div
+				class={`jdnavitem jdcategory ${
+					currentPath === urlNoSlash ? "active" : ""
+				}`}
+			>
+				{number}&nbsp;{title}
+			</div>
+		)
+	}
 
-  {
-    acid === "id" && (
-      <div
-        class={`jdnavitem jdid ${currentPath === urlNoSlash ? "active" : ""}`}
-      >
-        {number}&nbsp;{title}
-      </div>
-    )
-  }
+	{
+		acid === "id" && (
+			<div
+				class={`jdnavitem jdid ${currentPath === urlNoSlash ? "active" : ""}`}
+			>
+				{number}&nbsp;{title}
+			</div>
+		)
+	}
 </a>
 
 <style>
-  .active {
-    border: 2px solid red !important;
-  }
+	.active {
+		border: 2px solid red !important;
+	}
 
-  .jdnavitem {
-    background-color: rgb(240, 240, 240);
-    border: 1px solid black;
-    border-collapse: collapse;
-    font-family: "Berkeley Mono Trial";
-    padding: 0.75rem;
-  }
+	.jdnavitem {
+		background-color: rgb(240, 240, 240);
+		border: 1px solid black;
+		border-collapse: collapse;
+		font-family: "Berkeley Mono Trial";
+		padding: 0.75rem;
+	}
 
-  .jdarea {
-    margin-top: 1rem;
-    padding-left: 7ch;
-    text-indent: -6ch;
-  }
-  .jdcategory {
-    padding-left: 7ch;
-    text-indent: -3ch;
-  }
-  .jdid {
-    padding-left: 13ch;
-    text-indent: -6ch;
-  }
+	.jdarea {
+		padding-left: 7ch;
+		text-indent: -6ch;
+	}
+	.jdcategory {
+		padding-left: 7ch;
+		text-indent: -3ch;
+	}
+	.jdid {
+		padding-left: 13ch;
+		text-indent: -6ch;
+	}
 </style>
