@@ -43,11 +43,6 @@ import JDNavigation from "@components/navigation/JDNavigation.astro";
 <style>
 	/* Mobile-first, remember. So define everything for phone, then use
 	   @media queries to re-define for tablet+ or whatever. */
-	.nav-main-flex {
-		display: flex;
-		flex-direction: column-reverse;
-	}
-
 	html {
 		background-color: white;
 	}
@@ -77,6 +72,20 @@ import JDNavigation from "@components/navigation/JDNavigation.astro";
 		text-align: center;
 	}
 
+	/* The flex container that houses navigation and the main content. */
+	.nav-main-flex {
+		display: flex;
+		/* By default (mobile), show the navigation at the bottom. */
+		flex-direction: column-reverse;
+	}
+
+	.jdnavigation {
+		/* border: 1px solid var(--jd-bg-colour); */
+		height: fit-content;
+		font-family: "Berkeley Mono Trial";
+	}
+
+	/* Don't show the divider on mobile. */
 	.divider {
 		display: none;
 	}

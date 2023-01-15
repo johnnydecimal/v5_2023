@@ -14,8 +14,7 @@ interface Props {
 	title: string; // For display
 	acid: "area" | "category" | "id"; // For indentation
 	active: boolean; // So we can temporarily disable stuff; default to `true`
-	// TODO: fix the 'any' typing here
-	url: any; // So we can use it in an <a href>
+	url: URL; // So we can use it in an <a href>
 }
 
 const { number, title, active = true, url } = Astro.props;
@@ -88,17 +87,16 @@ const acid = jdDetect(number);
 
 <style>
 	.active {
-		border: 2px solid red !important;
+		/* border: 2px solid red !important; */
 	}
 
 	.jdnavitem {
-		background-color: rgb(240, 240, 240);
-		border: 1px solid black;
-		border-collapse: collapse;
-		font-family: "Berkeley Mono Trial";
+		/* background-color: rgb(240, 240, 240); */
 		padding: 0.75rem;
 	}
 
+	/* Indentation and hanging paragraph -- leave these alone, put
+	   borders elsewhere. */
 	.jdarea {
 		padding-left: 7ch;
 		text-indent: -6ch;
@@ -110,5 +108,12 @@ const acid = jdDetect(number);
 	.jdid {
 		padding-left: 13ch;
 		text-indent: -6ch;
+	}
+
+	.jdarea {
+	}
+	.jdcategory {
+	}
+	.jdid {
 	}
 </style>
