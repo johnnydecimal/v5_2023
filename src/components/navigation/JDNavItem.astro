@@ -6,114 +6,146 @@
 
 	Each might be an area, category, or ID. It might be active, or not.
 
-	They're probably going to end up being grid items but just add that as a CSS class later. (Although what's wrong with a bunch of <div>s?)
+	Remem
   */
 
 interface Props {
-	number: string; // For display
-	title: string; // For display
-	acid: "area" | "category" | "id"; // For indentation
-	active: boolean; // So we can temporarily disable stuff; default to `true`
-	url: URL; // So we can use it in an <a href>
+  acid: "area" | "category" | "id"; // For indentation
+  number: string; // For display
+  title: string; // For display
+  url: string; // Comes in as a simple string
 }
-
-const { number, title, active = true, url } = Astro.props;
+const { number, title, url } = Astro.props;
 
 /**
-  Try this https://www.cyishere.dev/blog/astro-active-nav-item 'the Astro way'.
-
-	Remember, when the site is generated, every page is statically rendered out.
-	There is no runtime collation of components. Every page has the navigation
-	section baked in. That section is created x times, where x is how many pages
-	your site has. That's done here.
-
-	So if you want a <div> to have an 'active' class, do the analysis and assign
-	it here.
-
-	This will work for browsers that have JS disabled, whereas the method which
-	relies on script tags will not (and is more expensive).
-
-	See /doco/frontmatter.sort.md.
-  */
-
+ * Are we generating a navitem for the current page?
+ *
+ * If the current path that Astro is rendering is the same as the URL passed
+ * in by props then yes, this is the active page.
+ *
+ * Remember, each navitem is generated for each individual page on the site.
+ */
 const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1).replaceAll("/", "");
-const urlNoSlash = url.slice(1).replaceAll("/", "");
-// If currentPath === urlNoSlash, this is the active page. Computed inline.
+// const currentPath = pathname.slice(1).replaceAll("/", ""); // don't think we need
+console.log("pathname:", pathname);
+console.log("url:", url);
+// const urlNoSlash = url.slice(1).replaceAll("/", ""); // don't think we need
+const activePage = pathname.includes(url);
 
-// What is this item?
+// What ACID type are we generating a navitem for?
 import jdDetect from "@js/jdDetect";
 const acid = jdDetect(number);
+
+// Define the width of our nav block, in characters
+const navwidth = 30;
+
+/**
+ * Are we in an active area? If not, life's a lot simpler.
+ *
+ * This navitem might be for an AC or ID. Whatever it is, we need to know if
+ * whatever page we're on is contained.
+ *
+ * We've got two values, and we need to use them to see if one is 'in' the
+ * other.
+ *
+ * So first we need to work out if we're in an active area or not.
+ */
+
+const activeArea = () => {};
+
+/**
+ * # Area
+ * If it's an area, construct the situation.
+ *
+ * We create an array of strings, then we just map them in to divs later.
+ */
+
+if (acid === "area") {
+  let areaArray: Array<string> = [];
+
+  /**
+   * Create the first line.
+   *
+   * The first line has no preceding line art.
+   */
+  let firstline = number;
+
+  // Create an array from the title, from which we'll .shift() elements
+  const titleArray = title.split(" ");
+
+  while (
+    titleArray[0] &&
+    firstline.length + 1 + titleArray[0].length <= navwidth
+  ) {
+    firstline = firstline + " " + titleArray.shift();
+  }
+
+  console.log("firstline:", firstline);
+
+  // Is there more?
+}
 ---
 
 {
-	/* We need to create a component per AC.ID type of thing because each one
+  /* We need to create a component per AC.ID type of thing because each one
 	  has a different class so the hanging indents work. */
 }
 
 <a href={url}>
-	{
-		acid === "area" && (
-			<div
-				class={`jdnavitem jdarea ${currentPath === urlNoSlash ? "active" : ""}`}
-			>
-				{number}&nbsp;{title}
-			</div>
-		)
-	}
+  {
+    acid === "area" && (
+      <div class={`jdnavitem jdarea ${activePage ? "active" : ""}`}>
+        {number}&nbsp;{title}
+      </div>
+    )
+  }
 
-	{
-		acid === "category" && (
-			<div
-				class={`jdnavitem jdcategory ${
-					currentPath === urlNoSlash ? "active" : ""
-				}`}
-			>
-				{number}&nbsp;{title}
-			</div>
-		)
-	}
+  {
+    acid === "category" && (
+      <div class={`jdnavitem jdcategory ${activePage ? "active" : ""}`}>
+        {number}&nbsp;{title}
+      </div>
+    )
+  }
 
-	{
-		acid === "id" && (
-			<div
-				class={`jdnavitem jdid ${currentPath === urlNoSlash ? "active" : ""}`}
-			>
-				{number}&nbsp;{title}
-			</div>
-		)
-	}
+  {
+    acid === "id" && (
+      <div class={`jdnavitem jdid ${activePage ? "active" : ""}`}>
+        {number}&nbsp;{title}
+      </div>
+    )
+  }
 </a>
 
 <style>
-	.active {
-		/* border: 2px solid red !important; */
-	}
+  .active {
+    /* border: 2px solid red !important; */
+  }
 
-	.jdnavitem {
-		/* background-color: rgb(240, 240, 240); */
-		padding: 0.75rem;
-	}
+  .jdnavitem {
+    /* background-color: rgb(240, 240, 240); */
+    padding: 0.75rem;
+  }
 
-	/* Indentation and hanging paragraph -- leave these alone, put
+  /* Indentation and hanging paragraph -- leave these alone, put
 	   borders elsewhere. */
-	.jdarea {
-		padding-left: 7ch;
-		text-indent: -6ch;
-	}
-	.jdcategory {
-		padding-left: 7ch;
-		text-indent: -3ch;
-	}
-	.jdid {
-		padding-left: 13ch;
-		text-indent: -6ch;
-	}
+  .jdarea {
+    padding-left: 7ch;
+    text-indent: -6ch;
+  }
+  .jdcategory {
+    padding-left: 7ch;
+    text-indent: -3ch;
+  }
+  .jdid {
+    padding-left: 13ch;
+    text-indent: -6ch;
+  }
 
-	.jdarea {
-	}
-	.jdcategory {
-	}
-	.jdid {
-	}
+  .jdarea {
+  }
+  .jdcategory {
+  }
+  .jdid {
+  }
 </style>
