@@ -4,7 +4,7 @@ layout: ../../layouts/JDPage.astro
 # The JD number: mandatory, used on JDPage
 number: "10-19"
 # The JD title: mandatory, used on JDPage
-title: Concepts (area)
+title: Concepts is a very long area title
 # The area that this ID relates to: mandatory, used on JDPage
 area: 10-19 System
 # The category that this ID relates to: mandatory, used on JDPage
