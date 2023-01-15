@@ -1,9 +1,9 @@
 ---
 export interface Props {
-	number: string;
-	title: string;
-	area: string;
-	category: string;
+  number: string;
+  title: string;
+  area: string;
+  category: string;
 }
 
 import Layout from "./Layout.astro";
@@ -12,85 +12,85 @@ const { number, title, area, category } = Astro.props.frontmatter;
 ---
 
 <Layout title={`${number} ${title}`}>
-	<div class="jdid monospace">
-		{number}
-		{title}
-	</div>
-	<div class="jdac monospace">
-		{area} &gt; {category}
-	</div>
-	<div class="jdcontent">
-		<slot />
-	</div>
+  <div class="jdid monospace">
+    {number}
+    {title}
+  </div>
+  <div class="jdac monospace">
+    {area} &gt; {category}
+  </div>
+  <div class="jdcontent">
+    <slot />
+  </div>
 </Layout>
 
 <style>
-	.monospace {
-		font-family: "Berkeley Mono Trial", ui-monospace, SFMono-Regular, Menlo,
-			Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-	}
+  .monospace {
+    font-family: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+      Consolas, "Liberation Mono", "Courier New", monospace;
+  }
 
-	.jdid {
-		border: 2px solid var(--jd-highlight-colour);
-		box-shadow: 3px -1px rgba(82, 5, 2, 1);
-		color: var(--jd-bg-colour);
-		font-size: 2rem;
-		padding: 1rem;
-		margin-left: -2px;
-		margin-top: 1px;
-		background-color: rgb(252, 247, 246);
-	}
+  .jdid {
+    border: 2px solid var(--jd-highlight-colour);
+    box-shadow: 3px -1px rgba(82, 5, 2, 1);
+    color: var(--jd-bg-colour);
+    font-size: 2rem;
+    padding: 1rem;
+    margin-left: -2px;
+    margin-top: 1px;
+    background-color: rgb(252, 247, 246);
+  }
 
-	.jdac {
-		border-bottom: 1px solid var(--jd-highlight-colour);
-		font-size: 0.9rem;
-		padding: 0.5rem 0.5rem 0.5rem 1rem;
-		/* background-color: rgb(252, 247, 246); */
-	}
+  .jdac {
+    border-bottom: 1px solid var(--jd-highlight-colour);
+    font-size: 0.9rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    /* background-color: rgb(252, 247, 246); */
+  }
 
-	.jdcontent h1 {
-		color: red;
-	}
+  .jdcontent h1 {
+    color: red;
+  }
 
-	/* See global.css for .jdcontent styles */
+  /* See global.css for .jdcontent styles */
 </style>
 
 <!-- Global style for all the stuff in the <slot /> -->
 <style is:global>
-	.jdcontent {
-		line-height: 1.75rem;
-		padding: 1rem;
-	}
+  .jdcontent {
+    line-height: 1.75rem;
+    padding: 1rem;
+  }
 
-	.jdcontent h1:first-of-type {
-		margin-top: 0;
-	}
+  .jdcontent h1:first-of-type {
+    margin-top: 0;
+  }
 
-	.jdcontent h1,
-	h2,
-	h3 {
-		font-family: "IBM Plex Sans", system-ui, "Segoe UI", Roboto, Helvetica,
-			Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-			"Segoe UI Symbol";
-		font-weight: normal;
-		/* line-height: 1.5rem; */
-		/* padding-bottom: 2px; */
-		text-decoration: underline;
-		text-decoration-color: var(--jd-bg-colour);
+  .jdcontent h1,
+  h2,
+  h3 {
+    font-family: "IBM Plex Sans", system-ui, "Segoe UI", Roboto, Helvetica,
+      Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+    font-weight: normal;
+    /* line-height: 1.5rem; */
+    /* padding-bottom: 2px; */
+    text-decoration: underline;
+    text-decoration-color: var(--jd-bg-colour);
 
-		/* Probably a bit much for every h, but play */
-		/* border-bottom: 2px solid var(--jd-highlight-colour); */
-		/* width: fit-content; */
-	}
+    /* Probably a bit much for every h, but play */
+    /* border-bottom: 2px solid var(--jd-highlight-colour); */
+    /* width: fit-content; */
+  }
 
-	.jdcontent h1 {
-	}
+  .jdcontent h1 {
+  }
 
-	.jdcontent code {
-		background-color: var(--jd-bg-colour);
-		border-bottom: 2px solid var(--jd-highlight-colour);
-		border-radius: 2px;
-		color: var(--offwhite);
-		padding-inline: 0.25rem;
-	}
+  .jdcontent code {
+    background-color: var(--jd-bg-colour);
+    border-bottom: 2px solid var(--jd-highlight-colour);
+    border-radius: 2px;
+    color: var(--offwhite);
+    padding-inline: 0.25rem;
+  }
 </style>

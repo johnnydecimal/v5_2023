@@ -1,16 +1,16 @@
 ---
 # Choose the `JDPage` layout
-layout: ../../layouts/JDPage.astro
+layout: ../../../layouts/JDPage.astro
 # The JD number: mandatory, used on JDPage
-number: "10-19"
+number: "00"
 # The JD title: mandatory, used on JDPage
-title: Concepts (area)
+title: About
 # The area that this ID relates to: mandatory, used on JDPage
-area: 10-19 System
+area: 00-09 System
 # The category that this ID relates to: mandatory, used on JDPage
 # category: 09 Test
 ---
 
-# 10-19 Concepts
+# 00-09 System
 
-Concepts area index page.
+This is the index page for `00-09 System`.

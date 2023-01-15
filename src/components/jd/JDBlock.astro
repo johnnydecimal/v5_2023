@@ -17,33 +17,33 @@ const { jdSystem } = Astro.props;
 const jdSystemArrayUntrimmed = jdSystem.split("\n");
 // Remove the first element if it's a blank row
 if (jdSystemArrayUntrimmed[0] === "") {
-	jdSystemArrayUntrimmed.shift();
+  jdSystemArrayUntrimmed.shift();
 }
 // Remove the last element if it's a blank row
 if (jdSystemArrayUntrimmed[jdSystemArrayUntrimmed.length - 1] === "") {
-	jdSystemArrayUntrimmed.pop();
+  jdSystemArrayUntrimmed.pop();
 }
 
 // Trim each line (we don't care how the incoming template literal was formatted)
 const jdSystemArray = jdSystemArrayUntrimmed.map((jdLine: string) =>
-	jdLine.trim()
+  jdLine.trim()
 );
 
 // console.log("jdSystemArray", jdSystemArray);
 
 const acidDetect = (jdLine: string) => {
-	// This is pretty dumb but good enough for now.
-	let acid = "nonsense";
-	if (jdLine.slice(0, 6).match(/^\d\d\-\d\d $/)) {
-		acid = "area";
-	}
-	if (jdLine.slice(0, 3).match(/^\d\d\ $/)) {
-		acid = "category";
-	}
-	if (jdLine.slice(0, 6).match(/^\d\d\.\d\d $/)) {
-		acid = "id";
-	}
-	return acid;
+  // This is pretty dumb but good enough for now.
+  let acid = "nonsense";
+  if (jdLine.slice(0, 6).match(/^\d\d\-\d\d $/)) {
+    acid = "area";
+  }
+  if (jdLine.slice(0, 3).match(/^\d\d\ $/)) {
+    acid = "category";
+  }
+  if (jdLine.slice(0, 6).match(/^\d\d\.\d\d $/)) {
+    acid = "id";
+  }
+  return acid;
 };
 
 // console.log(acidDetect("00-09 blah"));
@@ -53,33 +53,33 @@ const acidDetect = (jdLine: string) => {
 ---
 
 <div class="jdSystem">
-	{
-		jdSystemArray.map((jdLine: string) => {
-			switch (acidDetect(jdLine)) {
-				case "area":
-					return <p>{jdLine}</p>;
-				case "category":
-					return <p>&nbsp;&nbsp;&nbsp;{jdLine}</p>;
-				case "id":
-					return <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{jdLine}</p>;
-				default:
-					return <div>default</div>;
-			}
-		})
-	}
+  {
+    jdSystemArray.map((jdLine: string) => {
+      switch (acidDetect(jdLine)) {
+        case "area":
+          return <p>{jdLine}</p>;
+        case "category":
+          return <p>&nbsp;&nbsp;&nbsp;{jdLine}</p>;
+        case "id":
+          return <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{jdLine}</p>;
+        default:
+          return <div>default</div>;
+      }
+    })
+  }
 </div>
 
 <style>
-	p {
-		margin: 0.3rem 0;
-	}
+  p {
+    margin: 0.3rem 0;
+  }
 
-	.jdSystem {
-		background-color: #450603;
-		color: #fbf6f6;
-		font-family: "Berkeley Mono Trial";
-		line-height: 1.2rem;
-		padding: 1rem;
-		border-radius: 0.2rem;
-	}
+  .jdSystem {
+    background-color: #450603;
+    color: #fbf6f6;
+    font-family: "Berkeley Mono";
+    line-height: 1.2rem;
+    padding: 1rem;
+    border-radius: 0.2rem;
+  }
 </style>

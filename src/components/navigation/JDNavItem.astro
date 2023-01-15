@@ -26,11 +26,10 @@ const { number, title, url } = Astro.props;
  * Remember, each navitem is generated for each individual page on the site.
  */
 const pathname = new URL(Astro.request.url).pathname;
-// const currentPath = pathname.slice(1).replaceAll("/", ""); // don't think we need
+const activePage = pathname.includes(url);
 console.log("pathname:", pathname);
 console.log("url:", url);
-// const urlNoSlash = url.slice(1).replaceAll("/", ""); // don't think we need
-const activePage = pathname.includes(url);
+console.log("activePage:", activePage);
 
 // What ACID type are we generating a navitem for?
 import jdDetect from "@js/jdDetect";

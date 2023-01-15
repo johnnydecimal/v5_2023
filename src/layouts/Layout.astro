@@ -1,6 +1,6 @@
 ---
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -13,99 +13,99 @@ import JDNavigation from "@components/navigation/JDNavigation.astro";
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<meta
-			name="description"
-			content="Johnny.Decimal is a system to organise projects (or your life, or anything else)"
-		/>
-		<title>{title}</title>
-	</head>
-	<body>
-		<header>
-			<h1>Johnny.Decimal</h1>
-		</header>
-		<div class="nav-main-flex">
-			<nav class="jdnavigation">
-				<JDNavigation />
-			</nav>
-			<div class="divider"></div>
-			<main class="main">
-				<slot />
-			</main>
-		</div>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Johnny.Decimal is a system to organise projects (or your life, or anything else)"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header>
+      <h1>Johnny.Decimal</h1>
+    </header>
+    <div class="nav-main-flex">
+      <nav class="jdnavigation">
+        <JDNavigation />
+      </nav>
+      <div class="divider"></div>
+      <main class="main">
+        <slot />
+      </main>
+    </div>
+  </body>
 </html>
 
 <style>
-	/* Mobile-first, remember. So define everything for phone, then use
+  /* Mobile-first, remember. So define everything for phone, then use
 	   @media queries to re-define for tablet+ or whatever. */
-	html {
-		background-color: white;
-	}
+  html {
+    background-color: white;
+  }
 
-	body {
-		background-color: var(--offwhite);
-		border-left: 1px dotted var(--jd-bg-colour);
-		border-right: 1px dotted var(--jd-bg-colour);
-		color: var(--offblack);
-		font-family: "IBM Plex Sans", system-ui, "Segoe UI", Roboto, Helvetica,
-			Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-			"Segoe UI Symbol";
-		margin-left: auto;
-		margin-right: auto;
-		max-width: 72rem;
-		padding: 1rem;
-	}
+  body {
+    background-color: var(--offwhite);
+    border-left: 1px dotted var(--jd-bg-colour);
+    border-right: 1px dotted var(--jd-bg-colour);
+    color: var(--offblack);
+    font-family: "IBM Plex Sans", system-ui, "Segoe UI", Roboto, Helvetica,
+      Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 72rem;
+    padding: 1rem;
+  }
 
-	header > h1 {
-		border-bottom: 1px solid var(--jd-bg-colour);
-		color: var(--jd-bg-colour);
-		font-family: Berkeley Mono Trial, ui-monospace, SFMono-Regular, Menlo,
-			Monaco, Consolas, Liberation Mono, Courier New, monospace;
-		font-size: 1rem;
-		margin-top: 0;
-		padding-bottom: 1rem;
-		text-align: center;
-	}
+  header > h1 {
+    border-bottom: 1px solid var(--jd-bg-colour);
+    color: var(--jd-bg-colour);
+    font-family: Berkeley Mono, ui-monospace, SFMono-Regular, Menlo, Monaco,
+      Consolas, Liberation Mono, Courier New, monospace;
+    font-size: 1rem;
+    margin-top: 0;
+    padding-bottom: 1rem;
+    text-align: center;
+  }
 
-	/* The flex container that houses navigation and the main content. */
-	.nav-main-flex {
-		display: flex;
-		/* By default (mobile), show the navigation at the bottom. */
-		flex-direction: column-reverse;
-	}
+  /* The flex container that houses navigation and the main content. */
+  .nav-main-flex {
+    display: flex;
+    /* By default (mobile), show the navigation at the bottom. */
+    flex-direction: column-reverse;
+  }
 
-	.jdnavigation {
-		/* border: 1px solid var(--jd-bg-colour); */
-		height: fit-content;
-		font-family: "Berkeley Mono Trial";
-	}
+  .jdnavigation {
+    /* border: 1px solid var(--jd-bg-colour); */
+    height: fit-content;
+    font-family: "Berkeley Mono";
+  }
 
-	/* Don't show the divider on mobile. */
-	.divider {
-		display: none;
-	}
+  /* Don't show the divider on mobile. */
+  .divider {
+    display: none;
+  }
 
-	/* Style for iPad-landscape+. */
-	/* https://getbootstrap.com/docs/5.0/layout/breakpoints/#max-width */
-	@media screen and (min-width: 991.98px) {
-		.nav-main-flex {
-			flex-direction: row;
-		}
-		.jdnavigation {
-			flex-grow: 0; /* do not grow   - initial value: 0 */
-			flex-shrink: 0; /* do not shrink - initial value: 1 */
-			flex-basis: 20rem; /* width/height  - initial value: auto */
-			padding-top: 1px; /* Lines it up with the header */
-		}
-		.divider {
-			display: block;
-			border-right: 1px dotted var(--jd-bg-colour);
-			margin: 1px 15px 0 14px;
-		}
-	}
+  /* Style for iPad-landscape+. */
+  /* https://getbootstrap.com/docs/5.0/layout/breakpoints/#max-width */
+  @media screen and (min-width: 991.98px) {
+    .nav-main-flex {
+      flex-direction: row;
+    }
+    .jdnavigation {
+      flex-grow: 0; /* do not grow   - initial value: 0 */
+      flex-shrink: 0; /* do not shrink - initial value: 1 */
+      flex-basis: 20rem; /* width/height  - initial value: auto */
+      padding-top: 1px; /* Lines it up with the header */
+    }
+    .divider {
+      display: block;
+      border-right: 1px dotted var(--jd-bg-colour);
+      margin: 1px 15px 0 14px;
+    }
+  }
 </style>
