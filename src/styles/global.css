@@ -5,31 +5,40 @@
 /* TODO: replace this with the proper font when you buy it */
 @font-face {
   font-family: "Berkeley Mono";
-  src: url("/fonts/BerkeleyMono-Regular.woff2") format("woff2");
+  src: url("/fonts/BerkeleyMono/BerkeleyMono-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Berkeley Mono";
-  src: url("/fonts/BerkeleyMono-Bold.woff2") format("woff2");
+  src: url("/fonts/BerkeleyMono/BerkeleyMono-Bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Berkeley Mono";
-  src: url("/fonts/BerkeleyMono-Italic.woff2") format("woff2");
+  src: url("/fonts/BerkeleyMono/BerkeleyMono-Italic.woff2") format("woff2");
   font-weight: normal;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: "Berkeley Mono";
-  src: url("/fonts/BerkeleyMono-BoldItalic.woff2") format("woff2");
+  src: url("/fonts/BerkeleyMono/BerkeleyMono-BoldItalic.woff2") format("woff2");
   font-weight: bold;
   font-style: italic;
   font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: local("IBM Plex Sans"), local("IBMPlexSans"),
+    url("/fonts/IBMPlexSans/IBMPlexSans-Regular-Latin3.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+01CD-01DC, U+1EA0-1EF9, U+20AB;
 }
 
 :root {
