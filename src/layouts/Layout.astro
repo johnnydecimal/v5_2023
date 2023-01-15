@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import "@fontsource/ibm-plex-sans";
+
 import JDNavigation from "@components/navigation/JDNavigation.astro";
 
 export interface Props {
@@ -50,9 +52,7 @@ const { title } = Astro.props;
     border-left: 1px dotted var(--jd-bg-colour);
     border-right: 1px dotted var(--jd-bg-colour);
     color: var(--offblack);
-    font-family: "IBM Plex Sans", system-ui, "Segoe UI", Roboto, Helvetica,
-      Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
+    font-family: "IBM Plex Sans";
     margin-left: auto;
     margin-right: auto;
     max-width: 72rem;
