@@ -1,13 +1,19 @@
 ---
 /**
-	# JDNavItem
+	* # JDNavItem
+  *
+	* A component which renders the items which make up the JD-tree navigation bar.
+  *
+	* Each might be an area, category, or ID. It might be active, or not.
+  *
+	* This gets called pages^2 times: for every page, it gets called for every
+  * item in the navigation sidebar.
+  * 
+  * JDNavContainer is a 2-column grid. JDNavItem needs to return it two divs:
+  * 1. Left, containing a number and some where-you-are-bars.
+  * 2. Right, the words.
+  *
 
-	A component which renders the items which make up the JD-tree navigation bar.
-
-	Each might be an area, category, or ID. It might be active, or not.
-
-	This gets called pages^2 times: for every page, it gets called for every
-  item in the navigation sidebar.
   */
 
 interface Props {
@@ -110,47 +116,15 @@ if (activePage) {
 }
 ---
 
-{
-  /**
-   * We need to create a component per AC.ID type of thing because each one
-   * has a different class so the hanging indents work.
-   *
-   * So remember, again, each time this component renders it's just rendering
-   * a single unit of navigation.
-   */
-}
-
-<a href={url}>
-  {
+<!-- <a href={url}> -->
+<div>{number}</div>
+<div>{title}</div>
+<!-- {
     navDivArray.map((navDiv) => {
       console.log("🧭 navDiv:", navDiv);
       return <div class={navDiv.classes}>{navDiv.content}</div>;
     })
-  }
-  <!-- {
-    acid === "area" && (
-      <div class={`jdnavitem jdarea ${activePage ? "active" : ""}`}>
-        {number}&nbsp;{title}
-      </div>
-    )
-  }
-
-  {
-    acid === "category" && (
-      <div class={`jdnavitem jdcategory ${activePage ? "active" : ""}`}>
-        {number}&nbsp;{title}
-      </div>
-    )
-  }
-
-  {
-    acid === "id" && (
-      <div class={`jdnavitem jdid ${activePage ? "active" : ""}`}>
-        {number}&nbsp;{title}
-      </div>
-    )
   } -->
-</a>
 
 <style>
   .active {

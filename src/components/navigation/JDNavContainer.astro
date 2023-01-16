@@ -30,4 +30,24 @@ pages.sort(jdSort);
     ))
   }
 </nav>
-<style></style>
+
+<style>
+  .jdnavigation {
+    display: grid;
+    gap: 1ch;
+    grid-template-columns: 5ch auto;
+    font-family: "Berkeley Mono";
+    height: fit-content;
+  }
+
+  /* Style for iPad-landscape+. */
+  /* https://getbootstrap.com/docs/5.0/layout/breakpoints/#max-width */
+  @media screen and (min-width: 991.98px) {
+    .jdnavigation {
+      flex-grow: 0; /* do not grow   - initial value: 0 */
+      flex-shrink: 0; /* do not shrink - initial value: 1 */
+      flex-basis: 35ch; /* width/height  - initial value: auto */
+      padding-top: 1px; /* Lines it up with the header */
+    }
+  }
+</style>
