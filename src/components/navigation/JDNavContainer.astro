@@ -17,17 +17,17 @@ const pages = await Astro.glob("../../pages/**/*.{md,mdx}");
 pages.sort(jdSort);
 ---
 
-{
-	/* Make me an <ol>? So don't forget to make JDNavItem return <li>. */
-	pages.map((page) => (
-		<JDNavItem
-			number={page.frontmatter.number}
-			title={page.frontmatter.title}
-			acid={page.frontmatter.acid}
-			active={page.frontmatter.active}
-			url={page.url}
-		/>
-	))
-}
-
+<nav class="jdnavigation">
+  {
+    /* Make me an <ol>? So don't forget to make JDNavItem return <li>. */
+    pages.map((page) => (
+      <JDNavItem
+        number={page.frontmatter.number}
+        title={page.frontmatter.title}
+        acid={page.frontmatter.acid}
+        url={page.url}
+      />
+    ))
+  }
+</nav>
 <style></style>
