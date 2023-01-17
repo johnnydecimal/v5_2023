@@ -22,7 +22,7 @@ interface Props {
   title: string; // For display
   url: string; // Comes in as a simple string
 }
-const { number, title, url } = Astro.props;
+const { number, title, url: navItemUrl } = Astro.props;
 
 /**
  * Are we generating a navitem for the current page?
@@ -32,25 +32,141 @@ const { number, title, url } = Astro.props;
  *
  * Remember, each navitem is generated for each individual page on the site.
  */
-const pathname = new URL(Astro.request.url).pathname;
-const activePage = pathname.includes(url);
-console.log("pathname:", pathname);
-console.log("url:", url);
+const currentPage = new URL(Astro.request.url).pathname;
+const activePage = currentPage.includes(navItemUrl);
+console.log("");
+console.log("navItemUrl:", navItemUrl);
+console.log("currentPage:", currentPage);
 console.log("activePage:", activePage);
 
 // What ACID type are we generating a navitem for?
 import jdDetect from "@js/jdDetect";
 const acid = jdDetect(number);
+console.log("🧬 acid:", acid);
+
+/**
+ * We have two variables:
+ * - currentPage: the URL of the page that the user is on.
+ * - navItemUrl: the URL that the NavItem we're generating points to.
+ */
+
+/**
+ * inScope: is this item a direct ancestor of the **active item**?
+ *
+ * This smells like a state machine but for now it's hacky nested ifs.
+ */
+const inScope = (currentPage: string, navItemUrl: string): boolean => {
+  // If we're not in the same area, FALSE.
+  // Every set of inputs has at least an area specified. This can't fail.
+  if (currentPage.substring(1, 5) !== navItemUrl.substring(1, 5)) {
+    console.log("🔭 not in the same area: 🔴 false");
+    return false;
+  } else {
+    // We are in the same area.
+
+    // Are we on the area navItem? If so, we're done.
+    if (acid === "area") {
+      console.log("🔭 on the active area: 🟢 true");
+      return true;
+    }
+
+    // We're in the same area, but we're not on the area item.
+    // So we're at least in a category. Is that category number greater than
+    // the current page? If so, we're below it, so FALSE.
+    if (
+      navItemUrl.split("/")[2].substring(0, 2) >
+      currentPage.split("/")[2].substring(0, 2)
+    ) {
+      console.log("🔭 in the same area, category is >: 🔴 false");
+      return false;
+    } else {
+      // We are on or above the active category.
+
+      // Are we on the category navItem? If so, we're done.
+      if (acid === "category") {
+        console.log("🔭 on the active category: 🟢 true");
+        return true;
+      }
+
+      // By now we're on an ID. Is that ID number greater than the current
+      // page? If so, we're below it, so FALSE.
+
+      if (
+        navItemUrl.split("/")[3].substring(0, 5) >
+        currentPage.split("/")[3].substring(0, 5)
+      ) {
+        console.log("🔭 in the same category, ID is >: 🔴 false");
+        return false;
+      } else {
+        // We can only be on an in-scope ID.
+        console.log("🔭 on or above active ID: 🟢 true");
+        return false;
+      }
+    }
+  }
+
+  // If all else fails, fail. Ah, unreachable! Cool.
+  console.log("🔭 default return: ❌ false");
+  return false;
+};
+
+const unused = inScope(currentPage, navItemUrl);
 ---
 
-<!-- <a href={url}> -->
-<div>{number}</div>
-<div>{title}</div>
-<!-- {
-    navDivArray.map((navDiv) => {
-      console.log("🧭 navDiv:", navDiv);
-      return <div class={navDiv.classes}>{navDiv.content}</div>;
-    })
-  } -->
+{
+  acid === "area" && (
+    <>
+      <div class="area-number">
+        {number}
+        <br />
+        &#x2502;
+        <br />
+        &#x2502;
+        <br />
+        &#x2502;
+        <br />
+        &#x2502;
+        <br />
+        &#x2502;
+      </div>
+      <div class="area-title">{title}</div>
+    </>
+  )
+}
 
-<style></style>
+{
+  acid === "category" && (
+    <>
+      <div class="category-number">{number}</div>
+      <div class="category-title">{title}</div>
+    </>
+  )
+}
+
+{
+  acid === "id" && (
+    <>
+      <div class="id-spacer" />
+      <div class="id-number">{number}</div>
+      <div class="id-title">{title}</div>
+    </>
+  )
+}
+
+<style>
+  .area-title,
+  .category-title {
+    grid-column: 2 / span 2;
+  }
+
+  .area-number,
+  .category-number {
+    height: 0;
+    min-height: 100%;
+    overflow: hidden;
+  }
+
+  .category-number {
+    padding-left: 3ch;
+  }
+</style>
