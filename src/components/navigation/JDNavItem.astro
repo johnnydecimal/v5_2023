@@ -41,8 +41,8 @@ console.log("activePage:", activePage);
 
 // What ACID type are we generating a navitem for?
 import jdDetect from "@js/jdDetect";
-const acid = jdDetect(number);
-console.log("🧬 acid:", acid);
+const navItemACID = jdDetect(number);
+console.log("🧬 acid:", navItemACID);
 
 /**
  * We have two variables:
@@ -55,19 +55,41 @@ console.log("🧬 acid:", acid);
  *
  * This smells like a state machine but for now it's hacky nested ifs.
  */
-const inScope = (currentPage: string, navItemUrl: string): boolean => {
+const inScope = (currentPage: string, navItemUrl: string) => {
+  /**
+   * An area is the selected item.
+   */
+  if (currentPage === navItemUrl && navItemACID === "area") {
+    return "area-active";
+  }
+
+  /*
   // If we're not in the same area, FALSE.
   // Every set of inputs has at least an area specified. This can't fail.
   if (currentPage.substring(1, 5) !== navItemUrl.substring(1, 5)) {
     console.log("🔭 not in the same area: 🔴 false");
+    return "000";
     return false;
   } else {
     // We are in the same area.
 
+    // If navItemUrl === currentPage, we're creating the active nav item.
+    if (navItemUrl === currentPage) {
+
+    }
+
+
     // Are we on the area navItem? If so, we're done.
-    if (acid === "area") {
+    if (navItemACID === "area") {
       console.log("🔭 on the active area: 🟢 true");
+      return "200";
       return true;
+    }
+
+    // If the currentPage length is less than navItemUrl length, we're ...
+    // ...something?
+    if (currentPage.length < navItemUrl.length) {
+      return "100";
     }
 
     // We're in the same area, but we're not on the area item.
@@ -78,13 +100,15 @@ const inScope = (currentPage: string, navItemUrl: string): boolean => {
       currentPage.split("/")[2].substring(0, 2)
     ) {
       console.log("🔭 in the same area, category is >: 🔴 false");
+      return "100";
       return false;
     } else {
       // We are on or above the active category.
 
       // Are we on the category navItem? If so, we're done.
-      if (acid === "category") {
+      if (navItemACID === "category") {
         console.log("🔭 on the active category: 🟢 true");
+        return "120";
         return true;
       }
 
@@ -96,64 +120,83 @@ const inScope = (currentPage: string, navItemUrl: string): boolean => {
         currentPage.split("/")[3].substring(0, 5)
       ) {
         console.log("🔭 in the same category, ID is >: 🔴 false");
+        return "110";
         return false;
       } else {
         // We can only be on an in-scope ID.
+
+        // Are we on the ID navItem?
+        if (navItemUrl === currentPage) {
+          console.log("🔭 on the active ID: 🟢 true");
+          return "112";
+        }
         console.log("🔭 on or above active ID: 🟢 true");
+        return "111";
         return false;
       }
     }
   }
+  */
 
   // If all else fails, fail. Ah, unreachable! Cool.
   console.log("🔭 default return: ❌ false");
   return false;
 };
 
-const unused = inScope(currentPage, navItemUrl);
+console.log("🔭 inScope result: ", inScope(currentPage, navItemUrl));
+const scopeStatus = inScope(currentPage, navItemUrl);
 ---
 
 {
-  acid === "area" && (
-    <>
-      <div class="area-number">
-        {number}
-        <br />
-        &#x2502;
-        <br />
-        &#x2502;
-        <br />
-        &#x2502;
-        <br />
-        &#x2502;
-        <br />
-        &#x2502;
-      </div>
-      <div class="area-title">{title}</div>
-    </>
+  scopeStatus === "area-active" && (
+    <a class="jdnavigation" href={navItemUrl}>
+      <div class="active area-number">{number}</div>
+      <div class="active area-title">{title}</div>
+    </a>
   )
 }
 
 {
-  acid === "category" && (
-    <>
+  navItemACID === "area" && (
+    <a class="jdnavigation" href={navItemUrl}>
+      <div class="area-number">{number}</div>
+      <div class="area-title">FB: {title}</div>
+    </a>
+  )
+}
+
+{
+  navItemACID === "category" && (
+    <a class="jdnavigation" href={navItemUrl}>
       <div class="category-number">{number}</div>
-      <div class="category-title">{title}</div>
-    </>
+      <div class="category-title">FB: {title}</div>
+    </a>
   )
 }
 
 {
-  acid === "id" && (
-    <>
+  navItemACID === "id" && (
+    <a class="jdnavigation" href={navItemUrl}>
       <div class="id-spacer" />
       <div class="id-number">{number}</div>
-      <div class="id-title">{title}</div>
-    </>
+      <div class="id-title">FB: {title}</div>
+    </a>
   )
 }
 
 <style>
+  .active {
+    color: red;
+  }
+
+  .jdnavigation {
+    display: grid;
+    gap: 1ch;
+    grid-template-columns: 5ch 5ch auto;
+    font-family: "Berkeley Mono";
+    /* height: fit-content; */
+  }
+
   .area-title,
   .category-title {
     grid-column: 2 / span 2;
