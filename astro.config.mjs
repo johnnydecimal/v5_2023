@@ -1,7 +1,9 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
+import tailwind from "@astrojs/tailwind";
 
+// https://astro.build/config
 export default defineConfig({
-	site: "https://johnnydecimal.com",
-	integrations: [mdx()],
+  site: "https://johnnydecimal.com",
+  integrations: [mdx(), tailwind()]
 });
