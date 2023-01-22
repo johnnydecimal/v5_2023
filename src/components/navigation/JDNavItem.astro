@@ -149,7 +149,7 @@ const scopeStatus = inScope(currentPage, navItemUrl);
 
 {
   scopeStatus === "area-active" && (
-    <a class="jdnavigation" href={navItemUrl}>
+    <a class="jdNavRow" href={navItemUrl}>
       <div class="active area-number">{number}</div>
       <div class="active area-title">{title}</div>
     </a>
@@ -158,7 +158,7 @@ const scopeStatus = inScope(currentPage, navItemUrl);
 
 {
   navItemACID === "area" && (
-    <a class="jdnavigation" href={navItemUrl}>
+    <a class="jdNavRow" href={navItemUrl}>
       <div class="area-number">{number}</div>
       <div class="area-title">FB: {title}</div>
     </a>
@@ -167,7 +167,7 @@ const scopeStatus = inScope(currentPage, navItemUrl);
 
 {
   navItemACID === "category" && (
-    <a class="jdnavigation" href={navItemUrl}>
+    <a class="jdNavRow" href={navItemUrl}>
       <div class="category-number">{number}</div>
       <div class="category-title">FB: {title}</div>
     </a>
@@ -176,7 +176,7 @@ const scopeStatus = inScope(currentPage, navItemUrl);
 
 {
   navItemACID === "id" && (
-    <a class="jdnavigation" href={navItemUrl}>
+    <a class="jdNavRow" href={navItemUrl}>
       <div class="id-spacer" />
       <div class="id-number">{number}</div>
       <div class="id-title">FB: {title}</div>
@@ -189,11 +189,12 @@ const scopeStatus = inScope(currentPage, navItemUrl);
     color: red;
   }
 
-  .jdnavigation {
+  .jdNavRow {
     display: grid;
     gap: 1ch;
     grid-template-columns: 5ch 5ch auto;
     font-family: "Berkeley Mono";
+    line-height: 150%;
     /* height: fit-content; */
   }
 
