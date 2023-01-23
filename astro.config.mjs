@@ -5,5 +5,6 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   site: "https://johnnydecimal.com",
-  integrations: [mdx(), tailwind()]
+  // integrations: [mdx(), tailwind()]
+  integrations: [mdx()],
 });

@@ -17,12 +17,11 @@
   */
 
 interface Props {
-  acid: "area" | "category" | "id"; // For indentation
   number: string; // For display
   title: string; // For display
   url: string; // Comes in as a simple string
 }
-const { number, title, url: navItemUrl } = Astro.props;
+const { number, title, url } = Astro.props;
 
 /**
  * Are we generating a navitem for the current page?
@@ -31,158 +30,137 @@ const { number, title, url: navItemUrl } = Astro.props;
  * in by props then yes, this is the active page.
  *
  * Remember, each navitem is generated for each individual page on the site.
- */
-const currentPage = new URL(Astro.request.url).pathname;
-const activePage = currentPage.includes(navItemUrl);
-console.log("");
-console.log("navItemUrl:", navItemUrl);
-console.log("currentPage:", currentPage);
-console.log("activePage:", activePage);
-
-// What ACID type are we generating a navitem for?
-import jdDetect from "@js/jdDetect";
-const navItemACID = jdDetect(number);
-console.log("🧬 acid:", navItemACID);
-
-/**
- * We have two variables:
- * - currentPage: the URL of the page that the user is on.
- * - navItemUrl: the URL that the NavItem we're generating points to.
+ const sitePage = new URL(Astro.request.url).pathname;
+ console.log("");
+ console.log("navItem:", navItem);
+ console.log("sitePage:", sitePage);
+ 
+ const navItemArray = navItem.split("/");
+ const sitePageArray = sitePage.split("/");
+ // Shift off the first member, it's just the blank string.
+ navItemArray.shift();
+ sitePageArray.shift();
+ 
+ // What ACID type are we generating a navitem for?
+ import jdDetect from "@js/jdDetect";
+ const navItemACID = jdDetect(number);
+ console.log("🧬 navItemACID:", navItemACID);
  */
 
 /**
- * inScope: is this item a direct ancestor of the **active item**?
+ * ::CODE STINK ALERT::
  *
- * This smells like a state machine but for now it's hacky nested ifs.
+ * It took me ages to wrap my head around this thing, and this code is
+ * horrendous. Please don't read it and please, please don't repurpose it.
+ * This is *not* canonical JD-order testing of any order.
+ *
+ * ::CODE STINK ALERT ENDS::
+ *
+ * Each time JDNavItem is called, it is creating a `wyabItem` for a specific
+ * page, `creatingWyabForThisPage`.
+ *
+ * So if Astro is generating the page for `34 Category`, that's
+ * `creatingWyabForThisPage`. For every `wyabItem` on that page, this sub will
+ * be called once.
  */
-const inScope = (currentPage: string, navItemUrl: string) => {
+
+/**
+ * # Is the item in scope?
+ *
+ * We only consider drawing where-you-are-bar if the wyabIteb aka navItem is
+ * 'in scope' of the page being created.
+ *
+ * If it *is* in scope then we have to figure out how it looks. But if it
+ * isn't even in scope, there's nothing to draw.
+ *
+ * These rules are complex and are documented in the Excel file in {your JD
+ * structure somewhere}.
+ *
+ * TODO: when you JD this stuff, put its location here.
+ */
+
+const isThisWyabItemInScopeOfThePageWeAreCreating = () => {
+  console.log("");
+  console.log("🔧 isThisWyabItemInScopeOfThePageWeAreCreating()");
+  const creatingWyabForThisPage = new URL(Astro.request.url).pathname.split(
+    "/"
+  );
+  // First element is blank due to leading zero; remove.
+  creatingWyabForThisPage.shift();
+
+  // Do the same for the URL of the wyabItem.
+  const wyabItem = url.split("/");
+  wyabItem.shift();
+
+  // The length of this array tells us the type of page we're creating.
+  let creatingWyabForThisTypeOfPage = "BROKEN ‼️";
+  switch (creatingWyabForThisPage.length) {
+    case 1:
+      creatingWyabForThisTypeOfPage = "area";
+      break;
+    case 2:
+      creatingWyabForThisTypeOfPage = "category";
+      break;
+    case 3:
+      creatingWyabForThisTypeOfPage = "id";
+      break;
+    default:
+      break;
+  }
+  console.log(
+    "🎃 creatingWyabForThisTypeOfPage:",
+    creatingWyabForThisTypeOfPage
+  );
+
   /**
-   * An area is the selected item.
+   * Ref. Excel: if wyabItem is an area, it's in scope as long as the areas 
+     are the same.
    */
-  if (currentPage === navItemUrl && navItemACID === "area") {
-    return "area-active";
+  if (creatingWyabForThisTypeOfPage === "area") {
+    return creatingWyabForThisPage[0] === wyabItem[0];
   }
-
-  /*
-  // If we're not in the same area, FALSE.
-  // Every set of inputs has at least an area specified. This can't fail.
-  if (currentPage.substring(1, 5) !== navItemUrl.substring(1, 5)) {
-    console.log("🔭 not in the same area: 🔴 false");
-    return "000";
-    return false;
-  } else {
-    // We are in the same area.
-
-    // If navItemUrl === currentPage, we're creating the active nav item.
-    if (navItemUrl === currentPage) {
-
-    }
-
-
-    // Are we on the area navItem? If so, we're done.
-    if (navItemACID === "area") {
-      console.log("🔭 on the active area: 🟢 true");
-      return "200";
-      return true;
-    }
-
-    // If the currentPage length is less than navItemUrl length, we're ...
-    // ...something?
-    if (currentPage.length < navItemUrl.length) {
-      return "100";
-    }
-
-    // We're in the same area, but we're not on the area item.
-    // So we're at least in a category. Is that category number greater than
-    // the current page? If so, we're below it, so FALSE.
-    if (
-      navItemUrl.split("/")[2].substring(0, 2) >
-      currentPage.split("/")[2].substring(0, 2)
-    ) {
-      console.log("🔭 in the same area, category is >: 🔴 false");
-      return "100";
-      return false;
-    } else {
-      // We are on or above the active category.
-
-      // Are we on the category navItem? If so, we're done.
-      if (navItemACID === "category") {
-        console.log("🔭 on the active category: 🟢 true");
-        return "120";
-        return true;
-      }
-
-      // By now we're on an ID. Is that ID number greater than the current
-      // page? If so, we're below it, so FALSE.
-
-      if (
-        navItemUrl.split("/")[3].substring(0, 5) >
-        currentPage.split("/")[3].substring(0, 5)
-      ) {
-        console.log("🔭 in the same category, ID is >: 🔴 false");
-        return "110";
-        return false;
-      } else {
-        // We can only be on an in-scope ID.
-
-        // Are we on the ID navItem?
-        if (navItemUrl === currentPage) {
-          console.log("🔭 on the active ID: 🟢 true");
-          return "112";
-        }
-        console.log("🔭 on or above active ID: 🟢 true");
-        return "111";
-        return false;
-      }
-    }
-  }
-  */
-
-  // If all else fails, fail. Ah, unreachable! Cool.
-  console.log("🔭 default return: ❌ false");
-  return false;
 };
 
-console.log("🔭 inScope result: ", inScope(currentPage, navItemUrl));
-const scopeStatus = inScope(currentPage, navItemUrl);
+const isInScope = isThisWyabItemInScopeOfThePageWeAreCreating();
+console.log("🥏 isInScope:", isInScope);
 ---
 
 {
-  scopeStatus === "area-active" && (
-    <a class="jdNavRow" href={navItemUrl}>
-      <div class="active area-number">{number}</div>
-      <div class="active area-title">{title}</div>
+  (
+    <a class="jdNavRow" href={url}>
+      <div class="area-number">{number}</div>
+      <div class="area-title">PH: {title}</div>
     </a>
   )
 }
-
+<!-- 
 {
   navItemACID === "area" && (
-    <a class="jdNavRow" href={navItemUrl}>
+    <a class="jdNavRow" href={navItem}>
       <div class="area-number">{number}</div>
-      <div class="area-title">FB: {title}</div>
+      <div class="area-title">{title}</div>
     </a>
   )
 }
 
 {
   navItemACID === "category" && (
-    <a class="jdNavRow" href={navItemUrl}>
+    <a class="jdNavRow" href={navItem}>
       <div class="category-number">{number}</div>
-      <div class="category-title">FB: {title}</div>
+      <div class="category-title">{title}</div>
     </a>
   )
 }
 
 {
   navItemACID === "id" && (
-    <a class="jdNavRow" href={navItemUrl}>
+    <a class="jdNavRow" href={navItem}>
       <div class="id-spacer" />
       <div class="id-number">{number}</div>
-      <div class="id-title">FB: {title}</div>
+      <div class="id-title">{title}</div>
     </a>
   )
-}
+} -->
 
 <style>
   .active {
