@@ -92,32 +92,53 @@ const isThisWyabItemInScopeOfThePageWeAreCreating = () => {
   const wyabItem = url.split("/");
   wyabItem.shift();
 
-  // The length of this array tells us the type of page we're creating.
-  let creatingWyabForThisTypeOfPage = "BROKEN ‼️";
+  type JDItemType = "area" | "category" | "id" | "!!BROKEN!!";
+
+  // The length of these arrays tells us the type of page we're creating.
+  let creatingThisTypeOfPage: JDItemType = "!!BROKEN!!";
   switch (creatingWyabForThisPage.length) {
     case 1:
-      creatingWyabForThisTypeOfPage = "area";
+      creatingThisTypeOfPage = "area";
       break;
     case 2:
-      creatingWyabForThisTypeOfPage = "category";
+      creatingThisTypeOfPage = "category";
       break;
     case 3:
-      creatingWyabForThisTypeOfPage = "id";
+      creatingThisTypeOfPage = "id";
       break;
     default:
       break;
   }
-  console.log(
-    "🎃 creatingWyabForThisTypeOfPage:",
-    creatingWyabForThisTypeOfPage
-  );
+  console.log("🎃 creatingThisTypeOfPage:", creatingThisTypeOfPage);
+  let wyabItemType: JDItemType = "!!BROKEN!!";
+  switch (wyabItem.length) {
+    case 1:
+      wyabItemType = "area";
+      break;
+    case 2:
+      wyabItemType = "category";
+      break;
+    case 3:
+      wyabItemType = "id";
+      break;
+    default:
+      break;
+  }
+  console.log("🎃 wyabItemType:", wyabItemType);
 
   /**
    * Ref. Excel: if wyabItem is an area, it's in scope as long as the areas 
      are the same.
    */
-  if (creatingWyabForThisTypeOfPage === "area") {
+  if (wyabItemType === "area") {
     return creatingWyabForThisPage[0] === wyabItem[0];
+  }
+
+  /**
+   * Still here? Our wyabItem must be a category or an ID. Let's do category.
+   */
+  if (creatingThisTypeOfPage === "category") {
+    // If we're creating for an area page, it can't be in scope.
   }
 };
 
