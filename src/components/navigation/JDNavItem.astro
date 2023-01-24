@@ -1,20 +1,24 @@
 ---
 /**
-	* # JDNavItem
-  *
-	* A component which renders the items which make up the JD-tree navigation bar.
-  *
-	* Each might be an area, category, or ID. It might be active, or not.
-  *
-	* This gets called pages^2 times: for every page, it gets called for every
-  * item in the navigation sidebar.
-  * 
-  * JDNavContainer is a 2-column grid. JDNavItem needs to return it two divs:
-  * 1. Left, containing a number and some where-you-are-bars.
-  * 2. Right, the words.
-  *
-
-  */
+ * ::CODE STINK ALERT::
+ *
+ * It took me ages to wrap my head around this thing, and this code is
+ * horrendous. Please don't read it and please, please don't repurpose it.
+ *
+ * ::CODE STINK ALERT ENDS::
+ *
+ * # JDNavItem
+ *
+ * Each time JDNavItem is called, it is creating a `wyabItem` for a specific
+ * page, `creatingWyabForThisPage`.
+ *
+ * ('wyab' = where-you-are-bar, the boxes-drawn-with-typeface-lines in the
+ *  navigation area. I spent *way* too much time on this.)
+ *
+ * So if Astro is generating the page for `34 Category`, that's
+ * `creatingWyabForThisPage`. For every `wyabItem` on that page, this sub will
+ * be called once.
+ */
 
 interface Props {
   number: string; // For display
@@ -22,47 +26,6 @@ interface Props {
   url: string; // Comes in as a simple string
 }
 const { number, title, url } = Astro.props;
-
-/**
- * Are we generating a navitem for the current page?
- *
- * If the current path that Astro is rendering is the same as the URL passed
- * in by props then yes, this is the active page.
- *
- * Remember, each navitem is generated for each individual page on the site.
- const sitePage = new URL(Astro.request.url).pathname;
- console.log("");
- console.log("navItem:", navItem);
- console.log("sitePage:", sitePage);
- 
- const navItemArray = navItem.split("/");
- const sitePageArray = sitePage.split("/");
- // Shift off the first member, it's just the blank string.
- navItemArray.shift();
- sitePageArray.shift();
- 
- // What ACID type are we generating a navitem for?
- import jdDetect from "@js/jdDetect";
- const navItemACID = jdDetect(number);
- console.log("🧬 navItemACID:", navItemACID);
- */
-
-/**
- * ::CODE STINK ALERT::
- *
- * It took me ages to wrap my head around this thing, and this code is
- * horrendous. Please don't read it and please, please don't repurpose it.
- * This is *not* canonical JD-order testing of any order.
- *
- * ::CODE STINK ALERT ENDS::
- *
- * Each time JDNavItem is called, it is creating a `wyabItem` for a specific
- * page, `creatingWyabForThisPage`.
- *
- * So if Astro is generating the page for `34 Category`, that's
- * `creatingWyabForThisPage`. For every `wyabItem` on that page, this sub will
- * be called once.
- */
 
 /**
  * # Is the item in scope?
@@ -79,7 +42,7 @@ const { number, title, url } = Astro.props;
  * TODO: when you JD this stuff, put its location here.
  */
 
-const isThisWyabItemInScopeOfThePageWeAreCreating = () => {
+const isThisWyabItemInScopeOfThePageWeAreCreating = (): boolean => {
   console.log("");
   console.log("🔧 isThisWyabItemInScopeOfThePageWeAreCreating()");
   const creatingWyabForThisPage = new URL(Astro.request.url).pathname.split(
@@ -135,11 +98,72 @@ const isThisWyabItemInScopeOfThePageWeAreCreating = () => {
   }
 
   /**
-   * Still here? Our wyabItem must be a category or an ID. Let's do category.
+   * If we're creating a wyab item for a category...
+   */
+  if (wyabItemType === "category") {
+    /* If creatingWyabFor{Area}, a category can't be in scope. */
+    if (creatingThisTypeOfPage === "area") {
+      return false;
+    }
+    /**
+     * Otherwise the rules are the same: the category number for the page we're
+     * creating needs to be >= the category number of the wyab item, AND
+     * they need to be in the same area.
+     *
+     * - Creating page 16, wyab is for 14. 16 >= 14 AND in same area, pass.
+     * - Creating page 12.11, wyab is for 14. 12 !>= 14, fail.
+     */
+
+    /* Test for area first. */
+    if (creatingWyabForThisPage[0] !== wyabItem[0]) {
+      return false;
+    }
+
+    /**
+     * The category number for the page we're creating needs to be >= the
+     * category number of the wyab item. We've just ruled out areas not
+     * matching, so at this point all wyabItems have a category at [1].
+     */
+    return creatingWyabForThisPage[1] >= wyabItem[1];
+  }
+
+  /**
+   * By now we must be creating a wyab item for an ID...
+   */
+  if (wyabItemType === "id") {
+    /* As above, creating for an area page is an easy fail. */
+    if (creatingThisTypeOfPage === "area") {
+      return false;
+    }
+  }
+
+  /**
+   * And again, the areas must match no matter what.
+   */
+  if (creatingWyabForThisPage[0] !== wyabItem[0]) {
+    return false;
+  }
+
+  /**
+   * If we're creating a category page, an ID wyab is in scope if the category
+   * number for the page is > the wyab item.
    */
   if (creatingThisTypeOfPage === "category") {
-    // If we're creating for an area page, it can't be in scope.
+    return creatingWyabForThisPage[1] > wyabItem[1];
   }
+
+  /**
+   * And finally if we're creating an ID page, an ID wyab is in scope if the
+   * ID number of the page we're creating is >= the ID number of the wyab item.
+   */
+  if (creatingThisTypeOfPage === "id") {
+    return creatingWyabForThisPage[2] >= wyabItem[2];
+  }
+
+  /**
+   * We shouldn't be able to get here.
+   */
+  throw new Error("JDNavItem.astro: can't get there from here.");
 };
 
 const isInScope = isThisWyabItemInScopeOfThePageWeAreCreating();
@@ -150,7 +174,9 @@ console.log("🥏 isInScope:", isInScope);
   (
     <a class="jdNavRow" href={url}>
       <div class="area-number">{number}</div>
-      <div class="area-title">PH: {title}</div>
+      <div class="area-title">
+        {title} ({isInScope ? "✅" : "❌"})
+      </div>
     </a>
   )
 }
