@@ -55,6 +55,9 @@ const isThisWyabItemInScopeOfThePageWeAreCreating = (): boolean => {
   const wyabItem = url.split("/");
   wyabItem.shift();
 
+  console.log("🥅 creatingWyabForThisPage:", creatingWyabForThisPage);
+  console.log("🥅 wyabItem:", wyabItem);
+
   type JDItemType = "area" | "category" | "id" | "!!BROKEN!!";
 
   // The length of these arrays tells us the type of page we're creating.
