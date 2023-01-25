@@ -48,8 +48,20 @@ const isThisWyabItemInScopeOfThePageWeAreCreating = (): boolean => {
   const creatingWyabForThisPage = new URL(Astro.request.url).pathname.split(
     "/"
   );
-  // First element is blank due to leading zero; remove.
+
+  /**
+   * Tidy up the creatingWyabForThisPage array.
+   *
+   * First element is blank due to leading zero; remove.
+   *
+   * The last element isn't blank when we're running in dev mode, but is when
+   * we do a build. Detect if that's the case and remove it.
+   */
   creatingWyabForThisPage.shift();
+  if (creatingWyabForThisPage[creatingWyabForThisPage.length - 1] === "") {
+    console.log("🚧 Last element is blank; popping it off");
+    creatingWyabForThisPage.pop();
+  }
 
   // Do the same for the URL of the wyabItem.
   const wyabItem = url.split("/");
