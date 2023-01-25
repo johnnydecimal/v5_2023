@@ -65,46 +65,47 @@ if (creatingWyabForThisPage[creatingWyabForThisPage.length - 1] === "") {
 const wyabItem = url.split("/");
 wyabItem.shift();
 
+// Figure out what type of items we're creating.
+type JDItemType = "area" | "category" | "id" | "!!BROKEN!!";
+
+// The length of these arrays tells us the type of page we're creating.
+let creatingThisTypeOfPage: JDItemType = "!!BROKEN!!";
+switch (creatingWyabForThisPage.length) {
+  case 1:
+    creatingThisTypeOfPage = "area";
+    break;
+  case 2:
+    creatingThisTypeOfPage = "category";
+    break;
+  case 3:
+    creatingThisTypeOfPage = "id";
+    break;
+  default:
+    break;
+}
+console.log("🎃 creatingThisTypeOfPage:", creatingThisTypeOfPage);
+let wyabItemType: JDItemType = "!!BROKEN!!";
+switch (wyabItem.length) {
+  case 1:
+    wyabItemType = "area";
+    break;
+  case 2:
+    wyabItemType = "category";
+    break;
+  case 3:
+    wyabItemType = "id";
+    break;
+  default:
+    break;
+}
+console.log("🎃 wyabItemType:", wyabItemType);
+
+console.log("🥅 creatingWyabForThisPage:", creatingWyabForThisPage);
+console.log("🥅 wyabItem:", wyabItem);
+
 const isThisWyabItemInScopeOfThePageWeAreCreating = (): boolean => {
   console.log("");
   console.log("🔧 isThisWyabItemInScopeOfThePageWeAreCreating()");
-
-  console.log("🥅 creatingWyabForThisPage:", creatingWyabForThisPage);
-  console.log("🥅 wyabItem:", wyabItem);
-
-  type JDItemType = "area" | "category" | "id" | "!!BROKEN!!";
-
-  // The length of these arrays tells us the type of page we're creating.
-  let creatingThisTypeOfPage: JDItemType = "!!BROKEN!!";
-  switch (creatingWyabForThisPage.length) {
-    case 1:
-      creatingThisTypeOfPage = "area";
-      break;
-    case 2:
-      creatingThisTypeOfPage = "category";
-      break;
-    case 3:
-      creatingThisTypeOfPage = "id";
-      break;
-    default:
-      break;
-  }
-  console.log("🎃 creatingThisTypeOfPage:", creatingThisTypeOfPage);
-  let wyabItemType: JDItemType = "!!BROKEN!!";
-  switch (wyabItem.length) {
-    case 1:
-      wyabItemType = "area";
-      break;
-    case 2:
-      wyabItemType = "category";
-      break;
-    case 3:
-      wyabItemType = "id";
-      break;
-    default:
-      break;
-  }
-  console.log("🎃 wyabItemType:", wyabItemType);
 
   /**
    * Ref. Excel: if wyabItem is an area, it's in scope as long as the areas 
@@ -187,7 +188,7 @@ const isInScope = isThisWyabItemInScopeOfThePageWeAreCreating();
 console.log("🥏 isInScope:", isInScope);
 
 /**
- * # Is the item the active item?
+ * # Is the item the page we're on, i.e. the active item?
  *
  * We draw different wyab if the item is the currently active item.
  * This should be easier: do the two URLs match?
@@ -203,6 +204,47 @@ const isThisWyabItemAlsoThePageWeAreCreating = (): boolean => {
 
 const isActiveItem = isThisWyabItemAlsoThePageWeAreCreating();
 console.log("🏀 isActiveItem:", isActiveItem);
+
+/**
+ * Is this item a direct parent of the page we're on?
+ *
+ * So 10-19 and 11 are direct parents of 11.02 but 11.01 is not (it's merely
+ * in scope, see above).
+ */
+
+const isThisWyabItemTheParentOfThePageWeAreCreating = () => {
+  /**
+   * If we're generating a page for an area, an area wyab isn't its own parent.
+   */
+  if (creatingThisTypeOfPage === "area") {
+    return false;
+  }
+
+  /**
+   * If we're generating a page for a category, only its area is its parent.
+   */
+  if (creatingThisTypeOfPage === "category") {
+    if (wyabItemType === "area") {
+      return creatingWyabForThisPage[0] === wyabItem[0];
+    }
+  }
+
+  /**
+   * And if we're generating a page for an ID, its category and its area are
+   * its parent.
+   */
+  if (creatingThisTypeOfPage === "id") {
+    if (wyabItemType === "category") {
+      return creatingWyabForThisPage[1] === wyabItem[1];
+    }
+    if (wyabItemType === "area") {
+      return creatingWyabForThisPage[0] === wyabItem[0];
+    }
+  }
+};
+
+const isParentItem = isThisWyabItemTheParentOfThePageWeAreCreating();
+console.log("🏀 isParentItem:", isParentItem);
 ---
 
 {
@@ -210,7 +252,8 @@ console.log("🏀 isActiveItem:", isActiveItem);
     <a class="jdNavRow" href={url}>
       <div class="area-number">{number}</div>
       <div class="area-title">
-        {title} ({isInScope ? "✅" : "❌"} {isActiveItem ? "✅" : "❌"} )
+        {title} ({isInScope ? "✅" : "❌"} {isActiveItem ? "✅" : "❌"}{" "}
+        {isParentItem ? "✅" : "❌"})
       </div>
     </a>
   )
