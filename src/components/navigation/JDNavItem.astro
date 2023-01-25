@@ -42,30 +42,32 @@ const { number, title, url } = Astro.props;
  * TODO: when you JD this stuff, put its location here.
  */
 
+/**
+ * First let's generate some stuff that each of the functions uses.
+ */
+const creatingWyabForThisPage = new URL(Astro.request.url).pathname.split("/");
+
+/**
+ * Tidy up the creatingWyabForThisPage array.
+ *
+ * First element is blank due to leading zero; remove.
+ *
+ * The last element isn't blank when we're running in dev mode, but is when
+ * we do a build. Detect if that's the case and remove it.
+ */
+creatingWyabForThisPage.shift();
+if (creatingWyabForThisPage[creatingWyabForThisPage.length - 1] === "") {
+  console.log("🚧 Last element is blank; popping it off");
+  creatingWyabForThisPage.pop();
+}
+
+// Do the same for the URL of the wyabItem.
+const wyabItem = url.split("/");
+wyabItem.shift();
+
 const isThisWyabItemInScopeOfThePageWeAreCreating = (): boolean => {
   console.log("");
   console.log("🔧 isThisWyabItemInScopeOfThePageWeAreCreating()");
-  const creatingWyabForThisPage = new URL(Astro.request.url).pathname.split(
-    "/"
-  );
-
-  /**
-   * Tidy up the creatingWyabForThisPage array.
-   *
-   * First element is blank due to leading zero; remove.
-   *
-   * The last element isn't blank when we're running in dev mode, but is when
-   * we do a build. Detect if that's the case and remove it.
-   */
-  creatingWyabForThisPage.shift();
-  if (creatingWyabForThisPage[creatingWyabForThisPage.length - 1] === "") {
-    console.log("🚧 Last element is blank; popping it off");
-    creatingWyabForThisPage.pop();
-  }
-
-  // Do the same for the URL of the wyabItem.
-  const wyabItem = url.split("/");
-  wyabItem.shift();
 
   console.log("🥅 creatingWyabForThisPage:", creatingWyabForThisPage);
   console.log("🥅 wyabItem:", wyabItem);
@@ -183,6 +185,24 @@ const isThisWyabItemInScopeOfThePageWeAreCreating = (): boolean => {
 
 const isInScope = isThisWyabItemInScopeOfThePageWeAreCreating();
 console.log("🥏 isInScope:", isInScope);
+
+/**
+ * # Is the item the active item?
+ *
+ * We draw different wyab if the item is the currently active item.
+ * This should be easier: do the two URLs match?
+ */
+
+const isThisWyabItemAlsoThePageWeAreCreating = (): boolean => {
+  console.log(
+    "🏀 isThisWyabItemAlsoThePageWeAreCreating:",
+    JSON.stringify(creatingWyabForThisPage) === JSON.stringify(wyabItem)
+  );
+  return JSON.stringify(creatingWyabForThisPage) === JSON.stringify(wyabItem);
+};
+
+const isActiveItem = isThisWyabItemAlsoThePageWeAreCreating();
+console.log("🏀 isActiveItem:", isActiveItem);
 ---
 
 {
@@ -190,7 +210,7 @@ console.log("🥏 isInScope:", isInScope);
     <a class="jdNavRow" href={url}>
       <div class="area-number">{number}</div>
       <div class="area-title">
-        {title} ({isInScope ? "✅" : "❌"})
+        {title} ({isInScope ? "✅" : "❌"} {isActiveItem ? "✅" : "❌"} )
       </div>
     </a>
   )
