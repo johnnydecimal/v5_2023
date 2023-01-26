@@ -208,8 +208,8 @@ console.log("🏀 isActiveItem:", isActiveItem);
 /**
  * Is this item a direct parent of the page we're on?
  *
- * So 10-19 and 11 are direct parents of 11.02 but 11.01 is not (it's merely
- * in scope, see above).
+ * So 10-19 and 11 are direct parents of 11.02, and so is 11.01 so that we
+ * match criteria P10. But 10.01 isn't, it's just an ancestor.
  */
 
 const isThisWyabItemTheParentOfThePageWeAreCreating = () => {
@@ -231,7 +231,8 @@ const isThisWyabItemTheParentOfThePageWeAreCreating = () => {
 
   /**
    * And if we're generating a page for an ID, its category and its area are
-   * its parent.
+   * its parent, as is any ID in the same category that's above it (P10). So
+   * it's like an older sister vs. a parent, but whatever.
    */
   if (creatingThisTypeOfPage === "id") {
     if (wyabItemType === "category") {
@@ -239,6 +240,14 @@ const isThisWyabItemTheParentOfThePageWeAreCreating = () => {
     }
     if (wyabItemType === "area") {
       return creatingWyabForThisPage[0] === wyabItem[0];
+    }
+    if (wyabItemType === "id") {
+      if (
+        creatingWyabForThisPage[1] === wyabItem[1] &&
+        creatingWyabForThisPage[2].substring(3, 5) > wyabItem[2].substring(3, 5)
+      ) {
+        return true;
+      }
     }
   }
 };
@@ -314,7 +323,6 @@ console.log("🏀 isParentItem:", isParentItem);
   )
 }
 
-<!-- Categories -->
 <!-- P6 -->
 {
   wyabItemType === "category" &&
@@ -322,7 +330,7 @@ console.log("🏀 isParentItem:", isParentItem);
     !isActiveItem &&
     !isParentItem && (
       <a class="category-inScope-notActive-notParent-P6-grid" href={url}>
-        <div class="category-inScope-notActive-notParent-P6-number">
+        <div class="category-inScope-notActive-notParent-P6-lines">
           &#x2502
           <br />
           &#x2502
@@ -339,26 +347,116 @@ console.log("🏀 isParentItem:", isParentItem);
     )
 }
 
-<!-- 
-  
-  {
-    navItemACID === "category" && (
-    <a class="jdNavRow" href={navItem}>
-      <div class="category-number">{number}</div>
-      <div class="category-title">{title}</div>
+<!-- P7 -->
+{
+  wyabItemType === "id" && isInScope && !isActiveItem && !isParentItem && (
+    <a class="id-inScope-notActive-notParent-P7-grid" href={url}>
+      <div class="id-inScope-notActive-notParent-P7-lines">
+        &#x2502
+        <br />
+        &#x2502
+        <br />
+        &#x2502
+        <br />
+        &#x2502
+      </div>
+      <div />
+      <div>{number}</div>
+      <div />
+      <div>{title}</div>
     </a>
   )
 }
 
+<!-- P8 -->
 {
-  navItemACID === "id" && (
-    <a class="jdNavRow" href={navItem}>
-      <div class="id-spacer" />
-      <div class="id-number">{number}</div>
-      <div class="id-title">{title}</div>
+  wyabItemType === "category" && isInScope && isActiveItem && (
+    <a class="category-inScope-active-P8-grid" href={url}>
+      <div class="category-inScope-active-P8-lines">
+        &#x2514&#x2524
+        <br />
+        &nbsp;&#x2502
+        <br />
+        &nbsp;&#x2502
+        <br />
+        &nbsp;&#x2502
+      </div>
+      <div />
+      <div>{number}</div>
+      <div />
+      <div>{title}</div>
     </a>
   )
-} -->
+}
+{
+  wyabItemType === "category" && isInScope && !isActiveItem && isParentItem && (
+    <a class="category-inScope-active-P8-grid" href={url}>
+      <div class="category-inScope-active-P8-lines">
+        &#x2514&#x2524
+        <br />
+        &nbsp;&#x2502
+        <br />
+        &nbsp;&#x2502
+        <br />
+        &nbsp;&#x2502
+      </div>
+      <div />
+      <div>{number}</div>
+      <div />
+      <div>{title}</div>
+    </a>
+  )
+}
+
+<!-- P10 -->
+{
+  wyabItemType === "id" && isInScope && !isActiveItem && isParentItem && (
+    <a class="id-inScope-notActive-isParent-P10-grid" href={url}>
+      <div />
+      <div class="id-inScope-notActive-isParent-P10-lines">
+        &#x2502
+        <br />
+        &#x2502
+        <br />
+        &#x2502
+        <br />
+        &#x2502
+        <br />
+        &#x2502
+        <br />
+      </div>
+      <div />
+      <div>{number}</div>
+      <div />
+      <div>{title}</div>
+    </a>
+  )
+}
+
+<!-- P11 -->
+{
+  wyabItemType === "id" && isInScope && isActiveItem && (
+    <a class="id-inScope-active-P11-grid" href={url}>
+      <div />
+      <div class="id-inScope-active-P11-lines">
+        &#x2514&#x2500&#x2500&#x2524
+        <br />
+        &nbsp;&nbsp;&nbsp;&#x2502
+        <br />
+        &nbsp;&nbsp;&nbsp;&#x2502
+        <br />
+        &nbsp;&nbsp;&nbsp;&#x2502
+        <br />
+        &nbsp;&nbsp;&nbsp;&#x2502
+        <br />
+      </div>
+      <div />
+      <div>{number}</div>
+      <div />
+      <div>{title}</div>
+    </a>
+  )
+}
 
 <style>
   .active {
@@ -409,44 +507,74 @@ console.log("🏀 isParentItem:", isParentItem);
     grid-template-columns: 1ch 2ch 2ch 1ch auto;
   }
 
-  .category-inScope-notActive-notParent-P6-number {
+  .category-inScope-notActive-notParent-P6-lines {
     height: 0;
     min-height: 100%;
     overflow: hidden;
     color: red;
   }
 
-  /* .jdNavRow {
+  .id-inScope-notActive-notParent-P7-grid {
     display: grid;
-    gap: 1ch;
-    grid-template-columns: 5ch 5ch auto;
-    font-family: "Berkeley Mono";
-    line-height: 150%;
+    /* Lines, gap, numbers, gap, title */
+    grid-template-columns: 1ch 5ch 5ch 1ch auto;
   }
 
-  .jdNavRowP6 {
+  .id-inScope-notActive-notParent-P7-lines {
+    height: 0;
+    min-height: 100%;
+    overflow: hidden;
+    color: red;
+  }
+
+  .category-inScope-active-P8-grid {
     display: grid;
-    /* gap: 1ch; 
-    /* Line, space, numbers, space, text 
-    grid-template-columns: 1ch 2ch 2ch 1ch auto;
-    font-family: "Berkeley Mono";
-    line-height: 150%;
-    /* height: fit-content;
+    /* Lines, gap, numbers, gap, title */
+    grid-template-columns: 2ch 1ch 2ch 1ch auto;
+    color: red;
   }
 
-  .area-title,
-  .category-title {
-    grid-column: 2 / span 2;
-  }
-
-  .area-number,
-  .category-number {
+  .category-inScope-active-P8-lines {
     height: 0;
     min-height: 100%;
     overflow: hidden;
   }
 
-  .category-number {
-    padding-left: 3ch;
-  } */
+  .id-inScope-notActive-isParent-P10-grid {
+    display: grid;
+    /* Gap, lines, gap, number, gap, title */
+    grid-template-columns: 1ch 1ch 4ch 5ch 1ch auto;
+  }
+
+  .id-inScope-notActive-isParent-P10-lines {
+    height: 0;
+    min-height: 100%;
+    overflow: hidden;
+    color: red;
+  }
+  .id-inScope-notActive-isParent-P10-grid {
+    display: grid;
+    /* Gap, lines, gap, number, gap, title */
+    grid-template-columns: 1ch 1ch 4ch 5ch 1ch auto;
+  }
+
+  .id-inScope-notActive-isParent-P10-lines {
+    height: 0;
+    min-height: 100%;
+    overflow: hidden;
+    color: red;
+  }
+
+  .id-inScope-active-P11-grid {
+    display: grid;
+    /* Gap, lines, gap, number, gap, title */
+    grid-template-columns: 1ch 4ch 1ch 5ch 1ch auto;
+    color: red;
+  }
+
+  .id-inScope-active-P11-lines {
+    height: 0;
+    min-height: 100%;
+    overflow: hidden;
+  }
 </style>
