@@ -249,7 +249,7 @@ console.log("🏀 isParentItem:", isParentItem);
 
 <!-- P1 -->{
   wyabItemType === "area" && !isInScope && (
-    <a class="area-notInScopeP1-grid" href={url}>
+    <a class="area-notInScope-P1-grid" href={url}>
       <div class="area-number">{number}</div>
       <div />
       <div class="area-title">{title}</div>
@@ -260,7 +260,7 @@ console.log("🏀 isParentItem:", isParentItem);
 <!-- P3 -->
 {
   wyabItemType === "category" && !isInScope && (
-    <a class="category-notInScopeP3-grid" href={url}>
+    <a class="category-notInScope-P3-grid" href={url}>
       <div />
       <div>{number}</div>
       <div />
@@ -272,7 +272,7 @@ console.log("🏀 isParentItem:", isParentItem);
 <!-- P4 -->
 {
   wyabItemType === "id" && !isInScope && (
-    <a class="id-notInScopeP4-grid" href={url}>
+    <a class="id-notInScope-P4-grid" href={url}>
       <div />
       <div>{number}</div>
       <div />
@@ -285,9 +285,10 @@ console.log("🏀 isParentItem:", isParentItem);
 <!-- P2 -->
 {
   wyabItemType === "area" && isInScope && isActiveItem && (
-    <a class="jdNavRow" href={url}>
-      <div class="active area-number">{number}</div>
-      <div class="active area-title">{title}</div>
+    <a class="area-inScope-active-P2-grid" href={url}>
+      <div>{number}</div>
+      <div />
+      <div>{title}</div>
     </a>
   )
 }
@@ -295,8 +296,8 @@ console.log("🏀 isParentItem:", isParentItem);
 <!-- P5 -->
 {
   wyabItemType === "area" && isInScope && !isActiveItem && (
-    <a class="jdNavRow" href={url}>
-      <div class="active area-number">
+    <a class="area-inScope-notActive-P5-grid" href={url}>
+      <div class="area-inScope-notActive-P5-number">
         {number}
         <br />
         &#x2502
@@ -307,7 +308,8 @@ console.log("🏀 isParentItem:", isParentItem);
         <br />
         &#x2502
       </div>
-      <div class="active area-title">{title}</div>
+      <div />
+      <div>{title}</div>
     </a>
   )
 }
@@ -319,8 +321,8 @@ console.log("🏀 isParentItem:", isParentItem);
     isInScope &&
     !isActiveItem &&
     !isParentItem && (
-      <a class="jdNavRowP6" href={url}>
-        <div class="h-0 min-h-full overflow-hidden">
+      <a class="category-inScope-notActive-notParent-P6-grid" href={url}>
+        <div class="category-inScope-notActive-notParent-P6-number">
           &#x2502
           <br />
           &#x2502
@@ -363,22 +365,55 @@ console.log("🏀 isParentItem:", isParentItem);
     color: red;
   }
 
-  .area-notInScopeP1-grid {
+  .area-notInScope-P1-grid {
     display: grid;
     /* Numbers, gap, title */
     grid-template-columns: 5ch 1ch auto;
   }
 
-  .category-notInScopeP3-grid {
+  .category-notInScope-P3-grid {
     display: grid;
     /* Gap, numbers, gap, title */
     grid-template-columns: 3ch 2ch 1ch auto;
   }
 
-  .id-notInScopeP4-grid {
+  .id-notInScope-P4-grid {
     display: grid;
     /* Gap, numbers, gap, title */
     grid-template-columns: 6ch 5ch 1ch auto;
+  }
+
+  .area-inScope-active-P2-grid {
+    display: grid;
+    /* Numbers, gap, title */
+    grid-template-columns: 5ch 1ch auto;
+    color: red;
+  }
+
+  .area-inScope-notActive-P5-grid {
+    display: grid;
+    /* Numbers, gap, title */
+    grid-template-columns: 5ch 1ch auto;
+    color: red;
+  }
+
+  .area-inScope-notActive-P5-number {
+    height: 0;
+    min-height: 100%;
+    overflow: hidden;
+  }
+
+  .category-inScope-notActive-notParent-P6-grid {
+    display: grid;
+    /* Lines, gap, numbers, gap, title */
+    grid-template-columns: 1ch 2ch 2ch 1ch auto;
+  }
+
+  .category-inScope-notActive-notParent-P6-number {
+    height: 0;
+    min-height: 100%;
+    overflow: hidden;
+    color: red;
   }
 
   /* .jdNavRow {
