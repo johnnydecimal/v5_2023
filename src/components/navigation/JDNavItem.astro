@@ -5,7 +5,11 @@
  * It took me ages to wrap my head around this thing, and this code is
  * horrendous. Please don't read it and please, please don't repurpose it.
  *
+ * Also it only makes sense with the accompanying Excel file of patterns.
+ *
  * ::CODE STINK ALERT ENDS::
+ *
+ * TODO: just tidy this up a bit, it doesn't need to be *this* bad.
  *
  * # JDNavItem
  *
@@ -242,12 +246,10 @@ const isThisWyabItemTheParentOfThePageWeAreCreating = () => {
       return creatingWyabForThisPage[0] === wyabItem[0];
     }
     if (wyabItemType === "id") {
-      if (
+      return (
         creatingWyabForThisPage[1] === wyabItem[1] &&
         creatingWyabForThisPage[2].substring(3, 5) > wyabItem[2].substring(3, 5)
-      ) {
-        return true;
-      }
+      );
     }
   }
 };
