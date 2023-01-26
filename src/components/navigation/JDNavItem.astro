@@ -247,29 +247,100 @@ const isParentItem = isThisWyabItemTheParentOfThePageWeAreCreating();
 console.log("🏀 isParentItem:", isParentItem);
 ---
 
-{
-  (
-    <a class="jdNavRow" href={url}>
+<!-- P1 -->{
+  wyabItemType === "area" && !isInScope && (
+    <a class="area-notInScopeP1-grid" href={url}>
       <div class="area-number">{number}</div>
-      <div class="area-title">
-        {title} ({isInScope ? "✅" : "❌"} {isActiveItem ? "✅" : "❌"}{" "}
-        {isParentItem ? "✅" : "❌"})
-      </div>
-    </a>
-  )
-}
-<!-- 
-{
-  navItemACID === "area" && (
-    <a class="jdNavRow" href={navItem}>
-      <div class="area-number">{number}</div>
+      <div />
       <div class="area-title">{title}</div>
     </a>
   )
 }
 
+<!-- P3 -->
 {
-  navItemACID === "category" && (
+  wyabItemType === "category" && !isInScope && (
+    <a class="category-notInScopeP3-grid" href={url}>
+      <div />
+      <div>{number}</div>
+      <div />
+      <div>{title}</div>
+    </a>
+  )
+}
+
+<!-- P4 -->
+{
+  wyabItemType === "id" && !isInScope && (
+    <a class="id-notInScopeP4-grid" href={url}>
+      <div />
+      <div>{number}</div>
+      <div />
+      <div>{title}</div>
+    </a>
+  )
+}
+
+<!-- Areas -->
+<!-- P2 -->
+{
+  wyabItemType === "area" && isInScope && isActiveItem && (
+    <a class="jdNavRow" href={url}>
+      <div class="active area-number">{number}</div>
+      <div class="active area-title">{title}</div>
+    </a>
+  )
+}
+
+<!-- P5 -->
+{
+  wyabItemType === "area" && isInScope && !isActiveItem && (
+    <a class="jdNavRow" href={url}>
+      <div class="active area-number">
+        {number}
+        <br />
+        &#x2502
+        <br />
+        &#x2502
+        <br />
+        &#x2502
+        <br />
+        &#x2502
+      </div>
+      <div class="active area-title">{title}</div>
+    </a>
+  )
+}
+
+<!-- Categories -->
+<!-- P6 -->
+{
+  wyabItemType === "category" &&
+    isInScope &&
+    !isActiveItem &&
+    !isParentItem && (
+      <a class="jdNavRowP6" href={url}>
+        <div class="h-0 min-h-full overflow-hidden">
+          &#x2502
+          <br />
+          &#x2502
+          <br />
+          &#x2502
+          <br />
+          &#x2502
+        </div>
+        <div />
+        <div>{number}</div>
+        <div />
+        <div>{title}</div>
+      </a>
+    )
+}
+
+<!-- 
+  
+  {
+    navItemACID === "category" && (
     <a class="jdNavRow" href={navItem}>
       <div class="category-number">{number}</div>
       <div class="category-title">{title}</div>
@@ -292,13 +363,40 @@ console.log("🏀 isParentItem:", isParentItem);
     color: red;
   }
 
-  .jdNavRow {
+  .area-notInScopeP1-grid {
+    display: grid;
+    /* Numbers, gap, title */
+    grid-template-columns: 5ch 1ch auto;
+  }
+
+  .category-notInScopeP3-grid {
+    display: grid;
+    /* Gap, numbers, gap, title */
+    grid-template-columns: 3ch 2ch 1ch auto;
+  }
+
+  .id-notInScopeP4-grid {
+    display: grid;
+    /* Gap, numbers, gap, title */
+    grid-template-columns: 6ch 5ch 1ch auto;
+  }
+
+  /* .jdNavRow {
     display: grid;
     gap: 1ch;
     grid-template-columns: 5ch 5ch auto;
     font-family: "Berkeley Mono";
     line-height: 150%;
-    /* height: fit-content; */
+  }
+
+  .jdNavRowP6 {
+    display: grid;
+    /* gap: 1ch; 
+    /* Line, space, numbers, space, text 
+    grid-template-columns: 1ch 2ch 2ch 1ch auto;
+    font-family: "Berkeley Mono";
+    line-height: 150%;
+    /* height: fit-content;
   }
 
   .area-title,
@@ -315,5 +413,5 @@ console.log("🏀 isParentItem:", isParentItem);
 
   .category-number {
     padding-left: 3ch;
-  }
+  } */
 </style>
