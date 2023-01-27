@@ -260,7 +260,7 @@ console.log("🏀 isParentItem:", isParentItem);
 
 <!-- P1 -->{
   wyabItemType === "area" && !isInScope && (
-    <a rel="prefetch" class="area area-notInScope-P1-grid" href={url}>
+    <a class="area area-notInScope-P1-grid" href={url}>
       <div class="area-number">{number}</div>
       <div />
       <div class="area-title">{title}</div>
@@ -271,7 +271,7 @@ console.log("🏀 isParentItem:", isParentItem);
 <!-- P3 -->
 {
   wyabItemType === "category" && !isInScope && (
-    <a rel="prefetch" class="category category-notInScope-P3-grid" href={url}>
+    <a class="category category-notInScope-P3-grid" href={url}>
       <div />
       <div>{number}</div>
       <div />
@@ -283,7 +283,7 @@ console.log("🏀 isParentItem:", isParentItem);
 <!-- P4 -->
 {
   wyabItemType === "id" && !isInScope && (
-    <a rel="prefetch" class="id id-notInScope-P4-grid" href={url}>
+    <a class="id id-notInScope-P4-grid" href={url}>
       <div />
       <div>{number}</div>
       <div />
@@ -296,7 +296,7 @@ console.log("🏀 isParentItem:", isParentItem);
 <!-- P2 -->
 {
   wyabItemType === "area" && isInScope && isActiveItem && (
-    <a rel="prefetch" class="area area-inScope-active-P2-grid" href={url}>
+    <a class="area area-inScope-active-P2-grid" href={url}>
       <div>{number}</div>
       <div />
       <div>{title}</div>
@@ -307,7 +307,7 @@ console.log("🏀 isParentItem:", isParentItem);
 <!-- P5 -->
 {
   wyabItemType === "area" && isInScope && !isActiveItem && (
-    <a rel="prefetch" class="area area-inScope-notActive-P5-grid" href={url}>
+    <a class="area area-inScope-notActive-P5-grid" href={url}>
       <div class="area-inScope-notActive-P5-number">
         {number}
         <br />
@@ -355,11 +355,7 @@ console.log("🏀 isParentItem:", isParentItem);
 <!-- P7 -->
 {
   wyabItemType === "id" && isInScope && !isActiveItem && !isParentItem && (
-    <a
-      rel="prefetch"
-      class="id id-inScope-notActive-notParent-P7-grid"
-      href={url}
-    >
+    <a class="id id-inScope-notActive-notParent-P7-grid" href={url}>
       <div class="id-inScope-notActive-notParent-P7-lines">
         &#x2502
         <br />
@@ -380,11 +376,7 @@ console.log("🏀 isParentItem:", isParentItem);
 <!-- P8 -->
 {
   wyabItemType === "category" && isInScope && isActiveItem && (
-    <a
-      rel="prefetch"
-      class="category category-inScope-active-P8-grid"
-      href={url}
-    >
+    <a class="category category-inScope-active-P8-grid" href={url}>
       <div class="category-inScope-active-P8-lines">
         &#x2514&#x2524
         <br />
@@ -403,11 +395,7 @@ console.log("🏀 isParentItem:", isParentItem);
 }
 {
   wyabItemType === "category" && isInScope && !isActiveItem && isParentItem && (
-    <a
-      rel="prefetch"
-      class="category category-inScope-active-P8-grid"
-      href={url}
-    >
+    <a class="category category-inScope-active-P8-grid" href={url}>
       <div class="category-inScope-active-P8-lines">
         &#x2514&#x2524
         <br />
@@ -428,11 +416,7 @@ console.log("🏀 isParentItem:", isParentItem);
 <!-- P10 -->
 {
   wyabItemType === "id" && isInScope && !isActiveItem && isParentItem && (
-    <a
-      rel="prefetch"
-      class="id id-inScope-notActive-isParent-P10-grid"
-      href={url}
-    >
+    <a class="id id-inScope-notActive-isParent-P10-grid" href={url}>
       <div />
       <div class="id-inScope-notActive-isParent-P10-lines">
         &#x2502
@@ -457,7 +441,7 @@ console.log("🏀 isParentItem:", isParentItem);
 <!-- P11 -->
 {
   wyabItemType === "id" && isInScope && isActiveItem && (
-    <a rel="prefetch" class="id id-inScope-active-P11-grid" href={url}>
+    <a class="id id-inScope-active-P11-grid" href={url}>
       <div />
       <div class="id-inScope-active-P11-lines">
         &#x2514&#x2500&#x2500&#x2524
