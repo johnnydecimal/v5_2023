@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^0.15.0",
+    "@astrojs/prefetch": "^0.1.1",
     "@astrojs/tailwind": "^3.0.0",
     "@fontsource/ibm-plex-sans": "^4.5.13",
     "astro": "^2.0.0",
