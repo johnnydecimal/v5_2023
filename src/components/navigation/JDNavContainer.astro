@@ -46,14 +46,13 @@ pages.sort(jdSort);
     font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
       "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
       "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-    height: fit-content;
+    /* height: fit-content; */
     line-height: 1.2rem;
     padding: 0.5rem 1rem 1rem 1rem;
     border-top: 1px solid var(--jd-highlight-colour);
-    border-bottom: 1px solid var(--jd-highlight-colour);
     background-color: rgb(255, 248, 252);
     /* Give the bottom a bit of room on mobile. */
-    margin-bottom: 2rem;
+    padding-bottom: 2rem;
   }
 
   .toc {
@@ -74,9 +73,11 @@ pages.sort(jdSort);
       flex-basis: 35ch; /* width/height  - initial value: auto */
       padding-top: 1px; /* Lines it up with the header */
       border-top: 0;
+      height: fit-content;
+      border-bottom: 1px solid var(--jd-highlight-colour);
       background-color: unset;
       margin-top: 1rem;
-      margin-bottom: 0;
+      padding-bottom: 1rem;
     }
 
     .toc {
