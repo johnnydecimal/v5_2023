@@ -1,11 +1,4 @@
 ---
-/**
-	# JDNavigation
-
-	This will be the component that scrapes the site and returns a complete
-	navigation section.
-	*/
-
 import jdSort from "@js/jdSort.js";
 import JDNavItem from "./JDNavItem.astro";
 
@@ -17,18 +10,22 @@ pages.sort(jdSort);
 ---
 
 <nav class="jdnavigation">
-  <ol>
-    {
-      /* Make me an <ol>? So don't forget to make JDNavItem return <li>. */
-      pages.map((page) => (
-        <JDNavItem
-          number={page.frontmatter.number}
-          title={page.frontmatter.title}
-          url={page.url}
-        />
-      ))
-    }
-  </ol>
+  <div class="toc">
+    ┌───────────────────┐<br />│ TABLE OF CONTENTS │<br />└───────────────────┘
+  </div>
+  <div class="max-width-for-ipad-ish-layouts">
+    <ol>
+      {
+        pages.map((page) => (
+          <JDNavItem
+            number={page.frontmatter.number}
+            title={page.frontmatter.title}
+            url={page.url}
+          />
+        ))
+      }
+    </ol>
+  </div>
 </nav>
 
 <style>
@@ -36,17 +33,36 @@ pages.sort(jdSort);
     all: unset;
   }
 
+  .max-width-for-ipad-ish-layouts {
+    /* On desktop this is limited to 35ch by the flex container. That doesn't
+       apply on mobile, so constrain it otherwise it looks odd on iPad. We don't
+       apply this to .jdnavigation otherwise the bgcolor doesn't bleed to edge.
+       */
+    max-width: 40ch;
+    margin: 0 auto;
+  }
+
   .jdnavigation {
-    /* display: grid;
-    gap: 1ch;
-    grid-template-columns: 5ch 5ch auto; */
     font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
       "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
       "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
     height: fit-content;
     line-height: 1.2rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding: 0.5rem 1rem 1rem 1rem;
+    border-top: 1px solid var(--jd-highlight-colour);
+    border-bottom: 1px solid var(--jd-highlight-colour);
+    background-color: rgb(255, 248, 252);
+    /* Give the bottom a bit of room on mobile. */
+    margin-bottom: 2rem;
+  }
+
+  .toc {
+    /* font-variant: small-caps; */
+    text-align: center;
+    /* font-size: 1.5rem; */
+    /* margin-bottom: 1rem; */
+    font-weight: bold;
+    margin-bottom: 0.25rem;
   }
 
   /* Style for iPad-landscape+. */
@@ -57,6 +73,15 @@ pages.sort(jdSort);
       flex-shrink: 0; /* do not shrink - initial value: 1 */
       flex-basis: 35ch; /* width/height  - initial value: auto */
       padding-top: 1px; /* Lines it up with the header */
+      border-top: 0;
+      background-color: unset;
+      margin-top: 1rem;
+      margin-bottom: 0;
+    }
+
+    .toc {
+      display: none;
+      background-color: unset;
     }
   }
 </style>
