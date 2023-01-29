@@ -258,84 +258,106 @@ const isParentItem = isThisWyabItemTheParentOfThePageWeAreCreating();
 console.log("🏀 isParentItem:", isParentItem);
 ---
 
-<!-- P1 -->{
-  wyabItemType === "area" && !isInScope && (
-    <a class="area area-notInScope-P1-grid" href={url}>
-      <div class="area-number">{number}</div>
-      <div />
-      <div class="area-title">{title}</div>
-    </a>
-  )
-}
+<li>
+  {
+    // P1
+    wyabItemType === "area" && !isInScope && (
+      <a class="area area-notInScope-P1-grid" href={url}>
+        <div class="area-number">{number}</div>
+        <div />
+        <div class="area-title">{title}</div>
+      </a>
+    )
+  }
 
-<!-- P3 -->
-{
-  wyabItemType === "category" && !isInScope && (
-    <a class="category category-notInScope-P3-grid" href={url}>
-      <div />
-      <div>{number}</div>
-      <div />
-      <div>{title}</div>
-    </a>
-  )
-}
+  {
+    // P3
+    wyabItemType === "category" && !isInScope && (
+      <a class="category category-notInScope-P3-grid" href={url}>
+        <div />
+        <div>{number}</div>
+        <div />
+        <div>{title}</div>
+      </a>
+    )
+  }
 
-<!-- P4 -->
-{
-  wyabItemType === "id" && !isInScope && (
-    <a class="id id-notInScope-P4-grid" href={url}>
-      <div />
-      <div>{number}</div>
-      <div />
-      <div>{title}</div>
-    </a>
-  )
-}
+  {
+    // P4
+    wyabItemType === "id" && !isInScope && (
+      <a class="id id-notInScope-P4-grid" href={url}>
+        <div />
+        <div>{number}</div>
+        <div />
+        <div>{title}</div>
+      </a>
+    )
+  }
 
-<!-- Areas -->
-<!-- P2 -->
-{
-  wyabItemType === "area" && isInScope && isActiveItem && (
-    <a class="area area-inScope-active-P2-grid" href={url}>
-      <div>{number}</div>
-      <div />
-      <div>{title}</div>
-    </a>
-  )
-}
+  {
+    // P2
+    wyabItemType === "area" && isInScope && isActiveItem && (
+      <a class="area area-inScope-active-P2-grid" href={url}>
+        <div>{number}</div>
+        <div />
+        <div>{title}</div>
+      </a>
+    )
+  }
 
-<!-- P5 -->
-{
-  wyabItemType === "area" && isInScope && !isActiveItem && (
-    <a class="area area-inScope-notActive-P5-grid" href={url}>
-      <div class="area-inScope-notActive-P5-number">
-        {number}
-        <br />
-        &#x2502
-        <br />
-        &#x2502
-        <br />
-        &#x2502
-        <br />
-        &#x2502
-      </div>
-      <div />
-      <div>{title}</div>
-    </a>
-  )
-}
+  {
+    // P5
+    wyabItemType === "area" && isInScope && !isActiveItem && (
+      <a class="area area-inScope-notActive-P5-grid" href={url}>
+        <div class="area-inScope-notActive-P5-number">
+          {number}
+          <br />
+          &#x2502
+          <br />
+          &#x2502
+          <br />
+          &#x2502
+          <br />
+          &#x2502
+        </div>
+        <div />
+        <div>{title}</div>
+      </a>
+    )
+  }
 
-<!-- P6 -->
-{
-  wyabItemType === "category" &&
-    isInScope &&
-    !isActiveItem &&
-    !isParentItem && (
-      <a
-        class="category category-inScope-notActive-notParent-P6-grid"
-        href={url}
-      >
-        <div class="category-inScope-notActive-notParent-P6-lines">
+  {
+    // P6
+    wyabItemType === "category" &&
+      isInScope &&
+      !isActiveItem &&
+      !isParentItem && (
+        <a
+          class="category category-inScope-notActive-notParent-P6-grid"
+          href={url}
+        >
+          <div class="category-inScope-notActive-notParent-P6-lines">
+            &#x2502
+            <br />
+            &#x2502
+            <br />
+            &#x2502
+            <br />
+            &#x2502
+          </div>
+          <div />
+          <div>{number}</div>
+          <div />
+          <div>{title}</div>
+        </a>
+      )
+  }
+
+  {
+    // P7
+    wyabItemType === "id" && isInScope && !isActiveItem && !isParentItem && (
+      <a class="id id-inScope-notActive-notParent-P7-grid" href={url}>
+        <div class="id-inScope-notActive-notParent-P7-lines">
           &#x2502
           <br />
           &#x2502
@@ -350,129 +372,117 @@ console.log("🏀 isParentItem:", isParentItem);
         <div>{title}</div>
       </a>
     )
-}
+  }
 
-<!-- P7 -->
-{
-  wyabItemType === "id" && isInScope && !isActiveItem && !isParentItem && (
-    <a class="id id-inScope-notActive-notParent-P7-grid" href={url}>
-      <div class="id-inScope-notActive-notParent-P7-lines">
-        &#x2502
-        <br />
-        &#x2502
-        <br />
-        &#x2502
-        <br />
-        &#x2502
-      </div>
-      <div />
-      <div>{number}</div>
-      <div />
-      <div>{title}</div>
-    </a>
-  )
-}
+  {
+    // P8
+    wyabItemType === "category" && isInScope && isActiveItem && (
+      <a class="category category-inScope-active-P8-grid" href={url}>
+        <div class="category-inScope-active-P8-lines">
+          &#x2514&#x2524
+          <br />
+          &nbsp;&#x2502
+          <br />
+          &nbsp;&#x2502
+          <br />
+          &nbsp;&#x2502
+        </div>
+        <div />
+        <div>{number}</div>
+        <div />
+        <div>{title}</div>
+      </a>
+    )
+  }
+  {
+    // P8
+    wyabItemType === "category" &&
+      isInScope &&
+      !isActiveItem &&
+      isParentItem && (
+        <a class="category category-inScope-active-P8-grid" href={url}>
+          <div class="category-inScope-active-P8-lines">
+            &#x2514&#x2524
+            <br />
+            &nbsp;&#x2502
+            <br />
+            &nbsp;&#x2502
+            <br />
+            &nbsp;&#x2502
+          </div>
+          <div />
+          <div>{number}</div>
+          <div />
+          <div>{title}</div>
+        </a>
+      )
+  }
 
-<!-- P8 -->
-{
-  wyabItemType === "category" && isInScope && isActiveItem && (
-    <a class="category category-inScope-active-P8-grid" href={url}>
-      <div class="category-inScope-active-P8-lines">
-        &#x2514&#x2524
-        <br />
-        &nbsp;&#x2502
-        <br />
-        &nbsp;&#x2502
-        <br />
-        &nbsp;&#x2502
-      </div>
-      <div />
-      <div>{number}</div>
-      <div />
-      <div>{title}</div>
-    </a>
-  )
-}
-{
-  wyabItemType === "category" && isInScope && !isActiveItem && isParentItem && (
-    <a class="category category-inScope-active-P8-grid" href={url}>
-      <div class="category-inScope-active-P8-lines">
-        &#x2514&#x2524
-        <br />
-        &nbsp;&#x2502
-        <br />
-        &nbsp;&#x2502
-        <br />
-        &nbsp;&#x2502
-      </div>
-      <div />
-      <div>{number}</div>
-      <div />
-      <div>{title}</div>
-    </a>
-  )
-}
+  {
+    // P10
+    wyabItemType === "id" && isInScope && !isActiveItem && isParentItem && (
+      <a class="id id-inScope-notActive-isParent-P10-grid" href={url}>
+        <div />
+        <div class="id-inScope-notActive-isParent-P10-lines">
+          &#x2502
+          <br />
+          &#x2502
+          <br />
+          &#x2502
+          <br />
+          &#x2502
+          <br />
+          &#x2502
+          <br />
+        </div>
+        <div />
+        <div>{number}</div>
+        <div />
+        <div>{title}</div>
+      </a>
+    )
+  }
 
-<!-- P10 -->
-{
-  wyabItemType === "id" && isInScope && !isActiveItem && isParentItem && (
-    <a class="id id-inScope-notActive-isParent-P10-grid" href={url}>
-      <div />
-      <div class="id-inScope-notActive-isParent-P10-lines">
-        &#x2502
-        <br />
-        &#x2502
-        <br />
-        &#x2502
-        <br />
-        &#x2502
-        <br />
-        &#x2502
-        <br />
-      </div>
-      <div />
-      <div>{number}</div>
-      <div />
-      <div>{title}</div>
-    </a>
-  )
-}
-
-<!-- P11 -->
-{
-  wyabItemType === "id" && isInScope && isActiveItem && (
-    <a class="id id-inScope-active-P11-grid" href={url}>
-      <div />
-      <div class="id-inScope-active-P11-lines">
-        &#x2514&#x2500&#x2500&#x2524
-        <br />
-        &nbsp;&nbsp;&nbsp;&#x2502
-        <br />
-        &nbsp;&nbsp;&nbsp;&#x2502
-        <br />
-        &nbsp;&nbsp;&nbsp;&#x2502
-        <br />
-        &nbsp;&nbsp;&nbsp;&#x2502
-        <br />
-      </div>
-      <div />
-      <div>{number}</div>
-      <div />
-      <div>{title}</div>
-    </a>
-  )
-}
+  {
+    // P11
+    wyabItemType === "id" && isInScope && isActiveItem && (
+      <a class="id id-inScope-active-P11-grid" href={url}>
+        <div />
+        <div class="id-inScope-active-P11-lines">
+          &#x2514&#x2500&#x2500&#x2524
+          <br />
+          &nbsp;&nbsp;&nbsp;&#x2502
+          <br />
+          &nbsp;&nbsp;&nbsp;&#x2502
+          <br />
+          &nbsp;&nbsp;&nbsp;&#x2502
+          <br />
+          &nbsp;&nbsp;&nbsp;&#x2502
+          <br />
+        </div>
+        <div />
+        <div>{number}</div>
+        <div />
+        <div>{title}</div>
+      </a>
+    )
+  }
+</li>
 
 <style>
+  li {
+    all: unset;
+  }
+
   .active {
     color: red;
   }
 
-  .area {
+  li > .area {
     margin-top: 1rem;
   }
 
-  .area:first-child {
+  li:first-child > a {
     margin-top: 0;
   }
 
