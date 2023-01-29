@@ -262,11 +262,13 @@ console.log("🏀 isParentItem:", isParentItem);
   {
     // P1
     wyabItemType === "area" && !isInScope && (
-      <a class="area area-notInScope-P1-grid" href={url}>
-        <div class="area-number">{number}</div>
-        <div />
-        <div class="area-title">{title}</div>
-      </a>
+      <>
+        <a class="area area-notInScope-P1-grid" href={url}>
+          <div class="area-number">{number}</div>
+          <div />
+          <div class="area-title">{title}</div>
+        </a>
+      </>
     )
   }
 
@@ -297,32 +299,36 @@ console.log("🏀 isParentItem:", isParentItem);
   {
     // P2
     wyabItemType === "area" && isInScope && isActiveItem && (
-      <a class="area area-inScope-active-P2-grid" href={url}>
-        <div>{number}</div>
-        <div />
-        <div>{title}</div>
-      </a>
+      <>
+        <a class="area area-inScope-active-P2-grid" href={url}>
+          <div>{number}</div>
+          <div />
+          <div>{title}</div>
+        </a>
+      </>
     )
   }
 
   {
     // P5
     wyabItemType === "area" && isInScope && !isActiveItem && (
-      <a class="area area-inScope-notActive-P5-grid" href={url}>
-        <div class="area-inScope-notActive-P5-number">
-          {number}
-          <br />
-          &#x2502
-          <br />
-          &#x2502
-          <br />
-          &#x2502
-          <br />
-          &#x2502
-        </div>
-        <div />
-        <div>{title}</div>
-      </a>
+      <>
+        <a class="area area-inScope-notActive-P5-grid" href={url}>
+          <div class="area-inScope-notActive-P5-number">
+            {number}
+            <br />
+            &#x2502
+            <br />
+            &#x2502
+            <br />
+            &#x2502
+            <br />
+            &#x2502
+          </div>
+          <div />
+          <div>{title}</div>
+        </a>
+      </>
     )
   }
 
@@ -470,16 +476,25 @@ console.log("🏀 isParentItem:", isParentItem);
 </li>
 
 <style>
-  li {
-    all: unset;
-  }
-
   .active {
     color: red;
   }
 
+  li {
+    list-style: none;
+  }
+
   li > .area {
     margin-top: 1rem;
+  }
+
+  li:has(a.area) {
+    /* border-top: 1px solid black; */
+    font-weight: bold;
+  }
+
+  li:has(a.area):first-child {
+    border-top: 0;
   }
 
   li:first-child > a {
