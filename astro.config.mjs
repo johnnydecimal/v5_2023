@@ -3,8 +3,11 @@ import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
+import image from "@astrojs/image";
+
+// https://astro.build/config
 export default defineConfig({
   site: "https://johnnydecimal.com",
   // integrations: [mdx(), tailwind()]
-  integrations: [mdx()],
+  integrations: [mdx(), image()]
 });
