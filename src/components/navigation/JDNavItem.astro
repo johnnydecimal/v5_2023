@@ -61,7 +61,6 @@ const creatingWyabForThisPage = new URL(Astro.request.url).pathname.split("/");
  */
 creatingWyabForThisPage.shift();
 if (creatingWyabForThisPage[creatingWyabForThisPage.length - 1] === "") {
-  console.log("🚧 Last element is blank; popping it off");
   creatingWyabForThisPage.pop();
 }
 
@@ -87,7 +86,6 @@ switch (creatingWyabForThisPage.length) {
   default:
     break;
 }
-console.log("🎃 creatingThisTypeOfPage:", creatingThisTypeOfPage);
 let wyabItemType: JDItemType = "!!BROKEN!!";
 switch (wyabItem.length) {
   case 1:
@@ -102,15 +100,8 @@ switch (wyabItem.length) {
   default:
     break;
 }
-console.log("🎃 wyabItemType:", wyabItemType);
-
-console.log("🥅 creatingWyabForThisPage:", creatingWyabForThisPage);
-console.log("🥅 wyabItem:", wyabItem);
 
 const isThisWyabItemInScopeOfThePageWeAreCreating = (): boolean => {
-  console.log("");
-  console.log("🔧 isThisWyabItemInScopeOfThePageWeAreCreating()");
-
   /**
    * Ref. Excel: if wyabItem is an area, it's in scope as long as the areas 
      are the same.
@@ -189,7 +180,6 @@ const isThisWyabItemInScopeOfThePageWeAreCreating = (): boolean => {
 };
 
 const isInScope = isThisWyabItemInScopeOfThePageWeAreCreating();
-console.log("🥏 isInScope:", isInScope);
 
 /**
  * # Is the item the page we're on, i.e. the active item?
@@ -199,15 +189,10 @@ console.log("🥏 isInScope:", isInScope);
  */
 
 const isThisWyabItemAlsoThePageWeAreCreating = (): boolean => {
-  console.log(
-    "🏀 isThisWyabItemAlsoThePageWeAreCreating:",
-    JSON.stringify(creatingWyabForThisPage) === JSON.stringify(wyabItem)
-  );
   return JSON.stringify(creatingWyabForThisPage) === JSON.stringify(wyabItem);
 };
 
 const isActiveItem = isThisWyabItemAlsoThePageWeAreCreating();
-console.log("🏀 isActiveItem:", isActiveItem);
 
 /**
  * Is this item a direct parent of the page we're on?
@@ -255,7 +240,6 @@ const isThisWyabItemTheParentOfThePageWeAreCreating = () => {
 };
 
 const isParentItem = isThisWyabItemTheParentOfThePageWeAreCreating();
-console.log("🏀 isParentItem:", isParentItem);
 ---
 
 <li>
