@@ -5,6 +5,8 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 import image from "@astrojs/image";
 
+// comment
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://johnnydecimal.com",
