@@ -1,10 +1,92 @@
 ---
 import Area from "./Area.astro";
+import Category from "./Category.astro";
+import ID from "./ID.astro";
+
+import { jdGetAcidTypeFromString } from "@johnnydecimal/jdgetacidtypefromstring";
+
+interface Props {
+  jdCodeBlock: string;
+}
+const { jdCodeBlock } = Astro.props;
+
+// Trim jdCodeBlock
+// Split jdCodeBlock up in to lines
+const temp_a = jdCodeBlock.split("\n").filter((jdLine) => jdLine.trim() !== "");
+const jdCodeBlockTrimmed = temp_a.map((jdLine) => jdLine.trim());
+console.log(jdCodeBlockTrimmed);
+
+// === SPEC ===
+// This means that literal blanks in your input will be ignored. I'm okay with
+// this, but now you need a [BLANK] directive. Think about its format.
+/**
+ * Fun diversion. Let's use numbers: numbers that would never otherwise appear
+ * in any plausible JD system.
+ *
+ * Or what if we use the idea of a GUID? Then one GUID is reserved for 'JD
+ * control characters'. That's cool as fuck.
+ *
+ * Okay, so all GUIDs that start `10xx` are in the JD scope, because J=10.
+ *
+ * And we're now defining that: 4 hex characters ... but why hex? What's wrong
+ * with `JDxx`? There's no reason to limit yourself to hex. And now people can
+ * pay for the much cooler global namespace 'JOHN.etc'.
+ *
+ * There is something pure about the hex though.
+ *
+ * [Calls Alex.]
+ *
+ * Aah Alex is a genius as usual and we go with all of the characters that are
+ * unambiguous in either case:
+ * abcdefghjkmnprtuvwxyz23456789
+ * - and we reserve `JD..` for the JD namespace.
+ *
+ * *So*, `JDCX` is what I'm gonna use for JD control sequences.
+ */
+
+// We need to:
+// Create an array that we'll map() over, below; but it should be set up
+// so it's ready just to feed in to components, no other computation required
+// For each line of jdCodeBlock
+// Figure out what ACID it is
+// Pull off the acid, numbers, title, and comments
+// Put them on an object
+// Load up an array of objects that we'll map() over
 ---
 
-<div class="jd-code-block-container"><Area /></div>
+<div class="jd-code-block-container">
+  <Area
+    number={"10-19"}
+    title={"My first area"}
+    comment={"This is what I think about it, what if I go on a bit?"}
+  />
+
+  <Category
+    number="10"
+    title="My first category"
+    comment={"Interesting that it puts these in brackets"}
+  />
+
+  <ID
+    number="10.83"
+    title="IDs tend to have longer titles"
+    comment={"Which is nice"}
+  />
+
+  <hr />
+
+  <Area
+    number={"20-29"}
+    title={"My second area, with a longer name"}
+    comment={"Whatever"}
+  />
+</div>
 
 <style>
+  hr {
+    margin: 10px 0;
+  }
+
   .jd-code-block-container {
     /* Development -- shouldn't be needed in prod? */
     max-width: 60ch;
@@ -14,5 +96,10 @@ import Area from "./Area.astro";
     font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
       "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
       "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+    overflow-x: scroll;
+    min-width: 100px;
+    max-width: 100%;
   }
+
+  /* pre code::-webkit-scrollbar makes it skinnier */
 </style>
