@@ -14,41 +14,6 @@ const { jdCodeBlock } = Astro.props;
 // Split jdCodeBlock up in to lines
 const temp_a = jdCodeBlock.split("\n").filter((jdLine) => jdLine.trim() !== "");
 const jdCodeBlockTrimmed = temp_a.map((jdLine) => jdLine.trim());
-console.log(jdCodeBlockTrimmed);
-
-// === SPEC ===
-// This means that literal blanks in your input will be ignored. I'm okay with
-// this, but now you need a [BLANK] directive. Think about its format.
-/**
- * Fun diversion. Let's use numbers: numbers that would never otherwise appear
- * in any plausible JD system.
- *
- * Or what if we use the idea of a GUID? Then one GUID is reserved for 'JD
- * control characters'. That's cool as fuck.
- *
- * Okay, so all GUIDs that start `10xx` are in the JD scope, because J=10.
- *
- * And we're now defining that: 4 hex characters ... but why hex? What's wrong
- * with `JDxx`? There's no reason to limit yourself to hex. And now people can
- * pay for the much cooler global namespace 'JOHN.etc'.
- *
- * There is something pure about the hex though.
- *
- * [Calls Alex.]
- *
- * Aah Alex is a genius as usual and we go with all of the characters that are
- * unambiguous in either case:
- * acdefghjkmnprtuvwxyz2345679
- * - and we reserve `JD..` for the JD namespace.
- *
- * *So*, `JDCX` is what I'm gonna use for JD control sequences. Later.
- *
- * Ah yeah, but you still need to escape this stuff. You can't just say that
- * anything that starts with 4 letters is an escape thing. So use \ or whatevz.
- *
- * Anyway! This is a massive diversion. You don't even need this now. Come back
- * to it.
- */
 
 // We need to:
 // Create an array that we'll map() over, below; but it should be set up
@@ -78,7 +43,6 @@ jdCodeBlockTrimmed.forEach((jdLine) => {
 
     // Is there a comment?
     const commentPosition = jdLineArray.findIndex((jdLine) => jdLine === "/*");
-    console.log(commentPosition);
 
     if (commentPosition < 0) {
       jdTitle = jdLineArray.join(" ");
@@ -87,17 +51,6 @@ jdCodeBlockTrimmed.forEach((jdLine) => {
       jdComment = jdLineArray.slice(commentPosition).join(" ");
     }
 
-    console.log(
-      "jdAcidType:",
-      jdLineAcid.jdAcidType,
-      "jdNumber:",
-      jdNumber,
-      "jdTitle:",
-      jdTitle,
-      "jdComment:",
-      jdComment
-    );
-
     // Put them on an object
     jdLineObject = {
       jdAcidType: jdLineAcid.jdAcidType,
@@ -105,14 +58,11 @@ jdCodeBlockTrimmed.forEach((jdLine) => {
       jdTitle,
       jdComment,
     };
-    console.log("jdLineObject:", jdLineObject);
     jdParsedArray.push(jdLineObject);
   } else {
     // !jdLineAcid, do nothing.
   }
 });
-
-console.log("jdParsedArray:", jdParsedArray);
 
 // Load up an array of objects that we'll map() over
 ---
@@ -120,8 +70,6 @@ console.log("jdParsedArray:", jdParsedArray);
 <div class="jd-code-block-container">
   {
     jdParsedArray.map((jdLineObject) => {
-      console.log("In the map:", jdLineObject);
-
       switch (jdLineObject.jdAcidType) {
         case "area":
           return (
@@ -152,26 +100,6 @@ console.log("jdParsedArray:", jdParsedArray);
       }
     })
   }
-
-  <!-- <Category
-    number="10"
-    title="My first category"
-    comment={"Interesting that it puts these in brackets"}
-  />
-
-  <ID
-    number="10.83"
-    title="IDs tend to have longer titles"
-    comment={"Which is nice"}
-  />
-
-  <hr />
-
-  <Area
-    number={"20-29"}
-    title={"My second area, with a longer name"}
-    comment={"Whatever"}
-  /> -->
 </div>
 
 <style>

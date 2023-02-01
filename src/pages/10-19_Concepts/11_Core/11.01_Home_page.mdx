@@ -11,7 +11,7 @@ area: 10-19 Concepts
 category: 11 Core
 ---
 
-import JDBlock from "@components/jd/JDBlock.astro";
+import JDCodeBlock from "@components/jdCodeBlock/JDCodeBlock.astro";
 
 # A system to organise projects
 
@@ -68,14 +68,6 @@ From this we know that `42` will not be a finance-related category. This is the 
 # Now we bring in the numbers
 
 A Johnny.Decimal number looks like this:
-
-<JDBlock
-	jdSystem={`
-42.18
-12.03
-63.17
-`}
-/>
 
 They're short, memorable, and can be spoken out loud. **They're always two digits, a decimal point, and two more digits.**
 
