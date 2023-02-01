@@ -53,6 +53,16 @@ console.log(jdCodeBlockTrimmed);
 // We need to:
 // Create an array that we'll map() over, below; but it should be set up
 // so it's ready just to feed in to components, no other computation required
+// below the fold.
+
+interface JdLineObject {
+  jdAcidType: "area" | "category" | "id" | false;
+  jdNumber: string;
+  jdTitle: string;
+  jdComment?: string;
+}
+const jdParsedArray: JdLineObject[] = [];
+
 // For each line of jdCodeBlock
 jdCodeBlockTrimmed.forEach((jdLine) => {
   // Figure out what ACID it is
@@ -60,6 +70,7 @@ jdCodeBlockTrimmed.forEach((jdLine) => {
 
   // Pull off the acid, numbers, title, and comments
   let jdNumber: string, jdTitle: string, jdComment: string;
+  let jdLineObject;
   if (jdLineAcid) {
     const jdLineArray = jdLine.split(" ");
     jdNumber = jdLineArray[0];
@@ -67,40 +78,82 @@ jdCodeBlockTrimmed.forEach((jdLine) => {
 
     // Is there a comment?
     const commentPosition = jdLineArray.findIndex((jdLine) => jdLine === "/*");
+    console.log(commentPosition);
 
     if (commentPosition < 0) {
       jdTitle = jdLineArray.join(" ");
     } else {
-      jdTitle = jdLineArray.slice(0, commentPosition - 1).join(" ");
-      jdComment = jdLineArray
-        .slice(commentPosition, jdLineArray.length - commentPosition + 1)
-        .join(" ");
+      jdTitle = jdLineArray.slice(0, commentPosition).join(" ");
+      jdComment = jdLineArray.slice(commentPosition).join(" ");
     }
-  }
 
-  console.log(
-    "jdAcidType:",
-    jdLineAcid.jdAcidType,
-    "jdNumber:",
-    jdNumber,
-    "jdTitle:",
-    jdTitle,
-    "jdComment:",
-    jdComment
-  );
+    console.log(
+      "jdAcidType:",
+      jdLineAcid.jdAcidType,
+      "jdNumber:",
+      jdNumber,
+      "jdTitle:",
+      jdTitle,
+      "jdComment:",
+      jdComment
+    );
+
+    // Put them on an object
+    jdLineObject = {
+      jdAcidType: jdLineAcid.jdAcidType,
+      jdNumber,
+      jdTitle,
+      jdComment,
+    };
+    console.log("jdLineObject:", jdLineObject);
+    jdParsedArray.push(jdLineObject);
+  } else {
+    // !jdLineAcid, do nothing.
+  }
 });
-// Put them on an object
+
+console.log("jdParsedArray:", jdParsedArray);
+
 // Load up an array of objects that we'll map() over
 ---
 
 <div class="jd-code-block-container">
-  <Area
-    number={"10-19"}
-    title={"My first area"}
-    comment={"This is what I think about it, what if I go on a bit?"}
-  />
+  {
+    jdParsedArray.map((jdLineObject) => {
+      console.log("In the map:", jdLineObject);
 
-  <Category
+      switch (jdLineObject.jdAcidType) {
+        case "area":
+          return (
+            <Area
+              number={jdLineObject.jdNumber}
+              title={jdLineObject.jdTitle}
+              comment={jdLineObject.jdComment}
+            />
+          );
+        case "category":
+          return (
+            <Category
+              number={jdLineObject.jdNumber}
+              title={jdLineObject.jdTitle}
+              comment={jdLineObject.jdComment}
+            />
+          );
+        case "id":
+          return (
+            <ID
+              number={jdLineObject.jdNumber}
+              title={jdLineObject.jdTitle}
+              comment={jdLineObject.jdComment}
+            />
+          );
+        default:
+          break;
+      }
+    })
+  }
+
+  <!-- <Category
     number="10"
     title="My first category"
     comment={"Interesting that it puts these in brackets"}
@@ -118,7 +171,7 @@ jdCodeBlockTrimmed.forEach((jdLine) => {
     number={"20-29"}
     title={"My second area, with a longer name"}
     comment={"Whatever"}
-  />
+  /> -->
 </div>
 
 <style>

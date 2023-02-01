@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { number, title, comment } = Astro.props;
+console.log("<Area>", number, title, comment);
 ---
 
 <div class="grid">
@@ -19,7 +20,7 @@ const { number, title, comment } = Astro.props;
     {title}
   </div>
   <div class="area comment">
-    /* {comment} */
+    {comment}
   </div>
 </div>
 
