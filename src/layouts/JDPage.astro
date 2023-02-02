@@ -38,7 +38,10 @@ if (category) {
     {
       categoryUrl && (
         <span>
-          &gt; <a href={categoryUrl}>{category}</a>
+          &gt;{" "}
+          <a class="jdac-link" href={categoryUrl}>
+            {category}
+          </a>
         </span>
       )
     }
@@ -73,7 +76,15 @@ if (category) {
     border-bottom: 1px solid var(--jd-highlight-colour);
     font-size: 0.9rem;
     /* padding: 0.5rem 0.5rem 0.5rem 1rem; */
-    padding: 0.5rem 2rem 0.5rem calc(2rem + 4px);
+    padding: 0.5rem 2rem 0.5rem calc(2rem);
+  }
+
+  .jdac a {
+    padding-inline: 0.25rem;
+  }
+  .jdac a:hover {
+    color: var(--offwhite);
+    background-color: var(--jd-highlight-colour);
   }
 
   /* .jdcontent h1 {
