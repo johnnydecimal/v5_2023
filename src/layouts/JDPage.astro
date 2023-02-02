@@ -64,7 +64,7 @@ if (category) {
     color: var(--jd-bg-colour);
     font-size: 2rem;
     padding: 1rem;
-    background-color: rgb(252, 247, 246);
+    background-color: var(--jd-offwhitered);
     margin: 1rem;
     width: fit-content;
   }
@@ -74,12 +74,11 @@ if (category) {
     font-size: 0.9rem;
     /* padding: 0.5rem 0.5rem 0.5rem 1rem; */
     padding: 0.5rem 2rem 0.5rem calc(2rem + 4px);
-    /* background-color: rgb(252, 247, 246); */
   }
 
-  .jdcontent h1 {
+  /* .jdcontent h1 {
     color: red;
-  }
+  } */
 
   /* See global.css for .jdcontent styles */
 </style>
@@ -102,8 +101,8 @@ if (category) {
     font-weight: normal;
     text-decoration: underline;
     text-decoration-color: var(--jd-bg-colour);
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .jdcontent h1 {
@@ -127,5 +126,10 @@ if (category) {
     border-bottom: 2px solid var(--jd-highlight-colour);
     color: var(--offwhite);
     padding-inline: 0.25rem;
+  }
+
+  .jdcontent ol {
+    list-style-type: decimal;
+    margin-left: 1.5rem;
   }
 </style>
