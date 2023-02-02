@@ -9,15 +9,39 @@ export interface Props {
 import Layout from "./Layout.astro";
 
 const { number, title, area, category } = Astro.props.frontmatter;
+
+console.log("category:", category);
+
+// TODO if you're on an area, you're just at the root; on a category, you're at
+//      an area; on an ID, you're at a category
+
+// Create the URL from the area
+const areaUrl =
+  "https://johnnydecimal.com/" + area.replace(" ", "_").toLowerCase();
+console.log(areaUrl);
+let categoryUrl;
+if (category) {
+  categoryUrl = areaUrl + "/" + category.replace(" ", "_").toLowerCase();
+  console.log(categoryUrl);
+}
 ---
 
 <Layout title={`${number} ${title}`}>
-  <div class="jdid monospace">
-    {number}
-    {title}
+  <div class="jdid-container">
+    <div class="jdid monospace">
+      {number}
+      {title}
+    </div>
   </div>
   <div class="jdac monospace">
-    {area} &gt; {category}
+    <a href={areaUrl}>{area}</a>
+    {
+      categoryUrl && (
+        <span>
+          &gt; <a href={categoryUrl}>{category}</a>
+        </span>
+      )
+    }
   </div>
   <div class="jdcontent">
     <slot />
@@ -28,6 +52,10 @@ const { number, title, area, category } = Astro.props.frontmatter;
   .monospace {
     font-family: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
       Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .jdid-container {
+    border-bottom: 1px solid var(--jd-highlight-colour);
   }
 
   .jdid {
@@ -44,7 +72,8 @@ const { number, title, area, category } = Astro.props.frontmatter;
   .jdac {
     border-bottom: 1px solid var(--jd-highlight-colour);
     font-size: 0.9rem;
-    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    /* padding: 0.5rem 0.5rem 0.5rem 1rem; */
+    padding: 0.5rem 2rem 0.5rem calc(2rem + 4px);
     /* background-color: rgb(252, 247, 246); */
   }
 
@@ -59,7 +88,7 @@ const { number, title, area, category } = Astro.props.frontmatter;
 <style is:global>
   .jdcontent {
     line-height: 1.75rem;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem calc(1rem + 2px);
   }
 
   .jdcontent h1:first-of-type {
@@ -72,16 +101,28 @@ const { number, title, area, category } = Astro.props.frontmatter;
     font-weight: normal;
     text-decoration: underline;
     text-decoration-color: var(--jd-bg-colour);
-    line-height: 2.5rem;
+    margin-top: 1rem;
   }
 
   .jdcontent h1 {
+    font-size: 2rem;
+  }
+
+  .jdcontent h2 {
+    font-size: 1.5rem;
+  }
+
+  .jdcontent h3 {
+    font-size: 1.25rem;
+  }
+
+  .jdcontent p {
+    margin: 0.5rem 0;
   }
 
   .jdcontent code {
     background-color: var(--jd-bg-colour);
     border-bottom: 2px solid var(--jd-highlight-colour);
-    border-radius: 2px;
     color: var(--offwhite);
     padding-inline: 0.25rem;
   }

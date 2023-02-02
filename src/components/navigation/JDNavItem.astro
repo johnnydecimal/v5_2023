@@ -240,6 +240,8 @@ const isThisWyabItemTheParentOfThePageWeAreCreating = () => {
 };
 
 const isParentItem = isThisWyabItemTheParentOfThePageWeAreCreating();
+
+// TODO: we're creating a link for the page we're on. No need.
 ---
 
 <li>
@@ -461,12 +463,27 @@ const isParentItem = isThisWyabItemTheParentOfThePageWeAreCreating();
 
 <style>
   .active {
-    color: red;
+    color: var(--jd-highlight-colour);
   }
 
-  li {
-    list-style: none;
+  a:hover,
+  a:focus {
+    /* outline: 1px solid var(--jd-highlight-colour); */
+    /* border-left: 2px solid var(--jd-highlight-colour); */
+    /* margin-left: -2px; */
+    background-color: var(--jd-highlight-colour);
+    color: var(--offwhite);
   }
+
+  a {
+    border-left: 2px solid transparent;
+    padding-left: 2px;
+    margin-left: -2px;
+  }
+
+  /* li {
+    list-style: none;
+  } */
 
   li > .area {
     margin-top: 1rem;
@@ -506,14 +523,14 @@ const isParentItem = isThisWyabItemTheParentOfThePageWeAreCreating();
     display: grid;
     /* Numbers, gap, title */
     grid-template-columns: 5ch 1ch auto;
-    color: red;
+    color: var(--jd-highlight-colour);
   }
 
   .area-inScope-notActive-P5-grid {
     display: grid;
     /* Numbers, gap, title */
     grid-template-columns: 5ch 1ch auto;
-    color: red;
+    color: var(--jd-highlight-colour);
   }
 
   .area-inScope-notActive-P5-number {
@@ -532,7 +549,7 @@ const isParentItem = isThisWyabItemTheParentOfThePageWeAreCreating();
     height: 0;
     min-height: 100%;
     overflow: hidden;
-    color: red;
+    color: var(--jd-highlight-colour);
   }
 
   .id-inScope-notActive-notParent-P7-grid {
@@ -545,14 +562,14 @@ const isParentItem = isThisWyabItemTheParentOfThePageWeAreCreating();
     height: 0;
     min-height: 100%;
     overflow: hidden;
-    color: red;
+    color: var(--jd-highlight-colour);
   }
 
   .category-inScope-active-P8-grid {
     display: grid;
     /* Lines, gap, numbers, gap, title */
     grid-template-columns: 2ch 1ch 2ch 1ch auto;
-    color: red;
+    color: var(--jd-highlight-colour);
   }
 
   .category-inScope-active-P8-lines {
@@ -571,7 +588,6 @@ const isParentItem = isThisWyabItemTheParentOfThePageWeAreCreating();
     height: 0;
     min-height: 100%;
     overflow: hidden;
-    color: red;
   }
   .id-inScope-notActive-isParent-P10-grid {
     display: grid;
@@ -583,14 +599,14 @@ const isParentItem = isThisWyabItemTheParentOfThePageWeAreCreating();
     height: 0;
     min-height: 100%;
     overflow: hidden;
-    color: red;
+    color: var(--jd-highlight-colour);
   }
 
   .id-inScope-active-P11-grid {
     display: grid;
     /* Gap, lines, gap, number, gap, title */
     grid-template-columns: 1ch 4ch 1ch 5ch 1ch auto;
-    color: red;
+    color: var(--jd-highlight-colour);
   }
 
   .id-inScope-active-P11-lines {

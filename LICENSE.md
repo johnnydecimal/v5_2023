@@ -1,19 +1,5 @@
----
-# Choose the `JDPage` layout
-layout: ../../../layouts/JDPage.astro
-# The JD number: mandatory, used on JDPage
-number: "00.11"
-# The JD title: mandatory, used on JDPage
-title: Licence
-# The area that this ID relates to: mandatory, used on JDPage
-area: 00-09 System
-# The category that this ID relates to: mandatory, used on JDPage
-category: 00 System
----
-
-## ISC License (ISC)
-
-Copyright 2023 John Elliott Noble &lt;license2023@johnnydecimal.com&gt;
+ISC License (ISC)
+Copyright 2023 John Elliott Noble <license2023@johnnydecimal.com>
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 
