@@ -1,0 +1,42 @@
+---
+# Choose the `JDPage` layout
+layout: ../../../layouts/JDPage.astro
+# The JD number: mandatory, used on JDPage
+number: "01.04"
+# The JD title: mandatory, used on JDPage
+title: Version
+# The area that this ID relates to: mandatory, used on JDPage
+area: 00-09 Site administration
+# The category that this ID relates to: mandatory, used on JDPage
+category: 01 About
+---
+
+This is version `5.0.0` of the site. It was released on <time datetime="2022-02-05T12:00:00.000">2022-02-05 12:00 (AEST)</time>.
+
+The site can be divided in to two sections: those areas that are 'version controlled', and those that are not.
+
+The [changelog](/00-09_site_administration/01_about/01.05_changelog) will tell you what changed.
+
+## Release cycle
+
+Updates to version-controlled areas happen on a monthly cycle. I will publish updates as one single update to the site on or around the first weekend of the month.
+
+The version number will update accordingly. [Semantic versioning](https://semver.org) is used:
+
+- MAJOR, `5._._`: a total site re-write. I hope never to have to do this again.
+- MINOR, `_.0._`: content updates. This number will increase when I do a monthly release.
+- PATCH, `_._.0`: fixing errors: spelling mistakes, updating broken links. I'll make these changes as-needed.
+
+## What's in version control
+
+The following areas _are_ version controlled:
+
+- [00-09 Site administration](/00-09_site_administration)
+- [10-19 Concepts](/10-19_concepts)
+- [20-29 Community](/20-29_community)
+- [30-39 The library](/30-39_the_library)
+- [40-49 Technology](/40-49_technology)
+
+The following areas are _not_ version controlled:
+
+- [50-59 The lab](/50-59_the_lab)

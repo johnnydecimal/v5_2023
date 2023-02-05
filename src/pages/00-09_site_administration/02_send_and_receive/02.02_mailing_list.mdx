@@ -1,0 +1,81 @@
+---
+# Choose the `JDPage` layout
+layout: ../../../layouts/JDPage.astro
+# The JD number: mandatory, used on JDPage
+number: "02.02"
+# The JD title: mandatory, used on JDPage
+title: Mailing list
+# The area that this ID relates to: mandatory, used on JDPage
+area: 00-09 Site administration
+# The category that this ID relates to: mandatory, used on JDPage
+category: 02 Send and receive
+---
+
+First up: I'm not an email address collector. I don't _want_ your email address. But it can be useful to have.
+
+There's nothing that I'll email you that I won't also put on the site, the [forum](/20-29_community/21_forums_and_chat/21.01_the_johnnydecimal_forum), or on the [social media channels](/20-29_community/22_social_media). But if you don't want to keep checking those things, me having your address might be handy.
+
+You should familiarise yourself with my [privacy policy](/00-09_site_administration/01_about/01.03_privacy) if you haven't already.
+
+There are two lists.
+
+## Default: Leave me the hell alone
+
+If you want me to mail you when _gigantic_ things happen here, and otherwise leave you the hell alone, this is the list for you. You might get an email a year, if that. I'm not kidding.
+
+## Opt-in: I'm bored at work
+
+Some of you like email. I think that's weird, but you do you.
+
+I don't know what this will look like yet, but if enough of you indicate that you'd actually like me to be a bit more chatty, I'll figure it out.
+
+If you would like something in the order of an email a month, this is the list for you.
+
+<form
+  action="https://buttondown.email/api/emails/embed-subscribe/johnny.decimal"
+  method="post"
+  target="_self"
+  onsubmit="window.open('https://buttondown.email/johnny.decimal', '_self')"
+  class="embeddable-buttondown-form"
+  style="margin-top: 1rem;"
+>
+  <input
+    type="email"
+    name="email"
+    id="bd-email"
+    style="outline: 1px solid var(--jd-highlight-colour); width: 35ch; padding: 0.5rem; font-family: 'Berkeley Mono', Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+      'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+      'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;"
+  />
+  <div style="margin-top: 0.5rem;">
+    <input
+      type="radio"
+      name="tag"
+      value="leave-me-the-hell-alone"
+      id="bd-list-selection-leave-me"
+      style="vertical-align: middle; margin-right: 0.5ch"
+      checked
+    />
+    <label for="bd-list-selection-leave-me">Leave me the hell alone</label>
+  </div>
+  <div style="margin-bottom: 0.5rem;">
+    <input
+      type="radio"
+      name="tag"
+      value="im-bored-at-work"
+      id="bd-list-selection-im-bored"
+      style="vertical-align: middle; margin-right: 0.5ch"
+    />
+    <label for="bd-list-selection-im-bored">I'm bored at work</label>
+  </div>
+  <input
+    type="submit"
+    value="─▷     Subscribe     ◁─"
+    style="color: var(--offwhite); background-color: var(--jd-bg-colour); padding: 0.5rem; border: 2px solid var(--jd-highlight-colour); cursor: pointer; min-width: 35ch; font-family: 'Berkeley Mono', Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;"
+  />
+  <p>
+    <a href="https://buttondown.email" target="_blank">
+      Powered by Buttondown.
+    </a>
+  </p>
+</form>
