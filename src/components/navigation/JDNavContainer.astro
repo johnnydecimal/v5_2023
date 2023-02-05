@@ -16,13 +16,15 @@ pages.sort(jdSort);
   <div class="max-width-for-ipad-ish-layouts">
     <ol>
       {
-        pages.map((page) => (
-          <JDNavItem
-            number={page.frontmatter.number}
-            title={page.frontmatter.title}
-            url={page.url}
-          />
-        ))
+        pages
+          .filter((page) => !page.frontmatter.exclude)
+          .map((page) => (
+            <JDNavItem
+              number={page.frontmatter.number}
+              title={page.frontmatter.title}
+              url={page.url}
+            />
+          ))
       }
     </ol>
   </div>
