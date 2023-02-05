@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/image": "0.x",
     "@astrojs/mdx": "0.x",
+    "@astrojs/rss": "^2.1.0",
     "@astrojs/tailwind": "^3.x",
     "@fontsource/ibm-plex-sans": "^4.5.13",
     "@johnnydecimal/jdgetacidtypefromstring": "0.x",
