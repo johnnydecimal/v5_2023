@@ -16,11 +16,11 @@ console.log("category:", category);
 //      an area; on an ID, you're at a category
 
 // Create the URL from the area
-const areaUrl = "/" + area.replace(" ", "_").toLowerCase();
+const areaUrl = "/" + area.replaceAll(" ", "_").toLowerCase();
 console.log(areaUrl);
 let categoryUrl;
 if (category) {
-  categoryUrl = areaUrl + "/" + category.replace(" ", "_").toLowerCase();
+  categoryUrl = areaUrl + "/" + category.replaceAll(" ", "_").toLowerCase();
   console.log(categoryUrl);
 }
 ---
@@ -81,6 +81,7 @@ if (category) {
   .jdac a {
     padding-inline: 0.25rem;
   }
+
   .jdac a:hover {
     color: var(--offwhite);
     background-color: var(--jd-highlight-colour);
@@ -98,10 +99,11 @@ if (category) {
   .jdcontent {
     line-height: 1.75rem;
     padding: 1rem 1rem 1rem calc(1rem + 2px);
-    font-size: 18px;
+    font-size: 16px;
   }
 
-  .jdcontent h1:first-of-type {
+  .jdcontent h1:first-child,
+  .jdcontent h2:first-child {
     margin-top: 0;
   }
 
@@ -111,7 +113,7 @@ if (category) {
     font-weight: normal;
     text-decoration: underline;
     text-decoration-color: var(--jd-bg-colour);
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     margin-bottom: 1.5rem;
   }
 
@@ -141,5 +143,28 @@ if (category) {
   .jdcontent ol {
     list-style-type: decimal;
     margin-left: 1.5rem;
+  }
+
+  .jdcontent a {
+    text-decoration-line: underline;
+    color: var(--jd-highlight-colour);
+  }
+
+  .jdcontent a:visited {
+    color: var(--jd-bg-colour);
+  }
+
+  .jdcontent blockquote {
+    background-color: var(--jd-offwhitered);
+    border: 1px dotted var(--jd-bg-colour);
+    border-left: 5px solid var(--jd-bg-colour);
+    margin: 1rem 0;
+    padding-left: 1rem;
+    font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
+      "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+      "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.5rem;
   }
 </style>

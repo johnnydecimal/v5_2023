@@ -41,17 +41,17 @@
   --jd-offwhitered: rgb(252, 247, 246);
 }
 
-a {
+/* a {
   color: inherit;
   text-decoration: inherit;
-}
+} */
 
 /* Override modern-normalize */
 code,
 kbd,
 samp,
 pre {
-  font-family: Berkeley Mono Trial, ui-monospace, SFMono-Regular, Menlo, Monaco,
+  font-family: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, Liberation Mono, Courier New, monospace;
   font-size: 1em;
 }
