@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "prebuild": "cp ./src/pages/10-19_concepts/11_core/11.01_home_page.mdx ./src/pages/index.mdx && sed -i '' 's/\\.\\.\\/\\.\\.\\/\\.\\.\\//\\.\\.\\//' src/pages/index.mdx",
+    "prebuild": "cp ./src/pages/10-19_concepts/11_core/11.01_home_page.mdx ./src/pages/index.mdx && shx sed -i 's/\\.\\.\\/\\.\\.\\/\\.\\.\\//\\.\\.\\//' src/pages/index.mdx",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "prettier": "^2.8.1",
-    "prettier-plugin-astro": "0.x"
+    "prettier-plugin-astro": "0.x",
+    "shx": "^0.3.4"
   }
 }
