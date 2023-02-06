@@ -10,18 +10,18 @@ import Layout from "./Layout.astro";
 
 const { number, title, area, category } = Astro.props.frontmatter;
 
-console.log("category:", category);
+// console.log("category:", category);
 
 // TODO if you're on an area, you're just at the root; on a category, you're at
 //      an area; on an ID, you're at a category
 
 // Create the URL from the area
 const areaUrl = "/" + area.replaceAll(" ", "_").toLowerCase();
-console.log(areaUrl);
+// console.log(areaUrl);
 let categoryUrl;
 if (category) {
   categoryUrl = areaUrl + "/" + category.replaceAll(" ", "_").toLowerCase();
-  console.log(categoryUrl);
+  // console.log(categoryUrl);
 }
 ---
 
@@ -183,6 +183,16 @@ if (category) {
 
   .jdcontent blockquote em {
     /* text-decoration: underline; */
+    font-style: normal;
+  }
+
+  .jdcontent sup {
+    font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
+      "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+      "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  }
+
+  .jdcontent blockquote sup {
     font-style: normal;
   }
 </style>

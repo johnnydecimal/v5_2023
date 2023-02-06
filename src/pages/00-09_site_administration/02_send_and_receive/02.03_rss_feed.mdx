@@ -14,6 +14,14 @@ category: 02 Send and receive
 pubDate: 2022-02-06
 ---
 
-The site has one. Point your feed reader at this page.
+The site has one. Point your feed reader at this page.<sup>1</sup>
 
-If it doesn't pick it up, the explicit URL is `https://johnnydecimal.com/rss.xml`.
+If it doesn't pick it up, the URL is `https://johnnydecimal.com/rss.xml`.
+
+For now, the feed is all site pages including the blog. If anyone expresses an interest in splitting the feeds -- main site vs. blog -- I might do that.
+
+---
+
+> <sup>1</sup> Technical note. You can't point your feed reader at the site root
+because the root does a 301 redirect to `11.01 Home page`. Feed readers don't seem
+to follow that redirect. Your reader needs a page to load because there's a `<link>` tag in the page header that tells it where the feed is. Pointing your reader at *any* site page will work. I plan on fixing this.
