@@ -75,11 +75,7 @@ if (category) {
     border-bottom: 1px solid var(--jd-highlight-colour);
     font-size: 0.9rem;
     /* padding: 0.5rem 0.5rem 0.5rem 1rem; */
-    padding: 0.5rem 2rem 0.5rem calc(2rem);
-  }
-
-  .jdac a {
-    padding-inline: 0.25rem;
+    padding: 0.5rem 2rem 0.5rem 2.25rem;
   }
 
   .jdac a:hover {
@@ -143,12 +139,12 @@ if (category) {
 
   .jdcontent ol {
     list-style-type: decimal;
-    margin-left: 2ch;
+    list-style-position: inside;
   }
 
-  .jdcontent li {
+  .jdcontent ul {
     list-style-type: disc;
-    margin-left: 2ch;
+    list-style-position: inside;
   }
 
   .jdcontent a {
@@ -204,5 +200,10 @@ if (category) {
     min-height: 4px;
     max-width: 100px;
     box-shadow: 2px -1px var(--jd-bg-colour);
+  }
+
+  .jdcontent img {
+    border: 1px solid var(--jd-highlight-colour);
+    margin: 1rem;
   }
 </style>
