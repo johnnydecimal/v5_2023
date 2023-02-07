@@ -41,10 +41,10 @@
   --jd-offwhitered: rgb(252, 247, 246);
 }
 
-/* a {
+a {
   color: inherit;
   text-decoration: inherit;
-} */
+}
 
 /* Override modern-normalize */
 code,

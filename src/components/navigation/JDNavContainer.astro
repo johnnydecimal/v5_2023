@@ -10,10 +10,14 @@ pages.sort(jdSort);
 ---
 
 <nav class="jdnavigation">
-  <div class="toc">
-    ┌───────────────────┐<br />│ TABLE OF CONTENTS │<br />└───────────────────┘
+  <div class="index-brackets">
+    <div>┌</div>
+    <div class="index-brackets-horizontal-line">
+      ─ Index ─────────────────────────────────────────
+    </div>
+    <div>┐</div>
   </div>
-  <div class="max-width-for-ipad-ish-layouts">
+  <div class="index-main">
     <ol>
       {
         pages
@@ -28,43 +32,47 @@ pages.sort(jdSort);
       }
     </ol>
   </div>
+  <div class="index-brackets">
+    <div>└</div>
+    <div class="index-brackets-horizontal-line">
+      ────────────────────────────────────────────────
+    </div>
+    <div>┘</div>
+  </div>
 </nav>
 
 <style>
-  /* ol {
+  ol {
+    list-style-type: none;
     margin: 0;
     padding: 0;
-  } */
-
-  .max-width-for-ipad-ish-layouts {
-    /* On desktop this is limited to 35ch by the flex container. That doesn't
-       apply on mobile, so constrain it otherwise it looks odd on iPad. We don't
-       apply this to .jdnavigation otherwise the bgcolor doesn't bleed to edge.
-       */
-    max-width: 40ch;
-    margin: 0 auto;
   }
 
   .jdnavigation {
     font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
       "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
       "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-    /* height: fit-content; */
     line-height: 1.2rem;
-    padding: 0.5rem 1rem 1rem 1rem;
-    border-top: 1px solid var(--jd-highlight-colour);
-    background-color: var(--jd-offwhitered);
-    /* Give the bottom a bit of room on mobile. */
-    padding-bottom: 2rem;
+    padding: 0.5rem 0.5rem 2rem 0.5rem;
+    max-width: 35ch;
+    margin: auto;
   }
 
-  .toc {
-    /* font-variant: small-caps; */
+  .index-brackets {
+    display: grid;
+    grid-auto-flow: column;
+    grid-text-columns: 1ch minmax(0, 1fr) 1ch;
     text-align: center;
-    /* font-size: 1.5rem; */
-    /* margin-bottom: 1rem; */
-    font-weight: bold;
     margin-bottom: 0.25rem;
+    white-space: nowrap;
+  }
+
+  .index-brackets-horizontal-line {
+    overflow: hidden;
+  }
+
+  .index-main {
+    padding: 0 2ch;
   }
 
   /* Style for iPad-landscape+. */
@@ -74,18 +82,12 @@ pages.sort(jdSort);
       flex-grow: 0; /* do not grow   - initial value: 0 */
       flex-shrink: 0; /* do not shrink - initial value: 1 */
       flex-basis: 35ch; /* width/height  - initial value: auto */
-      padding-top: 1px; /* Lines it up with the header */
-      border-top: 0;
       height: fit-content;
-      border-bottom: 1px solid var(--jd-highlight-colour);
-      background-color: unset;
-      margin-top: 1rem;
-      padding-bottom: 1rem;
     }
 
-    .toc {
+    /* .toc {
       display: none;
       background-color: unset;
-    }
+    } */
   }
 </style>

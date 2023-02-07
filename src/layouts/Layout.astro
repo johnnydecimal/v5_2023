@@ -36,7 +36,7 @@ const { title } = Astro.props;
     <title>{title}║J•D</title>
   </head>
   <body class="mx-auto">
-    <Header />
+    <!-- <Header /> -->
     <div class="nav-main-flex">
       <JDNavContainer />
       <div class="divider"></div>
@@ -51,13 +51,13 @@ const { title } = Astro.props;
     /* Mobile-first, remember. So define everything for phone, then use
 	   @media queries to re-define for tablet+ or whatever. */
     html {
-      background-color: white;
+      background-color: var(--offwhite);
       height: -webkit-fill-available;
     }
 
     body {
       background-color: var(--offwhite);
-      border: 1px solid var(--jd-highlight-colour);
+      /* border: 1px solid var(--jd-highlight-colour); */
       /* border-right: 1px solid var(--jd-highlight-colour); */
       color: var(--offblack);
       font-family: "IBM Plex Sans";
@@ -100,7 +100,7 @@ const { title } = Astro.props;
       }
       .divider {
         display: block;
-        border-right: 1px solid var(--jd-highlight-colour);
+        /* border-right: 1px solid var(--jd-highlight-colour); */
       }
     }
   </style>
