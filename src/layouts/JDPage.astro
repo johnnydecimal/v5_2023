@@ -26,31 +26,98 @@ if (category) {
 ---
 
 <Layout title={`${number} ${title}`}>
-  <div class="jdid-container">
-    <div class="jdid monospace">
-      {number}
-      {title}
+  <div class="header-container">
+    <div class="header-brackets header-brackets-top">
+      <div>┌</div>
+      <div class="header-brackets-horizontal-line">
+        ─ Reference ─────────────────────────────────────────
+      </div>
+      <div>┐</div>
+    </div>
+    <div class="header-area">
+      <div></div>
+      <pre>  Area     : 10-19 Concepts</pre>
+      <pre>  Category : 11 Core</pre>
+      <pre>  ID       : 11.01</pre>
+      <pre>  Title    : Home page</pre>
+    </div>
+    <div class="header-brackets header-brackets-bottom">
+      <div>└</div>
+      <div class="header-brackets-horizontal-line">
+        ─────────────────────────────────────────────────
+      </div>
+      <div>┘</div>
     </div>
   </div>
-  <div class="jdac monospace">
-    <a href={areaUrl}>{area}</a>
-    {
-      categoryUrl && (
-        <span>
-          &gt;{" "}
-          <a class="jdac-link" href={categoryUrl}>
-            {category}
-          </a>
-        </span>
-      )
-    }
+
+  <div class="jd-brackets jd-brackets-top">
+    <div>┌</div>
+    <div class="jd-brackets-horizontal-line">
+      ─ Content
+      ─────────────────────────────────────────────────────────────────────────────────────────────
+    </div>
+    <div>┐</div>
   </div>
+
   <div class="jdcontent">
     <slot />
   </div>
 </Layout>
 
 <style>
+  pre {
+    margin: 0;
+  }
+
+  .header-container {
+    font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
+      "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+      "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+    max-width: 35ch;
+  }
+
+  .header-brackets {
+    font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
+      "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+      "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+    display: grid;
+    grid-auto-flow: column;
+    grid-text-columns: 1ch minmax(0, 1fr) 1ch;
+    text-align: center;
+    white-space: nowrap;
+    max-width: 35ch;
+  }
+  .header-brackets-top {
+    margin-bottom: 0.5rem;
+  }
+  .header-brackets-bottom {
+    margin-top: 0.5rem;
+  }
+  .header-brackets-horizontal-line {
+    overflow: hidden;
+  }
+
+  .jd-brackets {
+    font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
+      "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+      "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+    display: grid;
+    grid-auto-flow: column;
+    grid-text-columns: 1ch minmax(0, 1fr) 1ch;
+    text-align: center;
+    white-space: nowrap;
+    max-width: 60ch;
+  }
+  .jd-brackets-top {
+    margin-bottom: 0.5rem;
+  }
+  .jd-brackets-bottom {
+    margin-top: 0.5rem;
+  }
+  .jd-brackets-horizontal-line {
+    overflow: hidden;
+  }
+
   .monospace {
     font-family: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
       Consolas, "Liberation Mono", "Courier New", monospace;
@@ -93,9 +160,10 @@ if (category) {
 <!-- Global style for all the stuff in the <slot /> -->
 <style is:global>
   .jdcontent {
+    margin: 0 2ch;
     line-height: 1.75rem;
-    padding: 1rem 1rem 1rem calc(1rem + 2px);
     font-size: 16px;
+    max-width: 60ch;
   }
 
   .jdcontent h1:first-child,
