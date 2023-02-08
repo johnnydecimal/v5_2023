@@ -26,6 +26,7 @@ const { title } = Astro.props;
       name="description"
       content="Johnny.Decimal is a system to organise projects (or your life, or anything else)"
     />
+    <meta name="theme-color" content="#DB170E" />
     <link
       rel="alternate"
       type="application/rss+xml"
@@ -35,71 +36,77 @@ const { title } = Astro.props;
     <link rel="me" href="https://hachyderm.io/@johnnydecimal" />
     <title>{title}║J•D</title>
   </head>
-  <body class="mx-auto">
-    <!-- <Header /> -->
+  <body>
+    <div class="layout-grid">
+      <div class="layout-grid-area-site-header">
+        <Header />
+      </div>
+      <div class="layout-grid-area-navigation">
+        <JDNavContainer />
+      </div>
+      <div class="layout-grid-area-content">
+        <slot />
+      </div>
+    </div>
+
+    <!-- 
+    <Header />
     <div class="nav-main-flex">
       <JDNavContainer />
       <main class="main">
         <slot />
       </main>
     </div>
-    <!-- <Footer /> -->
+    <Footer /> 
+    -->
   </body>
 
   <style>
-    /* Mobile-first, remember. So define everything for phone, then use
-	   @media queries to re-define for tablet+ or whatever. */
+    /* Styles for iPad portrait and below: mobile first. */
     html {
       background-color: var(--offwhite);
       height: -webkit-fill-available;
+
+      /* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
+      font-size: 62.5%;
     }
 
     body {
-      background-color: var(--offwhite);
-      /* border: 1px solid var(--jd-highlight-colour); */
-      /* border-right: 1px solid var(--jd-highlight-colour); */
       color: var(--offblack);
-      font-family: "IBM Plex Sans";
-      /* margin-left: auto; */
-      /* margin-right: auto; */
+      background-color: var(--offwhite);
+
+      margin: 0 auto;
       max-width: 68rem;
-      /* min-height: 100vh; */
-      /* mobile viewport bug fix */
-      /* min-height: -webkit-fill-available; */
-      /* padding: 1rem; */
+
+      /* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
+      font-size: 1.6rem;
     }
 
-    /* The flex container that houses navigation and the main content. */
-    .nav-main-flex {
-      display: flex;
-      /* By default (mobile), show the navigation at the bottom. */
-      flex-direction: column-reverse;
+    .layout-grid {
+      display: grid;
+      grid-template-areas:
+        "siteheader"
+        "content"
+        "navigation";
     }
-
-    /* Don't show the divider on mobile. */
-    .divider {
-      display: none;
+    .layout-grid-area-site-header {
+      grid-area: siteheader;
     }
-
-    .main {
-      width: 100%;
+    .layout-grid-area-navigation {
+      grid-area: navigation;
+    }
+    .layout-grid-area-content {
+      grid-area: content;
     }
 
     /* Style for iPad-landscape+. */
     /* https://getbootstrap.com/docs/5.0/layout/breakpoints/#max-width */
     @media screen and (min-width: 991.98px) {
-      .nav-main-flex {
-        flex-direction: row;
-      }
-      .jdnavigation {
-        flex-grow: 0; /* do not grow   - initial value: 0 */
-        flex-shrink: 0; /* do not shrink - initial value: 1 */
-        flex-basis: 35ch; /* width/height  - initial value: auto */
-        padding-top: 1px; /* Lines it up with the header */
-      }
-      .divider {
-        display: block;
-        /* border-right: 1px solid var(--jd-highlight-colour); */
+      .layout-grid {
+        display: grid;
+        grid-template-areas:
+          "siteheader siteheader"
+          "navigation content";
       }
     }
   </style>

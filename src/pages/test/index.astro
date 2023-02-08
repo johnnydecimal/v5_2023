@@ -2,14 +2,36 @@
 import Layout from "@layouts/Layout.astro";
 ---
 
-<Layout title={"title"}>
-  <img
-    src="/img/emoji-chaos/emoji-1-chaos-1x.png"
-    srcset="/img/emoji-chaos/emoji-1-chaos-2x.png 2x"
-    alt="A rough circle of emoji: there are red, blue, and green emoji of all kinds, and they're arranged in a jumbled mess."
-    width="343"
-    height="343"
-    loading="lazy"
-    decoding="async"
-  />
-</Layout>
+<div class="grid">
+  <div class="site-header">site header</div>
+  <div class="navigation">navigation</div>
+  <div class="content-header">content-header</div>
+  <div class="content">content</div>
+</div>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-areas:
+      "site-header site-header"
+      "navigation content-header"
+      "navigation content";
+
+    max-width: 40ch;
+    font-family: "Menlo";
+  }
+
+  .site-header {
+    grid-area: site-header;
+    justify-self: center;
+  }
+  .navigation {
+    grid-area: navigation;
+  }
+  .content-header {
+    grid-area: content-header;
+  }
+  .content {
+    grid-area: content;
+  }
+</style>
