@@ -76,7 +76,9 @@ const { title } = Astro.props;
       background-color: var(--offwhite);
 
       margin: 0 auto;
-      max-width: 68rem;
+      
+      /* Don't set a max-width here. Now you can't do edge-to-edge borders. Set it on the grid. */
+      /* max-width: 68rem; */
 
       /* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
       font-size: 1.6rem;
