@@ -37,76 +37,52 @@ const { title } = Astro.props;
     <title>{title}║J•D</title>
   </head>
   <body>
-    <div class="layout-grid">
-      <div class="layout-grid-area-site-header">
-        <Header />
-      </div>
-      <div class="layout-grid-area-navigation">
-        <JDNavContainer />
-      </div>
-      <div class="layout-grid-area-content">
-        <slot />
-      </div>
+    <div class="header-full-width">
+      <Header />
     </div>
 
-    <!-- 
-    <Header />
-    <div class="nav-main-flex">
-      <JDNavContainer />
-      <main class="main">
-        <slot />
-      </main>
+    <div>
+      <div class="grid-container">
+        <main>
+          <slot />
+        </main>
+        <nav>
+          <JDNavContainer />
+        </nav>
+      </div>
     </div>
-    <Footer /> 
-    -->
   </body>
 
   <style>
-    /* Styles for iPad portrait and below: mobile first. */
-    html {
-      background-color: var(--offwhite);
-      height: -webkit-fill-available;
+    /* Styles for tablet portrait and below: mobile first. */
 
-      /* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
-      font-size: 62.5%;
+    .header-full-width {
+      border-bottom: 2px solid var(--jd-highlight-colour);
     }
 
-    body {
-      color: var(--offblack);
-      background-color: var(--offwhite);
-
-      margin: 0 auto;
-      max-width: 68rem;
-
-      /* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
-      font-size: 1.6rem;
-    }
-
-    .layout-grid {
+    .grid-container {
       display: grid;
       grid-template-areas:
-        "siteheader"
-        "content"
-        "navigation";
-    }
-    .layout-grid-area-site-header {
-      grid-area: siteheader;
-    }
-    .layout-grid-area-navigation {
-      grid-area: navigation;
-    }
-    .layout-grid-area-content {
-      grid-area: content;
+        "main"
+        "nav";
+      justify-content: center;
+      max-width: var(--site-width);
+      margin: 0 auto;
     }
 
-    /* Style for iPad-landscape+. */
-    /* https://getbootstrap.com/docs/5.0/layout/breakpoints/#max-width */
-    @media screen and (min-width: 991.98px) {
-      .layout-grid {
-        display: grid;
-        grid-template-areas:
-          "siteheader siteheader"
-          "navigation content";
+    main {
+      grid-area: main;
+    }
+
+    nav {
+      grid-area: nav;
+      justify-items: left;
+    }
+
+    /* Tablet landscape and up */
+    @media (min-width: 900px) {
+      .grid-container {
+        grid-template-areas: "nav main";
       }
     }
   </style>
