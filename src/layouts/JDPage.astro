@@ -2,6 +2,16 @@
 import Layout from "./Layout.astro";
 import { jdGetAcidTypeFromString } from "@johnnydecimal/jdgetacidtypefromstring";
 
+import "@fontsource/ibm-plex-sans/400.css";
+import "@fontsource/ibm-plex-sans/500.css";
+import "@fontsource/ibm-plex-sans/600.css";
+import "@fontsource/ibm-plex-serif/400.css";
+import "@fontsource/ibm-plex-serif/600.css";
+
+import "@fontsource/fira-sans/400.css";
+import "@fontsource/fira-sans/700.css";
+import "@fontsource/playfair-display/600.css";
+
 export interface Props {
   number: string;
   title: string;
@@ -46,10 +56,12 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
       </div>
       <div class="locationbox-acid-details">
         <div class="locationbox-acid-details-grid">
-          <pre>Area     :</pre><pre>{area}</pre>
-          <pre>Category :</pre><pre>{category}</pre>
-          <pre>ID       :</pre><pre>{numberAcidType.jdAcidType === "id" ? number : "-"}</pre>
-          <pre>Title    :</pre><pre>{title}</pre>
+          <div>Area&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</div><div>{area}</div>
+          <div>Category :</div><div>{category ? category : "-"}</div>
+          <div>ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</div><div>
+            {numberAcidType.jdAcidType === "id" ? number : "-"}
+          </div>
+          <div>Title&nbsp;&nbsp;&nbsp;&nbsp;:</div><div>{title}</div>
         </div>
       </div>
       <div class="locationbox-brackets locationbox-brackets-bottom">
@@ -61,6 +73,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
       </div>
     </div>
 
+    <!--
     <div class="jd-brackets jd-brackets-top">
       <div>┌</div>
       <div class="jd-brackets-horizontal-line">
@@ -69,11 +82,13 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
       </div>
       <div>┐</div>
     </div>
+    -->
 
     <div class="jdcontent">
       <slot />
     </div>
 
+    <!--
     <div class="jd-brackets jd-brackets-bottom">
       <div>└</div>
       <div class="jd-brackets-horizontal-line">
@@ -81,6 +96,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
       </div>
       <div>┘</div>
     </div>
+     -->
   </div>
 </Layout>
 
@@ -97,7 +113,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
     font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
       "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
       "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
   .locationbox-brackets {
     display: grid;
@@ -138,9 +154,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
     overflow: hidden;
   }
 
-  .monospace {
-    font-family: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
-      Consolas, "Liberation Mono", "Courier New", monospace;
+  @media (min-width: 900px) {
   }
 </style>
 
@@ -148,9 +162,9 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
   /* Global style for all the stuff in the <slot /> */
   .jdcontent {
     margin: 0 2ch;
-    line-height: 2rem;
-    font-size: 1.6rem;
     font-family: "IBM Plex Sans";
+    font-family: "Fira Sans";
+    font-family: "IBM Plex Serif";
   }
 
   .jdcontent h1:first-child,
@@ -161,20 +175,23 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
   .jdcontent h1,
   .jdcontent h2,
   .jdcontent h3 {
-    font-weight: 500;
+    font-family: "Playfair Display";
+    font-family: "IBM Plex Sans";
+    font-family: "IBM Plex Serif";
+    font-weight: 600;
     /* text-decoration: underline; */
     /* text-decoration-color: var(--jd-bg-colour); */
-    margin-top: 2rem;
-    margin-bottom: 1.25rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
   }
 
   .jdcontent h1 {
-    font-size: 2.25rem;
-    /* line-height: 1.25; */
+    font-size: 3.6rem;
+    line-height: 1.25;
   }
 
   .jdcontent h2 {
-    font-size: 1.75rem;
+    font-size: 3.2rem;
   }
 
   .jdcontent h3 {
@@ -182,24 +199,33 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
   }
 
   .jdcontent p {
-    margin: 0.5rem 0;
+    margin: 1.75rem 0;
+    font-size: 1.8rem;
+    line-height: 1.8;
   }
 
   .jdcontent code {
-    background-color: var(--jd-bg-colour);
-    border-bottom: 2px solid var(--jd-highlight-colour);
-    color: var(--offwhite);
-    padding-inline: 0.25rem;
+    /* background-color: var(--jd-bg-colour); */
+    background-color: var(--jd-offwhitered);
+    border: 1px dotted var(--jd-bg-colour);
+    border-bottom: 2px solid var(--jd-bg-colour);
+    color: var(--jd-bg-colour);
+    padding-inline: 0.5rem;
   }
 
   .jdcontent ol {
     list-style-type: decimal;
-    list-style-position: inside;
+    /* list-style-position: inside; */
   }
 
   .jdcontent ul {
     list-style-type: disc;
-    list-style-position: inside;
+    /* list-style-position: inside; */
+  }
+
+  .jdcontent li {
+    font-size: 1.8rem;
+    line-height: 1.8;
   }
 
   .jdcontent a {
@@ -249,12 +275,10 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
   }
 
   .jdcontent hr {
-    border: 1px solid var(--jd-highlight-colour);
-    background-color: var(--jd-offwhitered);
-    margin: 2rem auto;
-    min-height: 4px;
-    max-width: 100px;
-    box-shadow: 2px -1px var(--jd-bg-colour);
+    border: 0;
+    border-top: 1px solid lightgray;
+    box-shadow: 0 0 5px 5px rgb(250, 245, 245);
+    margin: 3rem auto;
   }
 
   .jdcontent img {

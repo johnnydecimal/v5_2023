@@ -33,7 +33,7 @@
 :root {
   /* Site-wide */
   --offblack: #211;
-  --offwhite: rgb(245, 245, 245);
+  --offwhite: rgb(249, 247, 247);
 
   /* JD block styling */
   --jd-bg-colour: #580602;
