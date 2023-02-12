@@ -10,7 +10,7 @@ pages.sort(jdSort);
 ---
 
 <nav class="jdnavigation">
-  <div class="index-brackets">
+  <div class="index-brackets index-brackets-top">
     <div>┌</div>
     <div class="index-brackets-horizontal-line">
       ─ Index ─────────────────────────────────────────
@@ -32,7 +32,7 @@ pages.sort(jdSort);
       }
     </ol>
   </div>
-  <div class="index-brackets">
+  <div class="index-brackets index-brackets-bottom">
     <div>└</div>
     <div class="index-brackets-horizontal-line">
       ────────────────────────────────────────────────
@@ -73,6 +73,13 @@ pages.sort(jdSort);
 
   .index-brackets-horizontal-line {
     overflow: hidden;
+  }
+
+  .index-brackets-top {
+    margin-bottom: 1rem;
+  }
+  .index-brackets-bottom {
+    margin-top: 1rem;
   }
 
   .index-main {

@@ -34,43 +34,53 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
 ---
 
 <Layout title={`${number} ${title}`}>
-  <div class="locationbox-container">
-    <div class="locationbox-brackets locationbox-brackets-top">
+  <div class="layout-container">
+    <div class="locationbox-container">
+      <div class="locationbox-brackets locationbox-brackets-top">
+        <div>┌</div>
+        <div class="locationbox-brackets-horizontal-line">
+          ─ Location
+          ───────────────────────────────────────────────────────────────────────────────────────────
+        </div>
+        <div>┐</div>
+      </div>
+      <div class="locationbox-acid-details">
+        <div class="locationbox-acid-details-grid">
+          <pre>Area     :</pre><pre>{area}</pre>
+          <pre>Category :</pre><pre>{category}</pre>
+          <pre>ID       :</pre><pre>{numberAcidType.jdAcidType === "id" ? number : "-"}</pre>
+          <pre>Title    :</pre><pre>{title}</pre>
+        </div>
+      </div>
+      <div class="locationbox-brackets locationbox-brackets-bottom">
+        <div>└</div>
+        <div class="locationbox-brackets-horizontal-line">
+          ────────────────────────────────────────────────────────────────────────────────────────
+        </div>
+        <div>┘</div>
+      </div>
+    </div>
+
+    <div class="jd-brackets jd-brackets-top">
       <div>┌</div>
-      <div class="locationbox-brackets-horizontal-line">
-        ─ Location
-        ───────────────────────────────────────────────────────────────────────────────────────────
+      <div class="jd-brackets-horizontal-line">
+        ─ Content
+        ─────────────────────────────────────────────────────────────────────────────────────────────
       </div>
       <div>┐</div>
     </div>
-    <div class="locationbox-acid-details">
-      <div class="locationbox-acid-details-grid">
-        <pre>Area     :</pre><pre>{area}</pre>
-        <pre>Category :</pre><pre>{category}</pre>
-        <pre>ID       :</pre><pre>{numberAcidType.jdAcidType === "id" ? number : "-"}</pre>
-        <pre>Title    :</pre><pre>{title}</pre>
-      </div>
+
+    <div class="jdcontent">
+      <slot />
     </div>
-    <div class="locationbox-brackets locationbox-brackets-bottom">
+
+    <div class="jd-brackets jd-brackets-bottom">
       <div>└</div>
-      <div class="locationbox-brackets-horizontal-line">
-        ────────────────────────────────────────────────────────────────────────────────────────
+      <div class="jd-brackets-horizontal-line">
+        ─────────────────────────────────────────────────────────────────────────────────────────────
       </div>
       <div>┘</div>
     </div>
-  </div>
-
-  <div class="jd-brackets jd-brackets-top">
-    <div>┌</div>
-    <div class="jd-brackets-horizontal-line">
-      ─ Content
-      ─────────────────────────────────────────────────────────────────────────────────────────────
-    </div>
-    <div>┐</div>
-  </div>
-
-  <div class="jdcontent">
-    <slot />
   </div>
 </Layout>
 
@@ -79,16 +89,26 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
     margin: 0;
   }
 
+  .layout-container {
+    margin: 0 0.7rem;
+  }
+
   .locationbox-container {
     font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
       "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
       "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+    margin-bottom: 1rem;
   }
-
   .locationbox-brackets {
     display: grid;
-    grid-template-columns: 1ch minmax(0, 1fr) 1ch;
+    grid-template-columns: 1ch 1fr 1ch;
     white-space: nowrap;
+  }
+  .locationbox-brackets-top {
+    margin-bottom: 1rem;
+  }
+  .locationbox-brackets-bottom {
+    margin-top: 1rem;
   }
   .locationbox-brackets-horizontal-line {
     overflow: hidden;
@@ -105,16 +125,14 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
       "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
     display: grid;
     grid-auto-flow: column;
-    grid-text-columns: 1ch minmax(0, 1fr) 1ch;
-    text-align: center;
+    grid-template-columns: 1ch 1fr 1ch;
     white-space: nowrap;
-    max-width: 60ch;
   }
   .jd-brackets-top {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
   .jd-brackets-bottom {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
   }
   .jd-brackets-horizontal-line {
     overflow: hidden;
@@ -124,47 +142,15 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
     font-family: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
       Consolas, "Liberation Mono", "Courier New", monospace;
   }
-
-  .jdid-container {
-    border-bottom: 1px solid var(--jd-highlight-colour);
-  }
-
-  .jdid {
-    border: 2px solid var(--jd-highlight-colour);
-    box-shadow: 3px -1px rgba(82, 5, 2, 1);
-    color: var(--jd-bg-colour);
-    font-size: 2rem;
-    padding: 1rem;
-    background-color: var(--jd-offwhitered);
-    margin: 1rem;
-    width: fit-content;
-  }
-
-  .jdac {
-    border-bottom: 1px solid var(--jd-highlight-colour);
-    font-size: 0.9rem;
-    /* padding: 0.5rem 0.5rem 0.5rem 1rem; */
-    padding: 0.5rem 2rem 0.5rem 2.25rem;
-  }
-
-  .jdac a:hover {
-    color: var(--offwhite);
-    background-color: var(--jd-highlight-colour);
-  }
-
-  /* .jdcontent h1 {
-    color: red;
-  } */
-
-  /* See global.css for .jdcontent styles */
 </style>
 
 <style is:global>
   /* Global style for all the stuff in the <slot /> */
   .jdcontent {
     margin: 0 2ch;
-    /* line-height: 1.75rem; */
-    /* font-size: 16px; */
+    line-height: 2rem;
+    font-size: 1.6rem;
+    font-family: "IBM Plex Sans";
   }
 
   .jdcontent h1:first-child,
