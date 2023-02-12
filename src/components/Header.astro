@@ -14,7 +14,7 @@ import { Image } from "@astrojs/image/components";
     grid-template-columns: 50px 1fr 50px;
     justify-content: center;
     max-width: var(--site-width);
-    margin: 0 auto;
+    margin: 15px auto 10px auto;
 
     color: var(--jd-bg-colour);
     font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
@@ -25,20 +25,16 @@ import { Image } from "@astrojs/image/components";
   header > img {
     align-self: center;
     justify-self: start;
-    padding: 1rem;
+    margin: 0 0 0 1rem;
   }
 
   header > h1 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: normal;
     place-self: center;
-    padding: 1rem;
   }
 
   /* Tablet landscape and up */
   @media (min-width: 900px) {
-    header > h1 {
-      font-size: 1.6rem;
-    }
   }
 </style>
