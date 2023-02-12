@@ -1,50 +1,60 @@
 ---
+import Layout from "./Layout.astro";
+import { jdGetAcidTypeFromString } from "@johnnydecimal/jdgetacidtypefromstring";
+
 export interface Props {
   number: string;
   title: string;
   area: string;
   category: string;
 }
-
-import Layout from "./Layout.astro";
-
 const { number, title, area, category } = Astro.props.frontmatter;
 
-// console.log("category:", category);
-
-// TODO if you're on an area, you're just at the root; on a category, you're at
-//      an area; on an ID, you're at a category
-
-// Create the URL from the area
+/**
+ * Create a link to this page's area.
+ */
 const areaUrl = "/" + area.replaceAll(" ", "_").toLowerCase();
-// console.log(areaUrl);
+
+/**
+ * Create a link to this page's category, if it has one. (Areas don't.)
+ */
 let categoryUrl;
 if (category) {
   categoryUrl = areaUrl + "/" + category.replaceAll(" ", "_").toLowerCase();
-  // console.log(categoryUrl);
 }
+
+/**
+ * We only want to show an ID in the 'location' box if it's actually an ID,
+ * i.e. not if it's an AC.
+ *
+ * Current jdGetAcid... expects "10-19 A title", so fudge that for now.
+ * TODO: Fix.
+ */
+let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
 ---
 
 <Layout title={`${number} ${title}`}>
-  <div class="header-container">
-    <div class="header-brackets header-brackets-top">
+  <div class="locationbox-container">
+    <div class="locationbox-brackets locationbox-brackets-top">
       <div>┌</div>
-      <div class="header-brackets-horizontal-line">
-        ─ Reference ─────────────────────────────────────────
+      <div class="locationbox-brackets-horizontal-line">
+        ─ Location
+        ───────────────────────────────────────────────────────────────────────────────────────────
       </div>
       <div>┐</div>
     </div>
-    <div class="header-area">
-      <div></div>
-      <pre>  Area     : 10-19 Concepts</pre>
-      <pre>  Category : 11 Core</pre>
-      <pre>  ID       : 11.01</pre>
-      <pre>  Title    : Home page</pre>
+    <div class="locationbox-acid-details">
+      <div class="locationbox-acid-details-grid">
+        <pre>Area     :</pre><pre>{area}</pre>
+        <pre>Category :</pre><pre>{category}</pre>
+        <pre>ID       :</pre><pre>{numberAcidType.jdAcidType === "id" ? number : "-"}</pre>
+        <pre>Title    :</pre><pre>{title}</pre>
+      </div>
     </div>
-    <div class="header-brackets header-brackets-bottom">
+    <div class="locationbox-brackets locationbox-brackets-bottom">
       <div>└</div>
-      <div class="header-brackets-horizontal-line">
-        ─────────────────────────────────────────────────
+      <div class="locationbox-brackets-horizontal-line">
+        ────────────────────────────────────────────────────────────────────────────────────────
       </div>
       <div>┘</div>
     </div>
@@ -69,31 +79,24 @@ if (category) {
     margin: 0;
   }
 
-  .header-container {
+  .locationbox-container {
     font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
       "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
       "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
   }
 
-  .header-brackets {
-    font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
-      "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-      "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  .locationbox-brackets {
     display: grid;
-    grid-auto-flow: column;
-    grid-text-columns: 1ch minmax(0, 1fr) 1ch;
-    text-align: center;
+    grid-template-columns: 1ch minmax(0, 1fr) 1ch;
     white-space: nowrap;
-    max-width: 35ch;
   }
-  .header-brackets-top {
-    margin-bottom: 0.5rem;
-  }
-  .header-brackets-bottom {
-    margin-top: 0.5rem;
-  }
-  .header-brackets-horizontal-line {
+  .locationbox-brackets-horizontal-line {
     overflow: hidden;
+  }
+  .locationbox-acid-details-grid {
+    display: grid;
+    grid-template-columns: 11ch 1fr;
+    margin-left: 2ch;
   }
 
   .jd-brackets {
@@ -156,8 +159,8 @@ if (category) {
   /* See global.css for .jdcontent styles */
 </style>
 
-<!-- Global style for all the stuff in the <slot /> -->
 <style is:global>
+  /* Global style for all the stuff in the <slot /> */
   .jdcontent {
     margin: 0 2ch;
     /* line-height: 1.75rem; */

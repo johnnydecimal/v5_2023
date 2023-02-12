@@ -33,7 +33,7 @@
 :root {
   /* Site-wide */
   --offblack: #211;
-  --offwhite: #f9f9f9;
+  --offwhite: rgb(245, 245, 245);
 
   /* JD block styling */
   --jd-bg-colour: #580602;
@@ -71,11 +71,12 @@ body {
 
 /*
   Typographic tweaks!
-  4. Add accessible line-height -- REMOVED for now, breaks box drawing
+  4. Add accessible line-height -- changed to 1.2 to minimise FOUT in
+     <JDNavigation />. Will bump up in the layout component.
   5. Improve text rendering
 */
 body {
-  /* line-height: 1.5; */
+  line-height: 1.2;
   -webkit-font-smoothing: antialiased;
 }
 
