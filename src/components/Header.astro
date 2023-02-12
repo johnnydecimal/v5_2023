@@ -4,8 +4,17 @@ import { Image } from "@astrojs/image/components";
 ---
 
 <header>
-  <Image src={logo} alt="Johnny.Decimal logo" />
-  <h1>Johnny•Decimal</h1>
+  <!-- <Image src={logo} alt="Johnny.Decimal logo" /> -->
+  <svg viewBox="0 0 32 24" height="30">
+    <line x1="4.8" y1="18" x2="7.8" y2="5" class="r1"></line>
+
+    <line x1="12" y1="18" x2="12.25" y2="17" class="r2"></line>
+    <line x1="13.5" y1="10.3" x2="14.7" y2="5" class="r2"></line>
+
+    <line x1="18.8" y1="18" x2="20" y2="13" class="r3"></line>
+    <line x1="21.3" y1="6" x2="21.5" y2="5" class="r3"></line>
+  </svg>
+  <h1><a href="/">Johnny•Decimal</a></h1>
 </header>
 
 <style>
@@ -20,6 +29,24 @@ import { Image } from "@astrojs/image/components";
     font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
       "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
       "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  }
+
+  svg {
+    border: 1px solid black;
+    stroke-width: 6px;
+    stroke: red;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  .r1 {
+    stroke: rgb(154, 30, 38);
+  }
+  .r2 {
+    stroke: rgb(203, 43, 57);
+  }
+  .r3 {
+    stroke: rgb(234, 51, 82);
   }
 
   header > img {
