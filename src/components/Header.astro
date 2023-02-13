@@ -4,39 +4,77 @@ import { Image } from "@astrojs/image/components";
 ---
 
 <header>
-  <!-- <Image src={logo} alt="Johnny.Decimal logo" /> -->
-  <svg viewBox="0 0 32 24" height="30">
-    <line x1="4.8" y1="18" x2="7.8" y2="5" class="r1"></line>
-
-    <line x1="12" y1="18" x2="12.25" y2="17" class="r2"></line>
-    <line x1="13.5" y1="10.3" x2="14.7" y2="5" class="r2"></line>
-
-    <line x1="18.8" y1="18" x2="20" y2="13" class="r3"></line>
-    <line x1="21.3" y1="6" x2="21.5" y2="5" class="r3"></line>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="1.1"
+    x="0px"
+    y="0px"
+    style="enable-background:new 0 0 1080 1080;"
+    xml:space="preserve"
+    viewBox="183.7 269.9 712.55 540.3"
+    height="30"
+  >
+    <style type="text/css">
+      .st0 {
+        fill: #a8001f;
+      }
+      .st1 {
+        fill: #dd0031;
+      }
+      .st2 {
+        fill: #ff004d;
+      }
+      .st3 {
+        fill: #ffffff;
+      }
+    </style>
+    <g id="Layer_1"> </g>
+    <g id="Layer_2">
+      <path
+        class="st0"
+        d="M473.2,269.9H350.6c-6.4,0-12.1,4.2-13.9,10.4L184.3,791.9c-2.7,9.1,4.1,18.3,13.7,18.3h122.7   c6.4,0,12.1-4.2,13.9-10.4l152.3-511.7C489.6,279,482.8,269.9,473.2,269.9z"
+      ></path>
+      <g>
+        <path
+          class="st2"
+          d="M834.9,459.2H712.1c-9.5,0-16.3-9-13.7-18.1l46.9-160.7c1.8-6.2,7.5-10.5,14-10.5H882c9.5,0,16.3,9,13.7,18.1    l-46.9,160.7C847,454.9,841.3,459.2,834.9,459.2z"
+        ></path>
+        <path
+          class="st2"
+          d="M593,791.8l86-283.9c1.8-6.1,7.5-10.3,13.9-10.3h122.6c9.6,0,16.4,9.1,13.6,18.3l-86,283.9    c-1.8,6.1-7.5,10.3-13.9,10.3H606.7C597.1,810.1,590.3,801,593,791.8z"
+        ></path>
+      </g>
+      <g>
+        <g>
+          <path
+            class="st1"
+            d="M449.5,620.8h122.7c9.5,0,16.3,9,13.7,18.1L539,799.7c-1.8,6.2-7.5,10.5-14,10.5H402.3     c-9.5,0-16.3-9-13.7-18.1l46.9-160.7C437.3,625.1,443,620.8,449.5,620.8z"
+          ></path>
+          <path
+            class="st1"
+            d="M691.3,288.2l-86,283.9c-1.8,6.1-7.5,10.3-13.9,10.3H468.8c-9.6,0-16.4-9.1-13.6-18.3l86-283.9     c1.8-6.1,7.5-10.3,13.9-10.3h122.6C687.2,269.9,694.1,279,691.3,288.2z"
+          ></path>
+        </g>
+      </g>
+    </g>
   </svg>
+
   <h1><a href="/">Johnny•Decimal</a></h1>
 </header>
 
 <style>
   header {
     display: grid;
-    grid-template-columns: 50px 1fr 50px;
+    grid-template-columns: 60px 1fr 60px;
     justify-content: center;
     max-width: var(--site-width);
-    margin: 1.5rem auto 1.5rem auto;
+    margin: 1rem auto;
 
     color: var(--jd-bg-colour);
     font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
       "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
       "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-  }
-
-  svg {
-    border: 1px solid black;
-    stroke-width: 6px;
-    stroke: red;
-    stroke-linejoin: round;
-    stroke-linecap: round;
   }
 
   .r1 {
@@ -49,7 +87,7 @@ import { Image } from "@astrojs/image/components";
     stroke: rgb(234, 51, 82);
   }
 
-  header > img {
+  header > svg {
     align-self: center;
     justify-self: start;
     margin: 0 0 0 1rem;
@@ -63,5 +101,8 @@ import { Image } from "@astrojs/image/components";
 
   /* Tablet landscape and up */
   @media (min-width: 900px) {
+    header > svg {
+      margin: 0 0 0 0.25rem;
+    }
   }
 </style>
