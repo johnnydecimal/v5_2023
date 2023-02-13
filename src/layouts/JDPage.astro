@@ -195,7 +195,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
   }
 
   .jdcontent h3 {
-    font-size: 1.5rem;
+    font-size: 2.8rem;
   }
 
   .jdcontent p {
@@ -243,24 +243,22 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
     color: var(--offwhite);
   }
 
-  .jdcontent blockquote {
-    background-color: var(--jd-offwhitered);
-    border: 1px dotted var(--jd-bg-colour);
-    border-left: 5px solid var(--jd-bg-colour);
-    margin: 2rem 0;
-    padding-left: 1.5rem;
-    padding-right: 1rem;
+  .jdcontent blockquote > p {
     font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
       "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
       "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-    font-size: 0.9rem;
+    font-size: 1.6rem;
     font-style: italic;
-    /* line-height: 1.5rem; */
-    text-indent: -1.7ch;
+
+    background-color: var(--jd-offwhitered);
+    border: 1px dotted var(--jd-bg-colour);
+    border-left: 5px solid var(--jd-bg-colour);
+
+    margin: 2rem 0;
+    padding: 1rem;
   }
 
-  .jdcontent blockquote em {
-    /* text-decoration: underline; */
+  .jdcontent blockquote > p > em {
     font-style: normal;
   }
 
@@ -269,7 +267,6 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
       "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
       "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
   }
-
   .jdcontent blockquote sup {
     font-style: normal;
   }
