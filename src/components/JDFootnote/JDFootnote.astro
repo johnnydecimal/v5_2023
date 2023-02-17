@@ -1,0 +1,38 @@
+---
+interface Props {
+  number: string;
+  text: string;
+}
+
+const { number, text } = Astro.props;
+---
+
+<blockquote>
+  <sup>{number}</sup>&nbsp;<span>{text}</span>
+</blockquote>
+
+<style>
+  blockquote {
+    font-family: var(--monospace);
+    margin: 2rem -1.5rem;
+    border: 1px dotted var(--jd-bg-colour);
+    border-left: 5px solid var(--jd-bg-colour);
+    padding: 1rem;
+    font-style: italic;
+    text-indent: -2ch;
+    padding-left: 3ch;
+    font-size: 1.4rem;
+    line-height: 1.6;
+
+    /* prettier-ignore */
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.024),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    0 12.5px 10px rgba(0, 0, 0, 0.04),
+    0 18.3px 14.9px rgba(0, 0, 0, 0.06)
+  }
+
+  sup {
+    font-style: normal;
+  }
+</style>
