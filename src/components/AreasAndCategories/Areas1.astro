@@ -1,0 +1,51 @@
+<div class="container">
+  <pre
+    class="jd">{`23.24    31.70
+22.39    13.04
+31.71    21.02
+22.38    13.03
+23.21    23.22
+32.56    12.34
+12.35    21.01
+32.55    23.23`}</pre>
+  <div class="text">
+    Here are a bunch of random<br />numbers from a theoretical system.
+  </div>
+</div>
+
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    background-color: var(--jd-offwhitered);
+  }
+
+  .jd {
+    border: 2px solid var(--jd-bg-colour);
+    padding: 1.5rem 2rem;
+    font-family: var(--monospace);
+    color: var(--jd-bg-colour);
+    line-height: 1.6;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.024),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.04),
+      0 18.3px 14.9px rgba(0, 0, 0, 0.06), 0 0 3px 3px rgb(255, 240, 240);
+  }
+
+  .text {
+    padding: 1.5rem 2rem;
+    font-size: 1.8rem;
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
+    }
+    .text {
+      display: none;
+    }
+  }
+</style>
