@@ -61,7 +61,13 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
           <div>ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</div><div>
             {numberAcidType.jdAcidType === "id" ? number : "-"}
           </div>
-          <div>Title&nbsp;&nbsp;&nbsp;&nbsp;:</div><div>{title}</div>
+          <div style="color: var(--jd-highlight-colour); font-weight: bold;">
+            Title&nbsp;&nbsp;&nbsp;&nbsp;:
+          </div><div
+            style="color: var(--jd-highlight-colour); font-weight: bold;"
+          >
+            {title}
+          </div>
         </div>
       </div>
       <div class="locationbox-brackets locationbox-brackets-bottom">
