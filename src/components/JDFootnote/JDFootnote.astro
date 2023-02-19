@@ -8,7 +8,7 @@ const { number, text } = Astro.props;
 ---
 
 <blockquote>
-  <sup>{number}</sup>&nbsp;<span>{text}</span>
+  <sup>{number}</sup>&nbsp;<span set:html={text} />
 </blockquote>
 
 <style>

@@ -20,15 +20,6 @@
 <style lang="scss">
   @use "/src/styles/johnny" as *;
 
-  // @include troubleshooting;
-
-  img.margin,
-  p.margin {
-    @include for-tablet-portrait-up {
-      margin: 0;
-    }
-  }
-
   .grid {
     display: grid;
     grid-auto-flow: row;
@@ -37,6 +28,16 @@
     @include for-tablet-portrait-up {
       grid-auto-flow: column;
       grid-template-columns: 1fr auto;
+    }
+  }
+
+  p.margin {
+    margin: 0;
+  }
+
+  img.margin {
+    @include for-tablet-portrait-up {
+      margin: 0;
     }
   }
 

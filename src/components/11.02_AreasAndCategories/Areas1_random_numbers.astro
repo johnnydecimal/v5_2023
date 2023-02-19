@@ -26,30 +26,28 @@ import "../../styles/johnny.scss";
     display: block;
     width: fit-content;
     margin: 0 auto 4rem auto;
+
+    @include for-tablet-portrait-up {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      margin: 0 0 4rem 0;
+    }
   }
 
   .text {
     display: none;
-  }
-
-  p.margin {
     @include for-tablet-portrait-up {
-      margin-top: 0;
-    }
-  }
-
-  @include for-tablet-portrait-up {
-    .grid {
-      display: grid;
-      grid-template-columns: auto 1fr;
-    }
-
-    .text {
       display: block;
       font-size: 1.6rem;
       font-style: italic;
       line-height: 1.8;
       padding: 1.5rem 2rem;
+    }
+  }
+
+  p.margin {
+    @include for-tablet-portrait-up {
+      margin-top: 0;
     }
   }
 </style>

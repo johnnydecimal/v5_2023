@@ -1,0 +1,86 @@
+---
+---
+
+<div class="jd-box grid">
+  <div class="header">Folder</div>
+  <div class="header">This is a...</div>
+
+  <div><span class="area">Finance</span></div>
+  <div>AREA</div>
+
+  <pre>  <span class="category">Tax returns</span></pre>
+  <div>CATEGORY</div>
+  <pre>  <span class="category">Payroll</span></pre>
+  <div>CATEGORY</div>
+
+  <pre>    Jan '23 payroll</pre>
+  <div>UNIQUE THING</div>
+  <pre>    Feb '23 payroll</pre>
+  <div>UNIQUE THING</div>
+
+  <pre>  <span class="category">Bookkeeping</span></pre>
+  <div>CATEGORY</div>
+
+  <pre>&nbsp;</pre>
+  <pre>&nbsp;</pre>
+
+  <div><span class="area">Administration</span></div>
+  <div>AREA</div>
+
+  <pre>  <span class="category">Company registration</span></pre>
+  <div>CATEGORY</div>
+  <pre>  <span class="category">Contracts</span></pre>
+  <div>CATEGORY</div>
+
+  <pre>    Cleaning contract</pre>
+  <div>UNIQUE THING</div>
+  <pre>    Office lease</pre>
+  <div>UNIQUE THING</div>
+
+  <pre>  <span class="category">Staffing</span></pre>
+  <div>CATEGORY</div>
+
+  <pre>&nbsp;</pre>
+  <pre>&nbsp;</pre>
+
+  <div><span class="area">Marketing</span></div>
+  <div>AREA</div>
+
+  <pre>  <span>...and so on</span></pre>
+  <div></div>
+</div>
+
+<style lang="scss">
+  @use "/src/styles/johnny" as *;
+
+  .jd-box {
+    margin: 0 auto 4rem auto;
+    padding: 1.5rem 1rem;
+    @include for-tablet-portrait-up {
+      margin: 0 0 4rem 0;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 26ch 12ch;
+    font-size: 1.2rem;
+    @include for-tablet-portrait-up {
+      font-size: 1.6rem;
+    }
+  }
+
+  .header {
+    font-weight: bold;
+    border-bottom: 2px solid var(--jd-bg-colour);
+    margin-bottom: 1rem;
+  }
+
+  .area {
+    border-bottom: 1px solid var(--jd-bg-colour);
+  }
+
+  .category {
+    border-bottom: 1px dotted var(--jd-bg-colour);
+  }
+</style>
