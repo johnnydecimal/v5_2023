@@ -13,7 +13,9 @@ import "../../styles/johnny.scss";
 12.35    21.01
 32.55    23.23`}</pre>
   <div class="text">
-    Here are a bunch of random<br />numbers from a theoretical system.
+    <p class="margin">
+      Here are a bunch of random<br />numbers from a theoretical system.
+    </p>
   </div>
 </div>
 
@@ -30,6 +32,12 @@ import "../../styles/johnny.scss";
     display: none;
   }
 
+  p.margin {
+    @include for-tablet-portrait-up {
+      margin-top: 0;
+    }
+  }
+
   @include for-tablet-portrait-up {
     .grid {
       display: grid;
@@ -37,10 +45,11 @@ import "../../styles/johnny.scss";
     }
 
     .text {
-      padding: 1.5rem 2rem;
+      display: block;
       font-size: 1.6rem;
-      line-height: 1.8;
       font-style: italic;
+      line-height: 1.8;
+      padding: 1.5rem 2rem;
     }
   }
 </style>
