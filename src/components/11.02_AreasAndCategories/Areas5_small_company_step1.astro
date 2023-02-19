@@ -28,7 +28,8 @@
     <div><span class="area">Administration</span></div>
     <div>AREA</div>
 
-    <pre>  <span class="category">Company registration</span></pre>
+    <!-- &nbsp; to ensure 1ch padding at the right on tiny screens -->
+    <pre>  <span class="category">Company registration</span>&nbsp;</pre>
     <div>CATEGORY</div>
     <pre>  <span class="category">Contracts</span></pre>
     <div>CATEGORY</div>
@@ -71,7 +72,7 @@
 
   .grid {
     display: grid;
-    grid-template-columns: 26ch 12ch;
+    grid-template-columns: auto auto;
     font-size: 1.2rem;
     @include for-tablet-portrait-up {
       font-size: 1.6rem;

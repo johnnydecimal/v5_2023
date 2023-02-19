@@ -33,7 +33,8 @@
     <pre>   <span class="category">22 Contracts</span></pre>
     <div>CATEGORY</div>
 
-    <pre>      22.01 Cleaning contract</pre>
+    <!-- &nbsp; to ensure 1ch padding at the right on tiny screens -->
+    <pre>      22.01 Cleaning contract&nbsp;</pre>
     <div>UNIQUE THING</div>
     <pre>      22.02 Office lease</pre>
     <div>UNIQUE THING</div>
@@ -59,8 +60,6 @@
     margin: 0 auto 4rem auto;
     padding: 1.5rem 1rem;
     font-size: 1.2rem;
-    width: 100%;
-    overflow-x: scroll;
 
     @include for-tablet-portrait-up {
       font-size: 1.6rem;
@@ -72,7 +71,8 @@
 
   .grid {
     display: grid;
-    grid-template-columns: 30ch 12ch;
+    // grid-template-columns: 30ch 12ch;
+    grid-template-columns: auto auto;
     @include for-tablet-portrait-up {
       grid-template-columns: 31ch 12ch;
     }
