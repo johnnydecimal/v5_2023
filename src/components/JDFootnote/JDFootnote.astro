@@ -7,32 +7,42 @@ interface Props {
 const { number, text } = Astro.props;
 ---
 
-<blockquote>
-  <sup>{number}</sup>&nbsp;<span set:html={text} />
-</blockquote>
+<div class="footnote">
+  <div><sup>{number}</sup></div>
+  <div class="text"><span set:html={text} /></div>
+</div>
 
-<style>
-  blockquote {
+<style lang="scss">
+  @use "/src/styles/johnny" as *;
+
+  .footnote {
+    display: grid;
+    grid-template-columns: 1ch 1fr;
+    gap: 1ch;
+
+    padding: 1ch;
+
     font-family: var(--monospace);
-    margin: 2rem -1.5rem;
     border: 1px dotted var(--jd-bg-colour);
     border-left: 5px solid var(--jd-bg-colour);
-    padding: 1rem;
-    font-style: italic;
-    text-indent: -2ch;
-    padding-left: 3ch;
-    font-size: 1.4rem;
-    line-height: 1.6;
 
     /* prettier-ignore */
     box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.024),
     0 6.7px 5.3px rgba(0, 0, 0, 0.028),
     0 12.5px 10px rgba(0, 0, 0, 0.04),
-    0 18.3px 14.9px rgba(0, 0, 0, 0.06)
+    0 18.3px 14.9px rgba(0, 0, 0, 0.06);
+
+    @include for-tablet-portrait-up {
+      margin: 2rem -1.2rem 4rem -1.2rem;
+    }
   }
 
   sup {
     font-style: normal;
+  }
+
+  .text {
+    font-style: italic;
   }
 </style>

@@ -79,30 +79,9 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
       </div>
     </div>
 
-    <!--
-    <div class="jd-brackets jd-brackets-top">
-      <div>┌</div>
-      <div class="jd-brackets-horizontal-line">
-        ─ Content
-        ─────────────────────────────────────────────────────────────────────────────────────────────
-      </div>
-      <div>┐</div>
-    </div>
-    -->
-
     <div class="jdcontent">
       <slot />
     </div>
-
-    <!--
-    <div class="jd-brackets jd-brackets-bottom">
-      <div>└</div>
-      <div class="jd-brackets-horizontal-line">
-        ─────────────────────────────────────────────────────────────────────────────────────────────
-      </div>
-      <div>┘</div>
-    </div>
-     -->
   </div>
 </Layout>
 
@@ -167,6 +146,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
 
 <style is:global>
   /* Global style for all the stuff in the <slot /> */
+
   .jdcontent {
     margin: 0 2ch;
     font-family: "IBM Plex Sans";

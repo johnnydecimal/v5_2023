@@ -6,48 +6,48 @@
     <div class="header">Folder</div>
     <div class="header">This is a...</div>
 
-    <div><span class="area">Finance</span></div>
+    <div><span class="area">10-19 Finance</span></div>
     <div>AREA</div>
 
-    <pre>  <span class="category">Tax returns</span></pre>
+    <pre>   <span class="category">11 Tax returns</span></pre>
     <div>CATEGORY</div>
-    <pre>  <span class="category">Payroll</span></pre>
+    <pre>   <span class="category">12 Payroll</span></pre>
     <div>CATEGORY</div>
 
-    <pre>    Jan '23 payroll</pre>
+    <pre>      12.01 Jan '23 payroll</pre>
     <div>UNIQUE THING</div>
-    <pre>    Feb '23 payroll</pre>
+    <pre>      12.02 Feb '23 payroll</pre>
     <div>UNIQUE THING</div>
 
-    <pre>  <span class="category">Bookkeeping</span></pre>
+    <pre>   <span class="category">13 Bookkeeping</span></pre>
     <div>CATEGORY</div>
 
     <pre>&nbsp;</pre>
     <pre>&nbsp;</pre>
 
-    <div><span class="area">Administration</span></div>
+    <div><span class="area">20-29 Administration</span></div>
     <div>AREA</div>
 
-    <pre>  <span class="category">Company registration</span></pre>
+    <pre>   <span class="category">21 Company registration</span></pre>
     <div>CATEGORY</div>
-    <pre>  <span class="category">Contracts</span></pre>
+    <pre>   <span class="category">22 Contracts</span></pre>
     <div>CATEGORY</div>
 
-    <pre>    Cleaning contract</pre>
+    <pre>      22.01 Cleaning contract</pre>
     <div>UNIQUE THING</div>
-    <pre>    Office lease</pre>
+    <pre>      22.02 Office lease</pre>
     <div>UNIQUE THING</div>
 
-    <pre>  <span class="category">Staffing</span></pre>
+    <pre>   <span class="category">23 Staffing</span></pre>
     <div>CATEGORY</div>
 
     <pre>&nbsp;</pre>
     <pre>&nbsp;</pre>
 
-    <div><span class="area">Marketing</span></div>
+    <div><span class="area">30-39 Marketing</span></div>
     <div>AREA</div>
 
-    <pre>  <span>...and so on</span></pre>
+    <pre>   <span>...and so on</span></pre>
     <div></div>
   </div>
 </div>
@@ -58,23 +58,23 @@
   .jd-box {
     margin: 0 auto 4rem auto;
     padding: 1.5rem 1rem;
-
-    max-width: 100%;
+    font-size: 1.2rem;
+    width: 100%;
     overflow-x: scroll;
 
     @include for-tablet-portrait-up {
+      font-size: 1.6rem;
       margin: 0 0 4rem 0;
-      width: fit-content;
+      width: unset;
       overflow-x: unset;
     }
   }
 
   .grid {
     display: grid;
-    grid-template-columns: 26ch 12ch;
-    font-size: 1.2rem;
+    grid-template-columns: 30ch 12ch;
     @include for-tablet-portrait-up {
-      font-size: 1.6rem;
+      grid-template-columns: 31ch 12ch;
     }
   }
 
@@ -86,6 +86,7 @@
 
   .area {
     border-bottom: 1px solid var(--jd-bg-colour);
+    font-weight: bold;
   }
 
   .category {
