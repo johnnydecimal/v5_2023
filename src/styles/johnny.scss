@@ -1,0 +1,56 @@
+// https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/
+@mixin for-phone-only {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}
+
+.jd-box {
+  /* The font-size needs to be smaller in some cases (where the box ends
+     up being wide), but they're rare so handle them by exception.
+    
+     Don't center this by default. Do that in the component if you want it.
+  */
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.024),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.04),
+    0 18.3px 14.9px rgba(0, 0, 0, 0.06), 0 0 3px 3px rgb(255, 240, 240);
+  border: 2px solid var(--jd-bg-colour);
+  color: var(--jd-bg-colour);
+  font-family: var(--monospace);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  padding: 1.5rem 2rem;
+  width: fit-content;
+}
+
+.border-bottom-dotted {
+  border-bottom: 1px dotted var(--jd-bg-colour);
+}
+
+.border-bottom-solid {
+  border-bottom: 1px solid var(--jd-bg-colour);
+}
+
+.bold {
+  font-weight: bold;
+}

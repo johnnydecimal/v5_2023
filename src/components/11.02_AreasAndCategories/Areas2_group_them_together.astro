@@ -1,5 +1,4 @@
 ---
-import "../../styles/johnny.css";
 ---
 
 <div class="jd-box">
@@ -22,3 +21,19 @@ import "../../styles/johnny.css";
   <pre><span class="border-bottom-dotted">The 32 numbers</span></pre>
   <pre>    23.23  23.24</pre>
 </div>
+
+<style lang="scss">
+  @use "/src/styles/johnny" as *;
+
+  // Needs to be smaller to fit on small screens.
+  .jd-box {
+    font-size: 1.2rem;
+    margin: 0 auto 4rem auto;
+    padding: 1.5rem 1rem;
+
+    @include for-tablet-portrait-up {
+      font-size: 1.6rem;
+      padding: 1.5rem 2rem;
+    }
+  }
+</style>

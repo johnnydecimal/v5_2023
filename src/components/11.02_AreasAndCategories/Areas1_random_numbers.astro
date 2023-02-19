@@ -1,5 +1,5 @@
 ---
-import "../../styles/johnny.css";
+import "../../styles/johnny.scss";
 ---
 
 <div class="grid">
@@ -17,27 +17,30 @@ import "../../styles/johnny.css";
   </div>
 </div>
 
-<style>
+<style lang="scss">
+  @use "/src/styles/johnny" as *;
+
   .grid {
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: block;
+    width: fit-content;
+    margin: 0 auto 4rem auto;
   }
 
   .text {
-    padding: 1.5rem 2rem;
-    font-size: 1.6rem;
-    line-height: 1.8;
-    font-style: italic;
+    display: none;
   }
 
-  @media (max-width: 640px) {
+  @include for-tablet-portrait-up {
     .grid {
-      display: block;
-      width: fit-content;
-      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr;
     }
+
     .text {
-      display: none;
+      padding: 1.5rem 2rem;
+      font-size: 1.6rem;
+      line-height: 1.8;
+      font-style: italic;
     }
   }
 </style>

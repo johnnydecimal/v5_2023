@@ -1,5 +1,4 @@
 ---
-import "../../styles/johnny.css";
 ---
 
 <div class="jd-box">
@@ -28,3 +27,11 @@ import "../../styles/johnny.css";
   <pre>   <span class="border-bottom-dotted">The 32 numbers</span></pre>
   <pre>       32.55  32.56</pre>
 </div>
+
+<style lang="scss">
+  @use "/src/styles/johnny" as *;
+
+  .jd-box {
+    margin: 0 auto 4rem auto;
+  }
+</style>
