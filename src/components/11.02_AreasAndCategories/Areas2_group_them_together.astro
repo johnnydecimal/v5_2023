@@ -27,20 +27,13 @@
 <style lang="scss">
   @use "/src/styles/johnny" as *;
 
-  .overflow {
-    max-width: 100%;
-    overflow-x: scroll;
-  }
-
-  // Needs to be smaller to fit on small screens.
   .jd-box {
     font-size: 1.2rem;
-    margin: 0 auto 4rem auto;
+    margin: 0 0 4rem 0;
     padding: 1.5rem 1rem;
 
     @include for-tablet-portrait-up {
       font-size: 1.6rem;
-      margin: 0 0 4rem 0;
       padding: 1.5rem 2rem;
     }
   }

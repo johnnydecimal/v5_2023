@@ -20,6 +20,9 @@ import Areas3_do_it_again from "@components/11.02_AreasAndCategories/Areas3_do_i
 import Areas4_interesting from "@components/11.02_AreasAndCategories/Areas4_interesting.astro";
 import Areas5_small_company_step1 from "@components/11.02_AreasAndCategories/Areas5_small_company_step1.astro";
 import Areas6_small_company_step2 from "@components/11.02_AreasAndCategories/Areas6_small_company_step2.astro";
+import Areas7_alphabetical_folders from "@components/11.02_AreasAndCategories/Areas7_alphabetical_folders.astro";
+import Areas8_new_exports_folder from "@components/11.02_AreasAndCategories/Areas8_new_exports_folder.astro";
+import Areas9_this_is_better from "@components/11.02_AreasAndCategories/Areas9_this_is_better.astro";
 import JDFootnote from "@components/JDFootnote/JDFootnote.astro";
 
 Let's look again at the format of our numbers. It's crucial that you understand _why_ they look like they do.
@@ -76,7 +79,11 @@ Let's put numbers in front of the system we just built above.
 
 What does this achieve? For one, it's removed our dependence on the alphabet. The alphabet is a fine thing but it's a terrible way to sort your files because things move around. Today we have:
 
+<Areas7_alphabetical_folders />
+
 and tomorrow the exports department come along and do this:
+
+<Areas8_new_exports_folder />
 
 …and `Finance` isn't the second thing in the list any more. This sounds like a small thing, but <strong>it makes it impossible for your brain to learn where something will be.</strong>
 
@@ -84,11 +91,15 @@ and tomorrow the exports department come along and do this:
 
 This is better:
 
+<Areas9_this_is_better />
+
 Because our folders all start with a number, they'll sort in very predictable way. This concept applies throughout the system.
 
-## 20, 60, 30, 90, whatever
+## 20, 60, 30, 90?
 
-At this point you might be wondering, well, why is `Finance` all of the numbers from `20-29` and why is `Exports` `40-49`? What do those numbers <em>mean</em>? And the answer is that they mean nothing. They're just numbers. 40 isn't better or worse than 20.
+At this point you might be wondering, well, why is `Finance` all of the numbers from `20-29` and why is `Exports` `40-49`? What do those numbers <em>mean</em>?
+
+And the answer is that they mean nothing. They're just numbers. `40` isn't better or worse than `20`.
 
 ---
 

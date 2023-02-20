@@ -57,26 +57,18 @@
   @use "/src/styles/johnny" as *;
 
   .jd-box {
-    margin: 0 auto 4rem auto;
+    font-size: 1.1rem;
     padding: 1.5rem 1rem;
-
-    max-width: 100%;
-    overflow-x: scroll;
-
+    margin: 0 0 4rem 0;
     @include for-tablet-portrait-up {
-      margin: 0 0 4rem 0;
-      width: fit-content;
-      overflow-x: unset;
+      font-size: 1.6rem;
+      padding: 1.5rem 2rem;
     }
   }
 
   .grid {
     display: grid;
     grid-template-columns: auto auto;
-    font-size: 1.2rem;
-    @include for-tablet-portrait-up {
-      font-size: 1.6rem;
-    }
   }
 
   .header {

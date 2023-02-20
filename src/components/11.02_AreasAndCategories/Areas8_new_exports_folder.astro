@@ -1,0 +1,30 @@
+---
+---
+
+<div class="jd-box">
+  <pre>Administration
+Exports <span class="extra-space">      </span><span class="bold">  &#x25C0;&#x2500; new folder</span>
+Finance
+Marketing</pre>
+</div>
+
+<style lang="scss">
+  @use "/src/styles/johnny" as *;
+
+  .jd-box {
+    margin: 0 0 4rem 0;
+    padding: 1.5rem 1rem;
+
+    @include for-tablet-portrait-up {
+      margin: 0 0 4rem 0;
+      padding: 1.5rem 2rem;
+    }
+  }
+
+  .extra-space {
+    display: none;
+    @include for-tablet-portrait-up {
+      display: inline;
+    }
+  }
+</style>

@@ -59,22 +59,19 @@
   .jd-box {
     margin: 0 auto 4rem auto;
     padding: 1.5rem 1rem;
-    font-size: 1.2rem;
 
     @include for-tablet-portrait-up {
-      font-size: 1.6rem;
       margin: 0 0 4rem 0;
-      width: unset;
-      overflow-x: unset;
     }
   }
 
   .grid {
     display: grid;
-    // grid-template-columns: 30ch 12ch;
     grid-template-columns: auto auto;
+    font-size: 1.1rem;
+    white-space: pre-wrap;
     @include for-tablet-portrait-up {
-      grid-template-columns: 31ch 12ch;
+      font-size: 1.6rem;
     }
   }
 
