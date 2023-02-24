@@ -1,5 +1,6 @@
 ---
 import Layout from "./Layout.astro";
+import BackNext from "@components/BackNext/BackNext.astro";
 import { jdGetAcidTypeFromString } from "@johnnydecimal/jdgetacidtypefromstring";
 
 import "@fontsource/ibm-plex-sans/400.css";
@@ -82,6 +83,8 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
     <div class="jdcontent">
       <slot />
     </div>
+
+    <BackNext backTitle="back" backUrl="#" nextTitle="next" nextUrl="#" />
   </div>
 </Layout>
 
@@ -148,7 +151,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
   /* Global style for all the stuff in the <slot /> */
 
   .jdcontent {
-    margin: 0 2ch;
+    margin: 0 2rem;
     font-family: "IBM Plex Sans";
     font-family: "Fira Sans";
     font-family: "IBM Plex Serif";

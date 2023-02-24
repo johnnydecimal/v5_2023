@@ -68,11 +68,13 @@
 
 /*
   3. Allow percentage-based heights in the application
+
+  JN: nah turning these off, they cause weirdness with the background tint.
+  html,
+  body {
+    height: 100%;
+  }
 */
-html,
-body {
-  height: 100%;
-}
 
 /*
   Typographic tweaks!
