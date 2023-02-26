@@ -1,30 +1,52 @@
 ---
-interface Props {
-  backTitle: string;
-  backUrl: string;
-  nextTitle: string;
-  nextUrl: string;
+import { pages } from "./pages.js";
+
+const pathname = Astro.url.pathname;
+
+const pageIndex = pages.findIndex((page) => page.pathname === pathname);
+
+let backPath, backTitle, nextPath, nextTitle;
+
+if (pageIndex > 1) {
+  backPath = pages[pageIndex - 1].pathname;
+  backTitle = pages[pageIndex - 1].title;
 }
 
-const { backTitle, backUrl, nextTitle, nextUrl } = Astro.props;
+if (pageIndex < pages.length - 1) {
+  nextPath = pages[pageIndex + 1].pathname;
+  nextTitle = pages[pageIndex + 1].title;
+}
 ---
 
 <div class="back-next-grid">
-  <div class="back"><a href={backUrl}>&#x25C1;&#x2500; {backTitle}</a></div>
-  <div class="next"><a href={nextUrl}>{nextTitle} &#x2500;&#x25B7;</a></div>
-</div>
+  <div class="back">
+    {backPath ? <a href={backPath}>&#x25C1;&#x2500; {backTitle}</a> : <div />}
+  </div>
+  <div class="next">
+    {nextPath ? <a href={nextPath}>{nextTitle} &#x2500;&#x25B7;</a> : <div />}
+  </div>
 
-<style>
-  .back-next-grid {
-    display: grid;
-    grid-auto-flow: row;
+  <style lang="scss">
+    @use "/src/styles/johnny" as *;
 
-    font-family: var(--monospace);
-    font-size: 1.6rem;
-    margin: 0 2rem;
+    .back-next-grid {
+      display: grid;
+      grid-auto-flow: row;
 
-    @include for-tablet-landscape-up {
-      grid-auto-flow: column;
+      font-family: $monospace;
+
+      margin: 0 $space-large;
+
+      @include for-tablet-landscape-up {
+        grid-auto-flow: column;
+      }
     }
-  }
-</style>
+
+    .back {
+    }
+
+    .next {
+      justify-self: end;
+    }
+  </style>
+</div>
