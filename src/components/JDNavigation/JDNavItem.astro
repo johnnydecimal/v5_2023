@@ -58,6 +58,8 @@ const creatingWyabForThisPage = new URL(Astro.request.url).pathname.split("/");
  *
  * The last element isn't blank when we're running in dev mode, but is when
  * we do a build. Detect if that's the case and remove it.
+ *
+ * Update: config setting `trailingSlash: "always"` changes/fixes this.
  */
 creatingWyabForThisPage.shift();
 if (creatingWyabForThisPage[creatingWyabForThisPage.length - 1] === "") {

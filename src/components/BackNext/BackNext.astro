@@ -6,6 +6,17 @@ import { pages } from "./pages.js";
 const pathname = Astro.url.pathname;
 console.log("🔴 pathname:", pathname);
 
+/**
+ * Hack because Netlify builds with a trailing slash and locally does not. Yet.
+ * You need to fix that to align them.
+ *
+ * TODO: that.
+ *
+ * Until then, if import.meta.env.PROD then we're in Netlify, otherwise not.
+ */
+
+console.log("🥶 PROD?", import.meta.env.PROD);
+
 const pageIndex = pages.findIndex((page) => page.pathname === pathname);
 
 let backPath, backTitle, nextPath, nextTitle;
