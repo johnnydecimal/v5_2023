@@ -1,18 +1,15 @@
 ---
 import Layout from "./Layout.astro";
-import BackNext from "@components/BackNext/BackNext.astro";
-import { jdGetAcidTypeFromString } from "@johnnydecimal/jdgetacidtypefromstring";
+import BracketsHorizontalTop from "@components/BracketsHorizontal/BracketsHorizontalTop.astro";
+import BracketsHorizontalBottom from "@components/BracketsHorizontal/BracketsHorizontalBottom.astro";
 
-import "@fontsource/ibm-plex-sans/400.css";
-import "@fontsource/ibm-plex-sans/500.css";
-import "@fontsource/ibm-plex-sans/600.css";
 import "@fontsource/ibm-plex-serif/400.css";
 import "@fontsource/ibm-plex-serif/600.css";
 
 import "@fontsource/fira-sans/400.css";
 import "@fontsource/fira-sans/700.css";
-import "@fontsource/playfair-display/600.css";
 
+import { jdGetAcidTypeFromString } from "@johnnydecimal/jdgetacidtypefromstring";
 export interface Props {
   number: string;
   title: string;
@@ -47,14 +44,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
 <Layout title={`${number} ${title}`}>
   <div class="layout-container">
     <div class="locationbox-container">
-      <div class="locationbox-brackets locationbox-brackets-top">
-        <div>┌</div>
-        <div class="locationbox-brackets-horizontal-line">
-          ─ Location
-          ───────────────────────────────────────────────────────────────────────────────────────────
-        </div>
-        <div>┐</div>
-      </div>
+      <BracketsHorizontalTop label="Location" />
       <div class="locationbox-acid-details">
         <div class="locationbox-acid-details-grid">
           <div>Area&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</div><div>{area}</div>
@@ -71,20 +61,12 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
           </div>
         </div>
       </div>
-      <div class="locationbox-brackets locationbox-brackets-bottom">
-        <div>└</div>
-        <div class="locationbox-brackets-horizontal-line">
-          ────────────────────────────────────────────────────────────────────────────────────────
-        </div>
-        <div>┘</div>
-      </div>
+      <BracketsHorizontalBottom />
     </div>
 
     <div class="jdcontent">
       <slot />
     </div>
-
-    <BackNext backTitle="back" backUrl="#" nextTitle="next" nextUrl="#" />
   </div>
 </Layout>
 
