@@ -25,11 +25,23 @@
   }
 }
 
+@mixin for-print {
+  @media print {
+    @content;
+  }
+}
+
 @mixin troubleshooting {
   * {
     outline: 1px dashed red;
   }
 }
+
+$space-small: 1rem;
+$space-medium: 1.6rem;
+$space-large: 2.56rem;
+
+// Plain old CSS that will inherit everywhere.
 
 .jd-box {
   /* The font-size needs to be smaller in some cases (where the box ends

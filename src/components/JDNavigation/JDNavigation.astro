@@ -9,11 +9,12 @@ const pages = await Astro.glob("../../pages/**/*.{md,mdx}");
 pages.sort(jdSort);
 ---
 
-<nav class="jdnavigation">
+<nav>
   <div class="index-brackets index-brackets-top">
     <div>┌</div>
     <div class="index-brackets-horizontal-line">
-      ─ Index ─────────────────────────────────────────────────────────────────
+      ─ Index
+      ─────────────────────────────────────────────────────────────────────────────────
     </div>
     <div>┐</div>
   </div>
@@ -35,7 +36,7 @@ pages.sort(jdSort);
   <div class="index-brackets index-brackets-bottom">
     <div>└</div>
     <div class="index-brackets-horizontal-line">
-      ─────────────────────────────────────────────────────────────────────────
+      ───────────────────────────────────────────────────────────────────────────────────
     </div>
     <div>┘</div>
   </div>
@@ -43,19 +44,33 @@ pages.sort(jdSort);
 
 <style lang="scss">
   @use "/src/styles/johnny.scss" as *;
-  
+
+  nav {
+    grid-area: nav;
+
+    font-family: var(--monospace);
+
+    border-top: 1px dashed var(--jd-bg-colour);
+    padding: $space-medium $space-small;
+
+    @include for-tablet-landscape-up {
+      max-width: 40ch;
+
+      border-top: none;
+      padding: 0;
+    }
+
+    @include for-print {
+      display: none;
+    }
+
+    // vertical-align: top;
+  }
+
   ol {
     list-style-type: none;
     margin: 0;
     padding: 0;
-  }
-
-  .jdnavigation {
-    font-family: var(--monospace);
-    padding: 0rem; /* Wrap it in a div if you want to pad it */
-    max-width: 35ch;
-    margin: 0 auto;
-    vertical-align: top;
   }
 
   .index-brackets {
