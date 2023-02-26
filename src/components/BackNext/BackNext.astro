@@ -14,15 +14,13 @@ console.log("🔴 pathname:", pathname);
  *
  * Until then, if import.meta.env.PROD then we're in Netlify, otherwise not.
  */
-
-console.log("🥶 PROD?", import.meta.env.PROD);
-
 let pageIndex;
 if (import.meta.env.PROD) {
   pageIndex = pages.findIndex((page) => page.pathname + "/" === pathname);
 } else {
   pageIndex = pages.findIndex((page) => page.pathname === pathname);
 }
+// Hack ends.
 
 let backPath, backTitle, nextPath, nextTitle;
 
@@ -40,12 +38,37 @@ if (pageIndex < pages.length - 1) {
 <div class="BackNext">
   <BracketsHorizontalTop label="◁/▶" />
   <div class="back-next-grid">
-    <div class="back">
-      {backPath ? <a href={backPath}>&#x25C1; {backTitle}</a> : <div />}
-    </div>
-    <div class="next">
-      {nextPath ? <a href={nextPath}>{nextTitle} &#x25B6;</a> : <div />}
-    </div>
+    {
+      backPath ? (
+        <>
+          <div class="back-arrow">&#x25C1;</div>
+          <div class="back">
+            <a href={backPath}> {backTitle}</a>
+          </div>
+        </>
+      ) : (
+        <>
+          <div />
+          <div />
+        </>
+      )
+    }
+    <div class="spacer"></div>
+    {
+      nextPath ? (
+        <>
+          <div class="next">
+            <a href={nextPath}>{nextTitle}</a>
+          </div>
+          <div class="next-arrow">&#x25B6;</div>
+        </>
+      ) : (
+        <>
+          <div />
+          <div />
+        </>
+      )
+    }
   </div>
   <BracketsHorizontalBottom />
 </div>
@@ -61,29 +84,40 @@ if (pageIndex < pages.length - 1) {
   }
 
   .BackNext {
-    padding: 0 $space-small;
     margin: $space-medium auto;
+    padding: $space-medium $space-small;
+
+    @include for-tablet-landscape-up {
+      padding: 0;
+    }
   }
 
   .back-next-grid {
     display: grid;
     grid-auto-flow: column;
-    gap: 2ch;
+    grid-template-columns: 2ch 1fr 2ch 1fr 2ch;
 
     font-family: $monospace;
 
     margin: 0;
 
     @include for-tablet-landscape-up {
-      margin: 0 auto $space-large 0;
+      margin: 0 2ch;
     }
   }
 
-  .back {
+  .back,
+  .back-arrow {
     justify-self: start;
   }
 
-  .next {
+  .next,
+  .next-arrow {
     justify-self: end;
+    text-align: right;
+  }
+
+  .spacer {
+    text-align: center;
   }
 </style>
