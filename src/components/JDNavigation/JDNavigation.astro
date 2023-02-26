@@ -63,52 +63,26 @@ pages.sort(jdSort);
     @include for-print {
       display: none;
     }
-
-    // vertical-align: top;
   }
 
-  ol {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  .index-main {
+    margin: 0 auto;
+    padding: 0 2ch;
+    width: fit-content;
   }
 
   .index-brackets {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 1ch minmax(0, 1fr) 1ch;
-    text-align: center;
-    margin-bottom: 0.25rem;
     white-space: nowrap;
   }
-
   .index-brackets-horizontal-line {
     overflow: hidden;
   }
-
   .index-brackets-top {
-    margin-bottom: 1rem;
+    margin-bottom: $space-small;
   }
   .index-brackets-bottom {
-    margin-top: 1rem;
-  }
-
-  .index-main {
-    padding: 0 2ch;
-  }
-
-  /* Style for iPad-landscape+. */
-  /* https://getbootstrap.com/docs/5.0/layout/breakpoints/#max-width */
-  @media screen and (min-width: 991.98px) {
-    .jdnavigation {
-      flex-grow: 0; /* do not grow   - initial value: 0 */
-      flex-shrink: 0; /* do not shrink - initial value: 1 */
-      flex-basis: 35ch; /* width/height  - initial value: auto */
-    }
-
-    /* .toc {
-      display: none;
-      background-color: unset;
-    } */
+    margin-top: $space-small;
   }
 </style>

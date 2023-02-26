@@ -1,3 +1,12 @@
+// Variables
+$space-small: 1rem;
+$space-medium: 1.6rem;
+$space-large: 2.56rem;
+
+$monospace: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
+  "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+  "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+
 // https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/
 @mixin for-phone-only {
   @media (max-width: 599px) {
@@ -37,11 +46,11 @@
   }
 }
 
-$space-small: 1rem;
-$space-medium: 1.6rem;
-$space-large: 2.56rem;
-
 // Plain old CSS that will inherit everywhere.
+code,
+pre {
+  font-family: $monospace;
+}
 
 .jd-box {
   /* The font-size needs to be smaller in some cases (where the box ends

@@ -145,12 +145,8 @@ a {
   text-decoration: inherit;
 }
 
-/* Override modern-normalize */
-code,
-kbd,
-samp,
-pre {
-  font-family: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
-    Consolas, Liberation Mono, Courier New, monospace;
-  font-size: 1em;
+ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
