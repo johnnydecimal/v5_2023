@@ -88,22 +88,27 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
   </div>
 </Layout>
 
-<style>
+<style lang="scss">
+  @use "/src/styles/johnny" as *;
+
   pre {
     margin: 0;
   }
 
   .layout-container {
-    margin: 0 0.7rem;
     padding-bottom: 4rem;
   }
 
   .locationbox-container {
-    font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
-      "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-      "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+    font-family: $monospace;
     margin-bottom: 2rem;
+    padding: $space-medium $space-small;
+
+    @include for-tablet-landscape-up {
+      padding: 0;
+    }
   }
+
   .locationbox-brackets {
     display: grid;
     grid-template-columns: 1ch 1fr 1ch;
@@ -118,42 +123,21 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
   .locationbox-brackets-horizontal-line {
     overflow: hidden;
   }
+
   .locationbox-acid-details-grid {
     display: grid;
     grid-template-columns: 11ch 1fr;
     margin-left: 2ch;
   }
-
-  .jd-brackets {
-    font-family: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
-      "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-      "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 1ch 1fr 1ch;
-    white-space: nowrap;
-  }
-  .jd-brackets-top {
-    margin-bottom: 1rem;
-  }
-  .jd-brackets-bottom {
-    margin-top: 1rem;
-  }
-  .jd-brackets-horizontal-line {
-    overflow: hidden;
-  }
-
-  @media (min-width: 900px) {
-  }
 </style>
 
-<style is:global>
+<style lang="scss" is:global>
+  @use "/src/styles/johnny" as *;
+
   /* Global style for all the stuff in the <slot /> */
 
   .jdcontent {
-    margin: 0 2rem;
-    font-family: "IBM Plex Sans";
-    font-family: "Fira Sans";
+    margin: 0 $space-large;
     font-family: "IBM Plex Serif";
   }
 
