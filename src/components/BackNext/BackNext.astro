@@ -4,6 +4,7 @@ import BracketsHorizontalBottom from "@components/BracketsHorizontal/BracketsHor
 import { pages } from "./pages.js";
 
 const pathname = Astro.url.pathname;
+console.log("🔴 pathname:", pathname);
 
 const pageIndex = pages.findIndex((page) => page.pathname === pathname);
 
