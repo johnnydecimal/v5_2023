@@ -55,11 +55,12 @@ const { title } = Astro.props;
       grid-template-areas:
         "main"
         "nav";
-      max-width: var(--site-width);
+      max-width: $site-width;
       margin: 0 auto;
 
       @include for-tablet-landscape-up {
         grid-template-areas: "nav main";
+        gap: $space-large;
       }
     }
 
