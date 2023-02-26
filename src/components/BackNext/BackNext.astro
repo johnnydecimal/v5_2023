@@ -17,7 +17,12 @@ console.log("🔴 pathname:", pathname);
 
 console.log("🥶 PROD?", import.meta.env.PROD);
 
-const pageIndex = pages.findIndex((page) => page.pathname === pathname);
+let pageIndex;
+if (import.meta.env.PROD) {
+  pageIndex = pages.findIndex((page) => page.pathname + "/" === pathname);
+} else {
+  pageIndex = pages.findIndex((page) => page.pathname === pathname);
+}
 
 let backPath, backTitle, nextPath, nextTitle;
 
