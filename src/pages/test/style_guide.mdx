@@ -1,0 +1,43 @@
+---
+layout: ../../layouts/JDPage.astro
+
+# We need to fudge some values
+number: 09.00
+title: Style guide
+category: 09 Test
+area: 00-09 Test
+---
+
+# H1 header
+
+With some text after it.
+
+Headers have `font-family` at weight `600`. They have margin which is different depending whether they're `:first-child`.
+
+They have a custom `line-height` and of course the border in lieu of underlines. We like that big fat border.
+
+## H2 header
+
+These sentences are in `div.jdcontent p` which has some `margin` applied top/bottom to space it out, `font-size` and `line-height`.
+
+Note that `font-size` is `18`, the site default being `16`.
+
+### H3 header
+
+Words usually follow.
+
+---
+
+# First-level 0123456789
+
+Which was preceded by a horizontal break.
+
+---
+
+This text is in Markdown backticks: `backticks`. That renders in `div.jdcontent p code`, which is Astro default behaviour.
+
+We style that using `.jdcontent code` and that's where it gets the borders, colour, and a touch of `padding-inline`.
+
+### `div.jdcontent`
+
+Minimal styling. We give it some `margin` and set the `font-family`.

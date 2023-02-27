@@ -50,7 +50,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
           <div>Area&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</div><div>{area}</div>
           <div>Category :</div><div>{category ? category : "-"}</div>
           <div>ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</div><div>
-            {numberAcidType.jdAcidType === "id" ? number : "-"}
+            {numberAcidType.jdAcidType === "id" ? `${number} ${title}` : "-"}
           </div>
           <!--
           <div style="color: var(--jd-highlight-colour); font-weight: bold;">
@@ -74,6 +74,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
   <style lang="scss">
     @use "/src/styles/johnny" as *;
 
+    // Is this style used?
     pre {
       margin: 0;
     }
@@ -152,7 +153,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
     .jdcontent h2 {
       font-size: 3.2rem;
       color: var(--jd-bg-colour);
-      border-bottom: 2px solid var(--jd-bg-colour);
+      border-bottom: 3px solid var(--jd-bg-colour);
     }
 
     .jdcontent h3 {
