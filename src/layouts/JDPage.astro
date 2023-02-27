@@ -52,6 +52,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
           <div>ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</div><div>
             {numberAcidType.jdAcidType === "id" ? number : "-"}
           </div>
+          <!--
           <div style="color: var(--jd-highlight-colour); font-weight: bold;">
             Title&nbsp;&nbsp;&nbsp;&nbsp;:
           </div><div
@@ -59,6 +60,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
           >
             {title}
           </div>
+           -->
         </div>
       </div>
       <BracketsHorizontalBottom />
@@ -68,167 +70,176 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
       <slot />
     </div>
   </div>
-</Layout>
 
-<style lang="scss">
-  @use "/src/styles/johnny" as *;
+  <style lang="scss">
+    @use "/src/styles/johnny" as *;
 
-  pre {
-    margin: 0;
-  }
-
-  .layout-container {
-    padding-bottom: 4rem;
-  }
-
-  .locationbox-container {
-    font-family: $monospace;
-    padding: $space-medium $space-small;
-
-    @include for-tablet-landscape-up {
-      padding: 0;
+    pre {
+      margin: 0;
     }
-  }
 
-  .locationbox-brackets {
-    display: grid;
-    grid-template-columns: 1ch 1fr 1ch;
-    white-space: nowrap;
-  }
-  .locationbox-brackets-top {
-    margin-bottom: 1rem;
-  }
-  .locationbox-brackets-bottom {
-    margin-top: 1rem;
-  }
-  .locationbox-brackets-horizontal-line {
-    overflow: hidden;
-  }
+    .layout-container {
+      padding-bottom: 4rem;
+    }
 
-  .locationbox-acid-details-grid {
-    display: grid;
-    grid-template-columns: 11ch 1fr;
-    margin-left: 2ch;
-  }
-</style>
+    .locationbox-container {
+      font-family: $monospace;
+      padding: $space-medium $space-small;
 
-<style lang="scss" is:global>
-  @use "/src/styles/johnny" as *;
+      @include for-tablet-landscape-up {
+        padding: 0;
+      }
+    }
 
-  /* Global style for all the stuff in the <slot /> */
+    .locationbox-brackets {
+      display: grid;
+      grid-template-columns: 1ch 1fr 1ch;
+      white-space: nowrap;
+    }
+    .locationbox-brackets-top {
+      margin-bottom: 1rem;
+    }
+    .locationbox-brackets-bottom {
+      margin-top: 1rem;
+    }
+    .locationbox-brackets-horizontal-line {
+      overflow: hidden;
+    }
 
-  .jdcontent {
-    margin: 0 $space-large;
-    font-family: "IBM Plex Serif";
-  }
+    .locationbox-acid-details-grid {
+      display: grid;
+      grid-template-columns: 11ch 1fr;
+      margin-left: 2ch;
+    }
+  </style>
 
-  .jdcontent h1:first-child,
-  .jdcontent h2:first-child {
-    margin-top: $space-large;
-  }
+  <style lang="scss" is:global>
+    @use "/src/styles/johnny" as *;
 
-  .jdcontent h1,
-  .jdcontent h2,
-  .jdcontent h3 {
-    font-family: "IBM Plex Serif";
-    font-weight: 600;
+    /* Global style for all the stuff in the <slot /> */
 
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-  }
+    .jdcontent {
+      margin: 0 $space-medium;
+      font-family: "IBM Plex Serif";
+    }
 
-  .jdcontent h1 {
-    font-size: 3.6rem;
-    line-height: 1.25;
-    text-decoration: underline;
-  }
+    .jdcontent h1:first-child,
+    .jdcontent h2:first-child {
+      margin-top: $space-small;
 
-  .jdcontent h2 {
-    font-size: 3.2rem;
-  }
+      @include for-tablet-portrait-up {
+        margin-top: $space-large;
+      }
+    }
 
-  .jdcontent h3 {
-    font-size: 2.6rem;
-  }
+    .jdcontent h1,
+    .jdcontent h2,
+    .jdcontent h3 {
+      font-family: "IBM Plex Serif";
+      font-weight: 600;
 
-  .jdcontent p {
-    margin: 1.75rem 0;
-    font-size: 1.8rem;
-    line-height: 1.8;
-  }
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+    }
 
-  .jdcontent code {
-    background-color: var(--jd-offwhitered);
-    border: 1px dotted var(--jd-bg-colour);
-    border-bottom: 2px solid var(--jd-highlight-colour);
-    color: var(--jd-bg-colour);
-    padding-inline: 0.5rem;
-  }
+    .jdcontent h1 {
+      font-size: 3.6rem;
+      line-height: 1.25;
+      color: var(--jd-bg-colour);
+      border-bottom: 4px solid var(--jd-bg-colour);
+    }
 
-  .jdcontent sup {
-    font-size: 1.2rem;
-    font-family: var(--monospace);
-  }
+    .jdcontent h2 {
+      font-size: 3.2rem;
+      color: var(--jd-bg-colour);
+      border-bottom: 2px solid var(--jd-bg-colour);
+    }
 
-  .jdcontent ol {
-    list-style-type: decimal;
-    list-style-position: inside;
-  }
+    .jdcontent h3 {
+      font-size: 2.6rem;
+      color: var(--jd-bg-colour);
+      border-bottom: 2px solid var(--jd-bg-colour);
+    }
 
-  .jdcontent ul {
-    list-style-type: disc;
-    /* list-style-position: inside; */
-  }
+    .jdcontent p {
+      margin: 1.75rem 0;
+      font-size: 1.8rem;
+      line-height: 1.8;
+    }
 
-  .jdcontent li {
-    font-size: 1.8rem;
-    line-height: 1.8;
-  }
+    .jdcontent code {
+      background-color: var(--jd-offwhitered);
+      border: 1px dotted var(--jd-bg-colour);
+      border-bottom: 2px solid var(--jd-highlight-colour);
+      color: var(--jd-bg-colour);
+      padding-inline: 0.5rem;
+    }
 
-  .jdcontent a {
-    text-decoration-line: underline;
-    color: var(--jd-highlight-colour);
-  }
+    .jdcontent sup {
+      font-size: 1.2rem;
+      font-family: var(--monospace);
+    }
 
-  .jdcontent a:visited {
-    text-decoration-line: none;
-    color: var(--jd-bg-colour);
-  }
+    .jdcontent ol {
+      list-style-type: decimal;
+      list-style-position: inside;
+    }
 
-  .jdcontent a:hover {
-    background-color: var(--jd-highlight-colour);
-    color: var(--offwhite);
-  }
+    .jdcontent ul {
+      list-style-type: disc;
+      /* list-style-position: inside; */
+    }
 
-  .jdcontent hr {
-    border: 0;
-    border-top: 1px solid lightgray;
-    box-shadow: 0 0 5px 5px var(--jd-offwhitered);
-    margin: 3rem auto;
-  }
+    .jdcontent li {
+      font-size: 1.8rem;
+      line-height: 1.8;
+    }
 
-  .jdcontent img {
-    border: 1px solid lightgray;
-    /* prettier-ignore */
-    box-shadow:
+    .jdcontent a {
+      text-decoration-line: underline;
+      color: var(--jd-highlight-colour);
+    }
+
+    .jdcontent a:visited {
+      text-decoration-line: none;
+      color: var(--jd-bg-colour);
+    }
+
+    .jdcontent a:hover {
+      background-color: var(--jd-highlight-colour);
+      color: var(--offwhite);
+    }
+
+    .jdcontent hr {
+      border: 0;
+      border-top: 1px solid lightgray;
+      box-shadow: 0 0 5px 5px var(--jd-offwhitered);
+      margin: 3rem auto;
+    }
+
+    .jdcontent img {
+      border: 1px solid lightgray;
+      /* prettier-ignore */
+      box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.024),
     0 6.7px 5.3px rgba(0, 0, 0, 0.028),
     0 12.5px 10px rgba(0, 0, 0, 0.04),
     0 18.3px 14.9px rgba(0, 0, 0, 0.06);
-    margin: 2rem auto 3rem auto;
-    padding: 1rem;
-    background-color: white;
-  }
-
-  /* One-offs */
-  /* 11.01 Home page */
-  .jdcontent div.jdnumbers-large > p > code {
-    font-size: 2rem;
-  }
-
-  @media (min-width: 900px) {
-    .jdcontent div.jdnumbers-large > p > code {
-      font-size: 3.6rem;
+      margin: 2rem auto 3rem auto;
+      padding: 1rem;
+      background-color: white;
     }
-  }
-</style>
+
+    /* One-offs */
+    /* 11.01 Home page */
+    .jdcontent div.jdnumbers-large > p > code {
+      font-size: 2rem;
+    }
+
+    @media (min-width: 900px) {
+      .jdcontent div.jdnumbers-large > p > code {
+        font-size: 3.6rem;
+      }
+    }
+  </style>
+</Layout>
