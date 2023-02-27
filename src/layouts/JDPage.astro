@@ -124,18 +124,15 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
 
   .jdcontent h1:first-child,
   .jdcontent h2:first-child {
-    margin-top: 0;
+    margin-top: $space-large;
   }
 
   .jdcontent h1,
   .jdcontent h2,
   .jdcontent h3 {
-    font-family: "Playfair Display";
-    font-family: "IBM Plex Sans";
     font-family: "IBM Plex Serif";
     font-weight: 600;
-    /* text-decoration: underline; */
-    /* text-decoration-color: var(--jd-bg-colour); */
+
     margin-top: 3rem;
     margin-bottom: 2rem;
   }
@@ -152,7 +149,6 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
 
   .jdcontent h3 {
     font-size: 2.6rem;
-    /* font-style: italic; */
   }
 
   .jdcontent p {
@@ -162,10 +158,9 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
   }
 
   .jdcontent code {
-    /* background-color: var(--jd-bg-colour); */
     background-color: var(--jd-offwhitered);
     border: 1px dotted var(--jd-bg-colour);
-    border-bottom: 2px solid var(--jd-bg-colour);
+    border-bottom: 2px solid var(--jd-highlight-colour);
     color: var(--jd-bg-colour);
     padding-inline: 0.5rem;
   }
@@ -177,7 +172,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
 
   .jdcontent ol {
     list-style-type: decimal;
-    /* list-style-position: inside; */
+    list-style-position: inside;
   }
 
   .jdcontent ul {
