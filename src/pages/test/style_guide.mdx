@@ -41,3 +41,43 @@ We style that using `.jdcontent code` and that's where it gets the borders, colo
 ### `div.jdcontent`
 
 Minimal styling. We give it some `margin` and set the `font-family`.
+
+### Superscript
+
+We can <sup>1</sup> use the `<sup>` tag and get superscript. You're controlling the size and font, and the browser is doing the rest.
+
+### Lists
+
+This is an ordered list:
+
+1. First
+2. Second
+3. Third
+
+And this is unordered:
+
+- Last
+- Middle
+- First? Welp!
+
+You've tweaked the `list-style` properties, and removed some padding.
+
+### Links
+
+Links! [This is a link](#) and it should have funky hover effects. [This is a link](http://localhost:3000) that you have visited.
+
+### Images
+
+Don't bother importing images using the `![]()` syntax. You can't control for 2x.
+
+Instead just use a trusty `<img>` tag, and specify the image in `srcset` with ` 2x` at the end.
+
+<img
+  alt="Test"
+  src="/img/11.01_finder_sample_company_expanded.png"
+  srcset="/img/11.01_finder_sample_company_expanded.png 2x"
+/>
+
+They get a border, some padding, a shadow, and they're centered using `margin: auto`. Do you really want them centered by default?
+
+You should probably be serving 1x images as `src` but you're not.

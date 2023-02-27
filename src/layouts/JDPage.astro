@@ -178,7 +178,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
 
     .jdcontent sup {
       font-size: 1.2rem;
-      font-family: var(--monospace);
+      font-family: $monospace;
     }
 
     .jdcontent ol {
@@ -188,7 +188,8 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
 
     .jdcontent ul {
       list-style-type: disc;
-      /* list-style-position: inside; */
+      list-style-position: inside;
+      padding: 0;
     }
 
     .jdcontent li {
@@ -222,10 +223,10 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
       border: 1px solid lightgray;
       /* prettier-ignore */
       box-shadow:
-    0 2.8px 2.2px rgba(0, 0, 0, 0.024),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.028),
-    0 12.5px 10px rgba(0, 0, 0, 0.04),
-    0 18.3px 14.9px rgba(0, 0, 0, 0.06);
+        0 2.8px 2.2px rgba(0, 0, 0, 0.024),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.028),
+        0 12.5px 10px rgba(0, 0, 0, 0.04),
+        0 18.3px 14.9px rgba(0, 0, 0, 0.06);
       margin: 2rem auto 3rem auto;
       padding: 1rem;
       background-color: white;
