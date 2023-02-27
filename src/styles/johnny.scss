@@ -54,6 +54,11 @@ pre {
   font-family: $monospace;
 }
 
+.jdcontent {
+  margin: 0 $space-medium;
+  font-family: "IBM Plex Serif";
+}
+
 .jd-box {
   /* The font-size needs to be smaller in some cases (where the box ends
      up being wide), but they're rare so handle them by exception.
