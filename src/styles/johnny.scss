@@ -108,7 +108,7 @@ pre {
     0 18.3px 14.9px rgba(0, 0, 0, 0.06), 0 0 3px 3px rgb(255, 240, 240);
   border: 2px solid var(--jd-bg-colour);
   color: var(--jd-bg-colour);
-  font-family: var(--monospace);
+  font-family: $monospace;
   font-size: 1.6rem;
   line-height: 1.6;
   padding: 1.5rem 2rem;
