@@ -9,9 +9,11 @@ $monospace: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
   "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
   "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
-$bg-colour: #580602; // was --jd-bg-colour
+$jd-bg-colour: #580602; // was --jd-bg-colour
 $jd-highlight-colour: #db170e; // was --jd-highlight-colour
 $jd-offwhitered: rgb(251, 247, 246); // was --jd-offwhitered
+$offblack: rgb(34, 17, 17);
+$offwhite: rgb(251, 249, 249);
 
 // https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/
 @mixin for-phone-only {
@@ -52,22 +54,16 @@ $jd-offwhitered: rgb(251, 247, 246); // was --jd-offwhitered
   }
 }
 
-:root {
-  /* Only the stuff we need immediately below. Everything else is in
-     johnny.scss. */
-  --offblack: #211;
-  --offwhite: rgb(251, 249, 249);
-}
 html {
-  background-color: var(--offwhite);
+  background-color: $offwhite;
   /* height: -webkit-fill-available; */
 
   /* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
   font-size: 62.5%;
 }
 body {
-  color: var(--offblack);
-  background-color: var(--offwhite);
+  color: $offblack;
+  background-color: $offwhite;
 
   margin: 0 auto;
 
@@ -106,8 +102,8 @@ pre {
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.024),
     0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.04),
     0 18.3px 14.9px rgba(0, 0, 0, 0.06), 0 0 3px 3px rgb(255, 240, 240);
-  border: 2px solid var(--jd-bg-colour);
-  color: var(--jd-bg-colour);
+  border: 2px solid $jd-bg-colour;
+  color: $jd-bg-colour;
   font-family: $monospace;
   font-size: 1.6rem;
   line-height: 1.6;
@@ -116,11 +112,11 @@ pre {
 }
 
 .border-bottom-dotted {
-  border-bottom: 1px dotted var(--jd-bg-colour);
+  border-bottom: 1px dotted $jd-bg-colour;
 }
 
 .border-bottom-solid {
-  border-bottom: 1px solid var(--jd-bg-colour);
+  border-bottom: 1px solid $jd-bg-colour;
 }
 
 .bold {

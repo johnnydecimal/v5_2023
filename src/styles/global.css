@@ -31,22 +31,6 @@
   font-display: swap;
 }
 
-:root {
-  /* Site-wide */
-  --offblack: #211;
-  --offwhite: rgb(251, 249, 249);
-
-  /* JD block styling */
-  --jd-bg-colour: #580602;
-  --jd-highlight-colour: #db170e;
-  --jd-offwhitered: rgb(251, 247, 246);
-
-  /* Monospace font stack */
-  --monospace: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-}
-
 /* Josh Comeau's CSS reset */
 /*
   1. Use a more-intuitive box-sizing model.
