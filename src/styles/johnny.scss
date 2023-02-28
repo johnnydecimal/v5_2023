@@ -1,4 +1,12 @@
-// Variables
+/* -- johnny.scss -----------------------------------------------------------
+ * 
+ * All of the site-wide JD styling is here.
+ *
+ * Individual components hold their own styles.
+ *
+ */
+
+// == Variables =============================================================
 $space-small: 1rem;
 $space-medium: 1.6rem;
 $space-large: 2.56rem;
@@ -14,45 +22,6 @@ $jd-highlight-colour: #db170e; // was --jd-highlight-colour
 $jd-offwhitered: rgb(251, 247, 246); // was --jd-offwhitered
 $offblack: rgb(34, 17, 17);
 $offwhite: rgb(251, 249, 249);
-
-// https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/
-@mixin for-phone-only {
-  @media (max-width: 599px) {
-    @content;
-  }
-}
-@mixin for-tablet-portrait-up {
-  @media (min-width: 600px) {
-    @content;
-  }
-}
-@mixin for-tablet-landscape-up {
-  @media (min-width: 900px) {
-    @content;
-  }
-}
-@mixin for-desktop-up {
-  @media (min-width: 1200px) {
-    @content;
-  }
-}
-@mixin for-big-desktop-up {
-  @media (min-width: 1800px) {
-    @content;
-  }
-}
-
-@mixin for-print {
-  @media print {
-    @content;
-  }
-}
-
-@mixin troubleshooting {
-  * {
-    outline: 1px dashed red;
-  }
-}
 
 html {
   background-color: $offwhite;
@@ -121,4 +90,43 @@ pre {
 
 .bold {
   font-weight: bold;
+}
+
+/* == SCSS mixins ========================================================== */
+@mixin for-phone-only {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}
+
+@mixin for-print {
+  @media print {
+    @content;
+  }
+}
+
+@mixin troubleshooting {
+  * {
+    outline: 1px dashed red;
+  }
 }

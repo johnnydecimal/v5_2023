@@ -1,7 +1,14 @@
-/* ============================================================================
-   Register our custom font family and tell the browser where to find it. 
-   ============================================================================
-*/
+/* -- global.scss -----------------------------------------------------------
+ * 
+ * For site-wide stuff that isn't very interesting. All JD styling is in
+ * johnny.scss.
+ *
+ */
+
+/* == Register Berkeley Mono =================================================
+ *
+ * You import @fontsource definitions as CSS later.
+ */
 @font-face {
   font-family: "Berkeley Mono";
   src: url("/fonts/BerkeleyMono/BerkeleyMono-Regular.woff2") format("woff2");
@@ -31,7 +38,8 @@
   font-display: swap;
 }
 
-/* Josh Comeau's CSS reset */
+/* == Josh Comeau's CSS resets ============================================= */
+
 /*
   1. Use a more-intuitive box-sizing model.
 */

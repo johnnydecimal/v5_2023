@@ -3,12 +3,6 @@ import Layout from "./Layout.astro";
 import BracketsHorizontalTop from "@components/BracketsHorizontal/BracketsHorizontalTop.astro";
 import BracketsHorizontalBottom from "@components/BracketsHorizontal/BracketsHorizontalBottom.astro";
 
-import "@fontsource/ibm-plex-serif/400.css";
-import "@fontsource/ibm-plex-serif/600.css";
-
-import "@fontsource/fira-sans/400.css";
-import "@fontsource/fira-sans/700.css";
-
 import { jdGetAcidTypeFromString } from "@johnnydecimal/jdgetacidtypefromstring";
 export interface Props {
   number: string;
@@ -72,6 +66,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
   </div>
 
   <style lang="scss">
+    @use "/src/styles/global" as *;
     @use "/src/styles/johnny" as *;
 
     // Is this style used?
@@ -115,6 +110,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
   </style>
 
   <style lang="scss" is:global>
+    @use "/src/styles/global" as *;
     @use "/src/styles/johnny" as *;
 
     /* Global style for all the stuff in the <slot /> */
