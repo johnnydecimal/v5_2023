@@ -1,6 +1,7 @@
-/* @import "/node_modules/modern-normalize/modern-normalize.css"; */
-
-/* Register our custom font family and tell the browser where to find it. */
+/* ============================================================================
+   Register our custom font family and tell the browser where to find it. 
+   ============================================================================
+*/
 @font-face {
   font-family: "Berkeley Mono";
   src: url("/fonts/BerkeleyMono/BerkeleyMono-Regular.woff2") format("woff2");
@@ -117,33 +118,4 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
-}
-
-html {
-  background-color: var(--offwhite);
-  /* height: -webkit-fill-available; */
-
-  /* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
-  font-size: 62.5%;
-}
-
-body {
-  color: var(--offblack);
-  background-color: var(--offwhite);
-
-  margin: 0 auto;
-
-  /* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
-  font-size: 1.6rem;
-}
-
-a {
-  color: inherit;
-  text-decoration: inherit;
-}
-
-ol {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
 }
