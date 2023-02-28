@@ -50,7 +50,7 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
           <div>Area&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</div><div>{area}</div>
           <div>Category :</div><div>{category ? category : "-"}</div>
           <div>ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</div><div>
-            {numberAcidType.jdAcidType === "id" ? `${number} ${title}` : "-"}
+            {numberAcidType.jdAcidType === "id" ? number : "-"}
           </div>
           <!--
           <div style="color: var(--jd-highlight-colour); font-weight: bold;">
