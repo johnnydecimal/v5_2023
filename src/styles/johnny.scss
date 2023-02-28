@@ -9,6 +9,10 @@ $monospace: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
   "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
   "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
+$bg-colour: #580602; // was --jd-bg-colour
+$jd-highlight-colour: #db170e; // was --jd-highlight-colour
+$jd-offwhitered: rgb(251, 247, 246); // was --jd-offwhitered
+
 // https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/
 @mixin for-phone-only {
   @media (max-width: 599px) {
@@ -48,7 +52,41 @@ $monospace: "Berkeley Mono", Monaco, "Cascadia Mono", "Segoe UI Mono",
   }
 }
 
+:root {
+  /* Only the stuff we need immediately below. Everything else is in
+     johnny.scss. */
+  --offblack: #211;
+  --offwhite: rgb(251, 249, 249);
+}
+html {
+  background-color: var(--offwhite);
+  /* height: -webkit-fill-available; */
+
+  /* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
+  font-size: 62.5%;
+}
+body {
+  color: var(--offblack);
+  background-color: var(--offwhite);
+
+  margin: 0 auto;
+
+  /* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
+  font-size: 1.6rem;
+}
+
 // Plain old CSS that will inherit everywhere.
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 code,
 pre {
   font-family: $monospace;

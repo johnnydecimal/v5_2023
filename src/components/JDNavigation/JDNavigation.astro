@@ -10,7 +10,7 @@ const allPages = await Astro.glob("../../pages/**/*.{md,mdx}");
  */
 
 const pages = allPages.filter((page) => !page.file.includes("/test/"));
-pages.forEach((page) => console.log(page.file));
+// pages.forEach((page) => console.log(page.file));
 
 /* You need to sort on frontmatter.number, because of the way that Astro feeds
    you the `index` pages. */
