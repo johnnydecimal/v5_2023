@@ -6,6 +6,49 @@
  *
  */
 
+/* == SCSS mixins ============================================================
+ *
+ * Need to be at the top because you use them in this file.
+ *
+ */
+@mixin for-phone-only {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}
+
+@mixin for-print {
+  @media print {
+    @content;
+  }
+}
+
+@mixin troubleshooting {
+  * {
+    outline: 1px dashed red;
+  }
+}
+
 // == Variables =============================================================
 $space-small: 1rem;
 $space-medium: 1.6rem;
@@ -52,14 +95,19 @@ ol {
   padding: 0;
 }
 
-code,
-pre {
-  font-family: $monospace;
-}
-
 .jdcontent {
   margin: 0 $space-medium;
   font-family: "IBM Plex Serif";
+}
+
+.jdcontent code {
+  background-color: $jd-offwhitered;
+  border: 1px dotted $jd-bg-colour;
+  border-bottom: 2px solid $jd-highlight-colour;
+  color: $jd-bg-colour;
+  font-family: $monospace;
+  font-size: 1.8rem;
+  padding-inline: 0.5rem;
 }
 
 .jd-box {
@@ -92,41 +140,16 @@ pre {
   font-weight: bold;
 }
 
-/* == SCSS mixins ========================================================== */
-@mixin for-phone-only {
-  @media (max-width: 599px) {
-    @content;
-  }
-}
-@mixin for-tablet-portrait-up {
-  @media (min-width: 600px) {
-    @content;
-  }
-}
-@mixin for-tablet-landscape-up {
-  @media (min-width: 900px) {
-    @content;
-  }
-}
-@mixin for-desktop-up {
-  @media (min-width: 1200px) {
-    @content;
-  }
-}
-@mixin for-big-desktop-up {
-  @media (min-width: 1800px) {
-    @content;
-  }
-}
+/* == Exceptions =========================================================== */
+.jdcontent .large-number code {
+  font-size: 2rem;
+  padding: $space-small $space-medium;
+  margin-right: $space-medium;
 
-@mixin for-print {
-  @media print {
-    @content;
+  @include for-tablet-portrait-up {
+    font-size: 2.4rem;
   }
 }
-
-@mixin troubleshooting {
-  * {
-    outline: 1px dashed red;
-  }
+.jdcontent .large-number {
+  margin: $space-large 0;
 }
