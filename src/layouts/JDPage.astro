@@ -1,9 +1,7 @@
 ---
 import Layout from "./Layout.astro";
-import BracketsHorizontalTop from "@components/BracketsHorizontal/BracketsHorizontalTop.astro";
-import BracketsHorizontalBottom from "@components/BracketsHorizontal/BracketsHorizontalBottom.astro";
+import Location from "@components/Location/Location.astro";
 
-import { jdGetAcidTypeFromString } from "@johnnydecimal/jdgetacidtypefromstring";
 export interface Props {
   number: string;
   title: string;
@@ -11,101 +9,22 @@ export interface Props {
   category: string;
 }
 const { number, title, area, category } = Astro.props.frontmatter;
-
-/**
- * Create a link to this page's area.
- */
-const areaUrl = "/" + area.replaceAll(" ", "_").toLowerCase();
-
-/**
- * Create a link to this page's category, if it has one. (Areas don't.)
- */
-let categoryUrl;
-if (category) {
-  categoryUrl = areaUrl + "/" + category.replaceAll(" ", "_").toLowerCase();
-}
-
-/**
- * We only want to show an ID in the 'location' box if it's actually an ID,
- * i.e. not if it's an AC.
- *
- * Current jdGetAcid... expects "10-19 A title", so fudge that for now.
- * TODO: Fix.
- */
-let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
 ---
 
 <Layout title={`${number} ${title}`}>
-  <div class="layout-container">
-    <div class="locationbox-container">
-      <BracketsHorizontalTop label="Location" />
-      <div class="locationbox-acid-details">
-        <div class="locationbox-acid-details-grid">
-          <div>Area&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</div><div>{area}</div>
-          <div>Category :</div><div>{category ? category : "-"}</div>
-          <div>ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</div><div>
-            {numberAcidType.jdAcidType === "id" ? number : "-"}
-          </div>
-          <!--
-          <div style="color: $jd-highlight-colour; font-weight: bold;">
-            Title&nbsp;&nbsp;&nbsp;&nbsp;:
-          </div><div
-            style="color: $jd-highlight-colour; font-weight: bold;"
-          >
-            {title}
-          </div>
-           -->
-        </div>
-      </div>
-      <BracketsHorizontalBottom />
-    </div>
+  <div class="JDPage">
+    <Location number={number} title={title} area={area} category={category} />
 
     <div class="jdcontent">
       <slot />
     </div>
   </div>
-
-  <style lang="scss">
-    @use "/src/styles/global" as *;
-    @use "/src/styles/johnny" as *;
-
-    // Is this style used?
-    // pre {
-    //   margin: 0;
-    // }
-
-    .layout-container {
-      padding-bottom: 4rem;
-    }
-
-    .locationbox-container {
-      font-family: $monospace;
-      padding: $space-medium $space-small;
-
-      @include for-tablet-landscape-up {
-        padding: 0;
-      }
-    }
-
-    .locationbox-brackets {
-      display: grid;
-      grid-template-columns: 1ch 1fr 1ch;
-      white-space: nowrap;
-    }
-    .locationbox-brackets-top {
-      margin-bottom: 1rem;
-    }
-    .locationbox-brackets-bottom {
-      margin-top: 1rem;
-    }
-    .locationbox-brackets-horizontal-line {
-      overflow: hidden;
-    }
-
-    .locationbox-acid-details-grid {
-      display: grid;
-      grid-template-columns: 11ch 1fr;
-      margin-left: 2ch;
-    }
-  </style>
 </Layout>
+
+<style lang="scss">
+  @use "/src/styles/johnny" as *;
+
+  .JDPage {
+    padding-bottom: 4rem;
+  }
+</style>
