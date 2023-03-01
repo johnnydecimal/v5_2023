@@ -70,9 +70,9 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
     @use "/src/styles/johnny" as *;
 
     // Is this style used?
-    pre {
-      margin: 0;
-    }
+    // pre {
+    //   margin: 0;
+    // }
 
     .layout-container {
       padding-bottom: 4rem;
@@ -106,130 +106,6 @@ let numberAcidType = jdGetAcidTypeFromString(number + " FIX THIS");
       display: grid;
       grid-template-columns: 11ch 1fr;
       margin-left: 2ch;
-    }
-  </style>
-
-  <style lang="scss" is:global>
-    @use "/src/styles/global" as *;
-    @use "/src/styles/johnny" as *;
-
-    /* Global style for all the stuff in the <slot /> */
-
-    // .jdcontent {
-    //   margin: 0 $space-medium;
-    //   font-family: "IBM Plex Serif";
-    // }
-
-    .jdcontent h1:first-child,
-    .jdcontent h2:first-child {
-      margin-top: $space-small;
-
-      @include for-tablet-portrait-up {
-        margin-top: $space-large;
-      }
-    }
-
-    .jdcontent h1,
-    .jdcontent h2,
-    .jdcontent h3 {
-      font-family: "IBM Plex Serif";
-      font-weight: 600;
-
-      margin-top: 3rem;
-      margin-bottom: 2rem;
-    }
-
-    .jdcontent h1 {
-      font-size: 3.6rem;
-      line-height: 1.25;
-      color: $jd-bg-colour;
-      border-bottom: 4px solid $jd-bg-colour;
-    }
-
-    .jdcontent h2 {
-      font-size: 3.2rem;
-      color: $jd-bg-colour;
-      border-bottom: 3px solid $jd-bg-colour;
-    }
-
-    .jdcontent h3 {
-      font-size: 2.6rem;
-      color: $jd-bg-colour;
-      border-bottom: 2px solid $jd-bg-colour;
-    }
-
-    .jdcontent p {
-      margin: 1.75rem 0;
-      font-size: 1.8rem;
-      line-height: 1.8;
-    }
-
-    .jdcontent sup {
-      font-size: 1.2rem;
-      font-family: $monospace;
-    }
-
-    .jdcontent ol {
-      list-style-type: decimal;
-      list-style-position: inside;
-    }
-
-    .jdcontent ul {
-      list-style-type: disc;
-      list-style-position: inside;
-      padding: 0;
-    }
-
-    .jdcontent li {
-      font-size: 1.8rem;
-      line-height: 1.8;
-    }
-
-    .jdcontent a {
-      text-decoration-line: underline;
-      color: $jd-highlight-colour;
-    }
-
-    .jdcontent a:visited {
-      text-decoration-line: none;
-      color: $jd-bg-colour;
-    }
-
-    .jdcontent a:hover {
-      background-color: $jd-highlight-colour;
-      color: $offwhite;
-    }
-
-    .jdcontent hr {
-      border: 0;
-      border-top: 1px solid lightgray;
-      box-shadow: 0 0 5px 5px var(--jd-offwhitered);
-      margin: 3rem auto;
-    }
-
-    .jdcontent img {
-      border: 1px solid lightgray;
-      /* prettier-ignore */
-      box-shadow:
-        0 2.8px 2.2px rgba(0, 0, 0, 0.024),
-        0 6.7px 5.3px rgba(0, 0, 0, 0.028),
-        0 12.5px 10px rgba(0, 0, 0, 0.04),
-        0 18.3px 14.9px rgba(0, 0, 0, 0.06);
-      margin: 2rem auto 3rem auto;
-      padding: 1rem;
-      background-color: white;
-    }
-
-    /* One-offs */
-    /* 11.01 Home page */
-    .jdcontent div.jdnumbers-large > p > code {
-      font-size: 2rem;
-    }
-
-    @media (min-width: 900px) {
-      .jdcontent div.jdnumbers-large > p > code {
-        font-size: 3.6rem;
-      }
     }
   </style>
 </Layout>
