@@ -35,6 +35,8 @@ const {
   @use "/src/styles/johnny" as *;
 
   .JDPage {
-    padding-bottom: 4rem;
+    @include for-tablet-portrait-up {
+      padding-bottom: 4rem;
+    }
   }
 </style>

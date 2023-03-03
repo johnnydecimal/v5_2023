@@ -94,10 +94,11 @@ const { backNextDisplay } = Astro.props;
   }
 
   .BackNext {
-    margin: $space-medium auto;
+    margin: 0 auto;
     padding: $space-medium $space-small;
 
     @include for-tablet-landscape-up {
+      margin: $space-large auto;
       padding: 0;
     }
   }
