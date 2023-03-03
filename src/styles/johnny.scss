@@ -259,10 +259,9 @@ a {
 /* == One-offs ============================================================= */
 .jdcontent {
   & .large-number {
-    margin: $space-large 0;
-    white-space: nowrap; // So on smaller screens with long titles it'll just h-scroll
     & code {
       font-size: 1.8rem;
+      line-height: 3.2;
       padding: $space-small $space-medium;
       margin-right: $space-medium;
 
