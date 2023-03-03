@@ -48,7 +48,9 @@ const { backNextDisplay } = Astro.props;
       <div class="back-next-grid">
         {backPath ? (
           <>
-            <div class="back-arrow">&#x25C1;</div>
+            <div class="back-arrow">
+              <a href={backPath}>&#x25C1;</a>
+            </div>
             <div class="back">
               <a href={backPath}> {backTitle}</a>
             </div>
@@ -59,13 +61,15 @@ const { backNextDisplay } = Astro.props;
             <div />
           </>
         )}
-        <div class="spacer" />
+        <div class="spacer">•</div>
         {nextPath ? (
           <>
             <div class="next">
               <a href={nextPath}>{nextTitle}</a>
             </div>
-            <div class="next-arrow">&#x25B6;</div>
+            <div class="next-arrow">
+              <a href={nextPath}>&#x25B6;</a>
+            </div>
           </>
         ) : (
           <>
@@ -115,15 +119,18 @@ const { backNextDisplay } = Astro.props;
   .back,
   .back-arrow {
     justify-self: start;
+    align-self: center;
   }
 
   .next,
   .next-arrow {
     justify-self: end;
     text-align: right;
+    align-self: center;
   }
 
   .spacer {
     text-align: center;
+    align-self: center;
   }
 </style>
