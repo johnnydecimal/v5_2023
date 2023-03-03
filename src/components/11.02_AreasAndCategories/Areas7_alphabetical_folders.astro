@@ -1,6 +1,11 @@
 ---
 ---
 
+{
+  import.meta.env.DEV ? (
+    <div style="padding: 5px; background: greenyellow;">{Astro.self.name}</div>
+  ) : null
+}
 <div class="jd-box">
   <pre>Administration
 Finance
@@ -13,6 +18,10 @@ Marketing</pre>
   .jd-box {
     margin: 0 0 4rem 0;
     padding: 1.5rem 1rem;
+
+    & pre {
+      font-size: 16px;
+    }
 
     @include for-tablet-portrait-up {
       margin: 0 0 4rem 0;

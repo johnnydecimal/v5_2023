@@ -1,4 +1,4 @@
-/* -- johnny.scss -----------------------------------------------------------
+/* == johnny.scss =============================================================
  * 
  * All of the site-wide JD styling is here.
  *
@@ -6,7 +6,7 @@
  *
  */
 
-/* == SCSS mixins ============================================================
+/* == SCSS mixins =============================================================
  *
  * Need to be at the top because you use them in this file.
  *
@@ -49,7 +49,7 @@
   }
 }
 
-// == Variables =============================================================
+// == Variables ===============================================================
 $space-small: 1rem;
 $space-medium: 1.6rem;
 $space-large: 2.56rem;
@@ -66,6 +66,7 @@ $jd-offwhitered: rgb(251, 247, 246); // was --jd-offwhitered
 $offblack: rgb(34, 17, 17);
 $offwhite: rgb(251, 249, 249);
 
+// == Plain old CSS that will inherit everywhere ==============================
 html {
   background-color: $offwhite;
   /* height: -webkit-fill-available; */
@@ -82,8 +83,6 @@ body {
   /* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
   font-size: 1.6rem;
 }
-
-// Plain old CSS that will inherit everywhere.
 a {
   color: inherit;
   text-decoration: inherit;
@@ -92,7 +91,6 @@ a {
 /* == .jdcontent ==============================================================
    This was in a <style is:global> in JDPage but we've brought it here so that
    everything is together.
-   ============================================================================
 */
 .jdcontent {
   margin: 0 $space-medium;
@@ -184,7 +182,7 @@ a {
     margin: 3rem auto;
   }
 
-  // Fixed-width
+  // Fixed-width, inline
   & code {
     background-color: $jd-offwhitered;
     border: 1px dotted $jd-bg-colour;
@@ -209,46 +207,53 @@ a {
     background-color: white;
   }
 
-  /* One-offs */
-  /* 11.01 Home page */
-  .jdcontent div.jdnumbers-large > p > code {
-    font-size: 2rem;
-  }
-
-  @media (min-width: 900px) {
-    .jdcontent div.jdnumbers-large > p > code {
-      font-size: 3.6rem;
-    }
-  }
+  // <ends> .jdcontent
 }
 
+/* == .jdbox ==
+   A nice box to contain a bunch of non-standard JD numbers.
+
+   Do *not* use this for standard systems. You need to build a component
+   for that.
+
+   We need to neaten this up. So we always have div.jdbox, and then within there
+   you're using <pre> tags 
+*/
 .jd-box {
   /* The font-size needs to be smaller in some cases (where the box ends
      up being wide), but they're rare so handle them by exception.
     
      Don't center this by default. Do that in the component if you want it.
   */
-  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.024),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.04),
-    0 18.3px 14.9px rgba(0, 0, 0, 0.06), 0 0 3px 3px rgb(255, 240, 240);
+  // prettier-ignore
+  box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.024),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    0 12.5px 10px rgba(0, 0, 0, 0.04),
+    0 18.3px 14.9px rgba(0, 0, 0, 0.06),
+    0 0 3px 3px rgb(255, 240, 240);
   border: 2px solid $jd-bg-colour;
   color: $jd-bg-colour;
   font-family: $monospace;
-  font-size: 1.6rem;
   line-height: 1.6;
   padding: 1.5rem 2rem;
   width: fit-content;
-}
 
-/* == Used in Areas[x] to format the 'tables' ===============================*/
-.border-bottom-dotted {
-  border-bottom: 1px dotted $jd-bg-colour;
-}
-.border-bottom-solid {
-  border-bottom: 1px solid $jd-bg-colour;
-}
-.bold {
-  font-weight: bold;
+  // Doesn't inherit the rem, for reasons
+  & pre {
+    font-size: 16px;
+  }
+
+  /* == Used in Areas[x] to format the 'tables' ===============================*/
+  .border-bottom-dotted {
+    border-bottom: 1px dotted $jd-bg-colour;
+  }
+  .border-bottom-solid {
+    border-bottom: 1px solid $jd-bg-colour;
+  }
+  .bold {
+    font-weight: bold;
+  }
 }
 
 /* == One-offs ============================================================= */

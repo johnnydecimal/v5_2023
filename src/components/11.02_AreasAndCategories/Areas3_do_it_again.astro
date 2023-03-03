@@ -1,6 +1,11 @@
 ---
 ---
 
+{
+  import.meta.env.DEV ? (
+    <div style="padding: 5px; background: greenyellow;">{Astro.self.name}</div>
+  ) : null
+}
 <div class="jd-box">
   <pre><span class="border-bottom-solid bold">The 10-19 numbers</span></pre>
   <pre>   <span class="border-bottom-dotted">The 12 numbers</span></pre>
@@ -33,5 +38,15 @@
 
   .jd-box {
     margin: 0 0 4rem 0;
+
+    // Using px not rem here 'cos rem doesn't work
+    & pre {
+      // No need for it to be small on mobile, it's not wide
+      font-size: 16px;
+    }
+
+    @include for-tablet-portrait-up {
+      padding: 1.5rem 2rem;
+    }
   }
 </style>

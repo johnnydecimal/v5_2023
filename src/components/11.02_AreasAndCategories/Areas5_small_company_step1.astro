@@ -1,55 +1,59 @@
 ---
 ---
 
+{
+  import.meta.env.DEV ? (
+    <div style="padding: 5px; background: greenyellow;">{Astro.self.name}</div>
+  ) : null
+}
 <div class="jd-box">
   <div class="grid">
-    <div class="header">Folder</div>
-    <div class="header">This is a...</div>
+    <pre class="header">Folder</pre>
+    <pre class="header">This is a...</pre>
 
-    <div><span class="area">Finance</span></div>
-    <div>AREA</div>
+    <pre><span class="area">Finance</span></pre>
+    <pre>AREA</pre>
 
     <pre>  <span class="category">Tax returns</span></pre>
-    <div>CATEGORY</div>
+    <pre>CATEGORY</pre>
     <pre>  <span class="category">Payroll</span></pre>
-    <div>CATEGORY</div>
+    <pre>CATEGORY</pre>
 
     <pre>    Jan '23 payroll</pre>
-    <div>UNIQUE THING</div>
+    <pre>UNIQUE THING</pre>
     <pre>    Feb '23 payroll</pre>
-    <div>UNIQUE THING</div>
+    <pre>UNIQUE THING</pre>
 
     <pre>  <span class="category">Bookkeeping</span></pre>
-    <div>CATEGORY</div>
+    <pre>CATEGORY</pre>
 
     <pre>&nbsp;</pre>
     <pre>&nbsp;</pre>
 
-    <div><span class="area">Administration</span></div>
-    <div>AREA</div>
+    <pre><span class="area">Administration</span></pre>
+    <pre>AREA</pre>
 
     <!-- &nbsp; to ensure 1ch padding at the right on tiny screens -->
-    <pre>  <span class="category">Company registration</span>&nbsp;</pre>
-    <div>CATEGORY</div>
+    <pre>  <span class="category">Company registration</span><span class="spacer">&nbsp;</span></pre>
+    <pre>CATEGORY</pre>
     <pre>  <span class="category">Contracts</span></pre>
-    <div>CATEGORY</div>
+    <pre>CATEGORY</pre>
 
     <pre>    Cleaning contract</pre>
-    <div>UNIQUE THING</div>
+    <pre>UNIQUE THING</pre>
     <pre>    Office lease</pre>
-    <div>UNIQUE THING</div>
+    <pre>UNIQUE THING</pre>
 
     <pre>  <span class="category">Staffing</span></pre>
-    <div>CATEGORY</div>
+    <pre>CATEGORY</pre>
 
     <pre>&nbsp;</pre>
     <pre>&nbsp;</pre>
 
-    <div><span class="area">Marketing</span></div>
-    <div>AREA</div>
+    <pre><span class="area">Marketing</span></pre>
+    <pre>AREA</pre>
 
     <pre>  <span>...and so on</span></pre>
-    <div></div>
   </div>
 </div>
 
@@ -57,11 +61,23 @@
   @use "/src/styles/johnny" as *;
 
   .jd-box {
-    font-size: 1.1rem;
     padding: 1.5rem 1rem;
     margin: 0 0 4rem 0;
+
+    & pre {
+      font-size: 12px;
+      @include for-tablet-portrait-up {
+        font-size: 16px;
+      }
+    }
+
+    & .spacer {
+      @include for-tablet-portrait-up {
+        margin-right: 3ch;
+      }
+    }
+
     @include for-tablet-portrait-up {
-      font-size: 1.6rem;
       padding: 1.5rem 2rem;
     }
   }
