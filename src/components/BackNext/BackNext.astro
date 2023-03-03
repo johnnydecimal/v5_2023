@@ -2,6 +2,7 @@
 import BracketsHorizontalTop from "@components/BracketsHorizontal/BracketsHorizontalTop.astro";
 import BracketsHorizontalBottom from "@components/BracketsHorizontal/BracketsHorizontalBottom.astro";
 import { pages } from "./pages.js";
+import { boolean } from "astro/zod.js";
 
 const pathname = Astro.url.pathname;
 
@@ -32,45 +33,51 @@ if (pageIndex < pages.length - 1) {
   nextPath = pages[pageIndex + 1].pathname;
   nextTitle = pages[pageIndex + 1].title;
 }
+
+interface Props {
+  backNextDisplay: boolean;
+}
+
+const { backNextDisplay } = Astro.props;
 ---
 
-<div class="BackNext">
-  <BracketsHorizontalTop label="◁/▶" />
-  <div class="back-next-grid">
-    {
-      backPath ? (
-        <>
-          <div class="back-arrow">&#x25C1;</div>
-          <div class="back">
-            <a href={backPath}> {backTitle}</a>
-          </div>
-        </>
-      ) : (
-        <>
-          <div />
-          <div />
-        </>
-      )
-    }
-    <div class="spacer"></div>
-    {
-      nextPath ? (
-        <>
-          <div class="next">
-            <a href={nextPath}>{nextTitle}</a>
-          </div>
-          <div class="next-arrow">&#x25B6;</div>
-        </>
-      ) : (
-        <>
-          <div />
-          <div />
-        </>
-      )
-    }
-  </div>
-  <BracketsHorizontalBottom />
-</div>
+{
+  backNextDisplay ? (
+    <div class="BackNext">
+      <BracketsHorizontalTop label="◁/▶" />
+      <div class="back-next-grid">
+        {backPath ? (
+          <>
+            <div class="back-arrow">&#x25C1;</div>
+            <div class="back">
+              <a href={backPath}> {backTitle}</a>
+            </div>
+          </>
+        ) : (
+          <>
+            <div />
+            <div />
+          </>
+        )}
+        <div class="spacer" />
+        {nextPath ? (
+          <>
+            <div class="next">
+              <a href={nextPath}>{nextTitle}</a>
+            </div>
+            <div class="next-arrow">&#x25B6;</div>
+          </>
+        ) : (
+          <>
+            <div />
+            <div />
+          </>
+        )}
+      </div>
+      <BracketsHorizontalBottom />
+    </div>
+  ) : null
+}
 
 <style lang="scss">
   @use "/src/styles/johnny" as *;

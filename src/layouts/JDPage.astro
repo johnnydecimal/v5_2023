@@ -1,14 +1,22 @@
 ---
 import Layout from "./Layout.astro";
 import Location from "@components/Location/Location.astro";
+import BackNext from "@components/BackNext/BackNext.astro";
 
 export interface Props {
   number: string;
   title: string;
   area: string;
   category: string;
+  backNext?: boolean;
 }
-const { number, title, area, category } = Astro.props.frontmatter;
+const {
+  number,
+  title,
+  area,
+  category,
+  backNextDisplay = true,
+} = Astro.props.frontmatter;
 ---
 
 <Layout title={`${number} ${title}`}>
@@ -18,6 +26,8 @@ const { number, title, area, category } = Astro.props.frontmatter;
     <div class="jdcontent">
       <slot />
     </div>
+
+    <BackNext {backNextDisplay} />
   </div>
 </Layout>
 
