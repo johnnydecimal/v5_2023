@@ -234,14 +234,14 @@ a {
     0 0 3px 3px rgb(255, 240, 240);
   border: 2px solid $jd-bg-colour;
   color: $jd-bg-colour;
-  font-family: $monospace;
   line-height: 1.6;
   padding: 1.5rem 2rem;
   width: fit-content;
 
-  // Doesn't inherit the rem, for reasons
   & pre {
-    font-size: 16px;
+    // If you set this directly on the <pre>, it also inherits the rem! But
+    // if you don't, it doesn't. Voodoo of some sort.
+    font-family: $monospace;
   }
 
   /* == Used in Areas[x] to format the 'tables' ===============================*/
