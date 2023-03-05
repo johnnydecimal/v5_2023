@@ -57,7 +57,24 @@ The basic structure of JD there is the same, they're all just indented by some a
     classArray={["one", "two three", "no-more-chickens"]}
   />
 
-  <hr />
+  <JDBlock
+    text={`.
+├─ _00 templates and important files
+├─ 00 Important
+├─ 01 Jim's temporary folder DO NOT MOVE
+├─ Accounts
+├─ Accounting
+├─ Expenses
+├─ Finance
+├─ FINANCE 2023
+├─ Group files
+├─ H drive backups for Finance team
+└─ Last year's accounts Jim copy of copy (2)`}
+  />
+
+  <!--
+    <hr
+  />
   <div class="JDBlock">
     <pre
       class="a">10-19 Admin is unlikely ever to be this long, but why not plan for it?</pre>
@@ -91,48 +108,9 @@ The basic structure of JD there is the same, they're all just indented by some a
     <pre class="hanging-indent">&#x251C;&#x2500; x_archive old</pre>
     <pre class="hanging-indent">&#x2514;&#x2500; xx to be deleted</pre>
   </div>
+  -->
 </Layout>
 
 <style lang="scss">
   @use "/src/styles/johnny" as *;
-
-  .JDBlock {
-    background-color: darkred;
-    color: #eee;
-    border: 1px solid darkred;
-
-    margin: 1rem auto;
-    padding: 1rem;
-
-    width: fit-content;
-
-    white-space: normal;
-
-    & pre {
-      background: #422;
-      white-space: normal;
-      margin: 0;
-
-      font-family: $monospace;
-
-      &.hanging-indent {
-        padding-left: 3ch;
-        text-indent: -3ch;
-      }
-
-      &.space {
-        min-height: 1.5rem;
-      }
-
-      &.a {
-        font-weight: bold;
-      }
-
-      &.c {
-      }
-
-      &.id {
-      }
-    }
-  }
 </style>

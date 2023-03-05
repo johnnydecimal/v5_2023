@@ -1,7 +1,7 @@
 ---
 /**
  * `text`: the text to render. Will be split in to an array of strings.
- * `classes`: an array of strings. [0] for the first line, [n] for the last.
+ * `classArray`: an array of strings. [0] for the first line, [n] for the last.
  * `options`: TBC.
  */
 interface Props {
@@ -9,7 +9,6 @@ interface Props {
   classArray?: Array<string>;
   options?: any;
 }
-import type { JDLine } from "./jdBlockFunctions";
 
 const { text, classArray = [], options } = Astro.props;
 
@@ -19,38 +18,60 @@ const { text, classArray = [], options } = Astro.props;
  */
 import { textToArrayOfStrings } from "./jdBlockFunctions";
 const textAsArrayOfStrings = textToArrayOfStrings(text);
-console.log("textAsArrayOfStrings :", textAsArrayOfStrings);
-
-// ...do more processing, but end up at the same place...
 
 /**
  * We have `textAsArrayOfStrings`, and `classArray` which is already
  * an array of class strings. Construct the `arrayToRender`.
  */
-
 import { constructArrayToRender } from "./jdBlockFunctions";
 const arrayToRender = constructArrayToRender(textAsArrayOfStrings, classArray);
 ---
 
-<div>== JDBlock starts</div>
-{
-  arrayToRender.map((line) => {
-    return <pre class:list={line.classes}>{line.text}</pre>;
-  })
-}
-<div>== JDBlock ends</div>
+<div class="JDBlock">
+  {
+    arrayToRender.map((line) => {
+      console.log(line.text);
+      return <pre class:list={line.classes}>{line.text}</pre>;
+    })
+  }
+</div>
 
 <style lang="scss">
   @use "/src/styles/johnny" as *;
 
-  pre {
-    font-family: $monospace;
+  .JDBlock {
+    background-color: $jd-bg-colour;
+    color: $offwhite;
+    border: 1px solid $jd-highlight-colour;
 
-    &.test-class {
-      color: hotpink;
-    }
-    &.another-class {
-      background: yellow;
+    padding: 1rem;
+
+    width: fit-content;
+
+    & pre {
+      white-space: pre-wrap;
+      margin: 0;
+
+      font-family: $monospace;
+
+      &.hanging-indent {
+        padding-left: 3ch;
+        text-indent: -3ch;
+      }
+
+      &.space {
+        min-height: 1.5rem;
+      }
+
+      &.a {
+        font-weight: bold;
+      }
+
+      &.c {
+      }
+
+      &.id {
+      }
     }
   }
 </style>
