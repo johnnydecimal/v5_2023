@@ -14,7 +14,7 @@ category: 11 Core
 pubDate: 2022-02-06
 ---
 
-import JDCodeBlock from "../../../components/JDCodeBlock/JDCodeBlock.astro";
+import JDBlock from "../../../components/JDBlock/JDBlock.astro";
 
 # Philosophy
 
@@ -36,32 +36,40 @@ But my core advice is always the same: do whatever you need to do _so that you c
 
 We've all seen group drives at work that look something like this:
 
-<div class="jd-box">
-  <pre>{`.
-├── _00 templates and important files
-├── 00 Important
-├── 01 Jim's temporary folder DO NOT MOVE
-├── Accounts
-├── Accounting
-├── Expenses
-├── Finance
-├── FINANCE 2023
-├── Group files
-├── H drive backups for Finance team
-└── Last year's accounts Jim copy of copy (2)`}</pre>
-</div>
+<JDBlock
+  text={`
+.
+├─ _00 templates and important files
+├─ 00 Important
+├─ 01 Jim's temporary folder DO NOT MOVE
+├─ Accounts
+├─ Accounting
+├─ Budget
+├─ Expenses
+├─ Finance
+├─ FINANCE 2023
+├─ Fred's project folder
+├─ Group files
+├─ H drive backups for Finance team
+├─ Last year's accounts Jim copy of copy (2)
+├─ ...
+├─ x_archive
+└─ x_DELETE ME
+`}
+  options={{ classListForEveryLine: "hanging-3ch" }}
+/>
 
-<JDCodeBlock
-  jdCodeBlock={`.
-├── _00 templates and important files
-├── 00 Important
-├── 01 Jim's temporary folder DO NOT MOVE
-├── Accounts
-├── Accounting
-├── Expenses
-├── Finance
-├── FINANCE 2023
-├── Group files
-├── H drive backups for Finance team
-└── Last year's accounts Jim copy of copy (2)`}
+Anything could be anywhere! And it doesn't get better the deeper you go, it's chaos all the way down.
+
+There is no chance of you finding anything in a system like this, and every chance that the thing you _do_ eventually find isn't the master version.
+
+## J.D limits your choices
+
+When you encounter a Johnny.Decimal system -- even one you've never seen before -- you are presented with, at most, ten choices: the **areas** that have been defined.
+
+<JDBlock
+  text={`
+10-19 Finance and accounts
+20-29 ...
+`}
 />
