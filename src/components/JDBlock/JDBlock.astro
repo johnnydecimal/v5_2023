@@ -20,7 +20,7 @@ const arrayToRender = processJDBlock(text, classArray, options);
 <div class="JDBlock">
   {
     arrayToRender.map((line) => {
-      return <pre class:list={line.classes}>{line.text}</pre>;
+      return <pre class:list={line.classes} set:html={line.text} />;
     })
   }
 </div>

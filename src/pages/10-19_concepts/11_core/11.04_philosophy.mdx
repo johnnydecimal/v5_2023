@@ -56,7 +56,13 @@ We've all seen group drives at work that look something like this:
 ├─ x_archive
 └─ x_DELETE ME
 `}
-  options={{ classListForEveryLine: "hanging-3ch" }}
+  options={{
+    classListForEveryLine: "hanging-3ch",
+    ignoreLine: {
+      2: true,
+      4: true,
+    },
+  }}
 />
 
 Anything could be anywhere! And it doesn't get better the deeper you go, it's chaos all the way down.
@@ -72,4 +78,9 @@ When you encounter a Johnny.Decimal system -- even one you've never seen before 
 10-19 Finance and accounts
 20-29 ...
 `}
+  options={{
+    ignoreLine: {
+      1: true,
+    },
+  }}
 />
