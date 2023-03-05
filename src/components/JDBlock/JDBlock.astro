@@ -13,23 +13,8 @@ interface Props {
 }
 const { text, classArray = [], options } = Astro.props;
 
-/**
- * Split `text` in to an array of strings. Each is a line for further
- * processing.
- */
-import { textToArrayOfStrings } from "./jdBlockFunctions";
-const textAsArrayOfStrings = textToArrayOfStrings(text);
-
-/**
- * We have `textAsArrayOfStrings`, and `classArray` which is already
- * an array of class strings. Construct the `arrayToRender`.
- */
-import { constructArrayToRender } from "./jdBlockFunctions";
-const arrayToRender = constructArrayToRender(
-  textAsArrayOfStrings,
-  classArray,
-  options
-);
+import { processJDBlock } from "./jdBlockFunctions";
+const arrayToRender = processJDBlock(text, classArray, options);
 ---
 
 <div class="JDBlock">

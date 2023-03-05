@@ -1,5 +1,5 @@
 // == Interfaces ==============================================================
-export interface JDLine {
+interface JDLine {
   text: string;
   classes?: string;
 }
@@ -11,7 +11,7 @@ interface TextAsArrayOfStrings extends Array<string> {}
 /**
  * == textToArrayOfStrings ====================================================
  */
-export const textToArrayOfStrings = (text: string): TextAsArrayOfStrings => {
+const textToArrayOfStrings = (text: string): TextAsArrayOfStrings => {
   let textAsArrayOfStrings = text
     .split("\n")
     .filter((jdLine) => jdLine.trim() !== "");
@@ -22,7 +22,7 @@ export const textToArrayOfStrings = (text: string): TextAsArrayOfStrings => {
 /**
  * == constructArrayToRender ==================================================
  */
-export const constructArrayToRender = (
+const constructArrayToRender = (
   textAsArrayOfStrings: TextAsArrayOfStrings,
   classArray: string[],
   options?: Options
@@ -57,5 +57,14 @@ export const constructArrayToRender = (
 export const processJDBlock = (
   text: string,
   classArray: string[],
-  options: Options
-): Array<JDLine> => {};
+  options?: Options
+): Array<JDLine> => {
+  const textAsArrayOfStrings = textToArrayOfStrings(text);
+  const arrayToRender = constructArrayToRender(
+    textAsArrayOfStrings,
+    classArray,
+    options
+  );
+
+  return arrayToRender;
+};
