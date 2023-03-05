@@ -55,10 +55,12 @@ The basic structure of JD there is the same, they're all just indented by some a
    11.01 ID
 `}
     classArray={["one", "two three", "no-more-chickens"]}
+    options={{ classListForEveryLine: "hanging-3ch" }}
   />
 
   <JDBlock
-    text={`.
+    text={`
+.
 ├─ _00 templates and important files
 ├─ 00 Important
 ├─ 01 Jim's temporary folder DO NOT MOVE
@@ -69,46 +71,10 @@ The basic structure of JD there is the same, they're all just indented by some a
 ├─ FINANCE 2023
 ├─ Group files
 ├─ H drive backups for Finance team
-└─ Last year's accounts Jim copy of copy (2)`}
+└─ Last year's accounts Jim copy of copy (2)
+`}
+    options={{ classListForEveryLine: "hanging-3ch" }}
   />
-
-  <!--
-    <hr
-  />
-  <div class="JDBlock">
-    <pre
-      class="a">10-19 Admin is unlikely ever to be this long, but why not plan for it?</pre>
-    <pre class="c">11 Core concepts, a long category name for Pete's sake</pre>
-    <pre
-      class="id">11.01 The home page, a longer ID name which is more probable</pre>
-    <pre
-      class="area">20-29 Something else that is quite long, because that's the whole point of this exercise after all is not to h-scroll</pre>
-
-    <pre class="space"></pre>
-    <hr />
-
-    <pre>.</pre>
-    <pre
-      class="hanging-indent">&#x251C;&#x2500; _00 templates and important files</pre>
-    <pre class="hanging-indent">&#x251C;&#x2500; 00 Important</pre>
-    <pre
-      class="hanging-indent">&#x251C;&#x2500; 01 Jim's temporary folder DO NOT MOVE</pre>
-    <pre class="hanging-indent">&#x251C;&#x2500; Accounts</pre>
-    <pre class="hanging-indent">&#x251C;&#x2500; Accounting</pre>
-    <pre class="hanging-indent">&#x251C;&#x2500; Expenses</pre>
-    <pre class="hanging-indent">&#x251C;&#x2500; Finance</pre>
-    <pre class="hanging-indent">&#x251C;&#x2500; FINANCE 2023</pre>
-    <pre class="hanging-indent">&#x251C;&#x2500; Group files</pre>
-    <pre
-      class="hanging-indent">&#x251C;&#x2500; H drive backups for Finance team</pre>
-    <pre class="hanging-indent">&#x251C;&#x2500; Jim's 2023 finance backup</pre>
-    <pre
-      class="hanging-indent">&#x251C;&#x2500; Last year's accounts Jim copy of copy (2)</pre>
-    <pre class="hanging-indent">&#x251C;&#x2500; ...</pre>
-    <pre class="hanging-indent">&#x251C;&#x2500; x_archive old</pre>
-    <pre class="hanging-indent">&#x2514;&#x2500; xx to be deleted</pre>
-  </div>
-  -->
 </Layout>
 
 <style lang="scss">

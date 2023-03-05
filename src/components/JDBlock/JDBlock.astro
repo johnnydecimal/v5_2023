@@ -4,10 +4,12 @@
  * `classArray`: an array of strings. [0] for the first line, [n] for the last.
  * `options`: TBC.
  */
+import type { Options } from "./jdBlockFunctions";
+
 interface Props {
   text: string;
   classArray?: Array<string>;
-  options?: any;
+  options?: Options;
 }
 
 const { text, classArray = [], options } = Astro.props;
@@ -24,13 +26,16 @@ const textAsArrayOfStrings = textToArrayOfStrings(text);
  * an array of class strings. Construct the `arrayToRender`.
  */
 import { constructArrayToRender } from "./jdBlockFunctions";
-const arrayToRender = constructArrayToRender(textAsArrayOfStrings, classArray);
+const arrayToRender = constructArrayToRender(
+  textAsArrayOfStrings,
+  classArray,
+  options
+);
 ---
 
 <div class="JDBlock">
   {
     arrayToRender.map((line) => {
-      console.log(line.text);
       return <pre class:list={line.classes}>{line.text}</pre>;
     })
   }
@@ -54,7 +59,7 @@ const arrayToRender = constructArrayToRender(textAsArrayOfStrings, classArray);
 
       font-family: $monospace;
 
-      &.hanging-indent {
+      &.hanging-3ch {
         padding-left: 3ch;
         text-indent: -3ch;
       }
