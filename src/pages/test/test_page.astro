@@ -1,5 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
+
+import JDBlock from "@components/JDBlock/JDBlock.astro";
 ---
 
 <!-- 
@@ -45,7 +47,17 @@ P01 Johnny.Decimal (b, u)
 The basic structure of JD there is the same, they're all just indented by some amount. Could that be an option you could pass?
 
 -->
-<Layout>
+<Layout title="test page">
+  <JDBlock
+    text={`
+10-19 Area
+   11 Category
+   11.01 ID
+`}
+    classArray={["one", "two three", "no-more-chickens"]}
+  />
+
+  <hr />
   <div class="JDBlock">
     <pre
       class="a">10-19 Admin is unlikely ever to be this long, but why not plan for it?</pre>
