@@ -24,8 +24,7 @@
     "@fontsource/playfair-display": "^4.5.13",
     "@johnnydecimal/jdgetacidtypefromstring": "0.x",
     "astro": "2.x",
-    "sharp": "0.x",
-    "tailwindcss": "3.x"
+    "sharp": "0.x"
   },
   "devDependencies": {
     "prettier": "^2.8.1",
