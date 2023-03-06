@@ -13,9 +13,7 @@ interface IgnoreLines {
 }
 interface TextAsArrayOfStrings extends Array<string> {}
 
-/**
- * == textToArrayOfStrings ====================================================
- */
+/* == textToArrayOfStrings ================================================= */
 const textToArrayOfStrings = (text: string): TextAsArrayOfStrings => {
   let textAsArrayOfStrings = text
     .split("\n")
@@ -24,10 +22,10 @@ const textToArrayOfStrings = (text: string): TextAsArrayOfStrings => {
   return textAsArrayOfStrings;
 };
 
-/**
- * == constructArrayToRender ==================================================
+/* == constructArrayToRender ==================================================
  *
- *
+ * Make the array to render. From now on we'll do things, but always to an
+ * array that is this shape.
  */
 const constructArrayToRender = (
   textAsArrayOfStrings: TextAsArrayOfStrings,
@@ -36,27 +34,40 @@ const constructArrayToRender = (
 ): Array<JDLine> => {
   const arrayToRender: Array<JDLine> = [];
 
+  // Create the basic array.
   textAsArrayOfStrings.forEach((line, i) => {
     arrayToRender.push({
       text: line,
       classes: classArray[i] || "", // prevents undefined later; harmless
-      options: options, // each line just gets a copy of options
+      options: options, // each line gets a copy of options for later
     });
   });
-
-  if (options) {
-    if (options.classListForEveryLine) {
-      arrayToRender.forEach((line) => {
-        line.classes = line.classes + " " + options.classListForEveryLine;
-      });
-    }
-  }
 
   return arrayToRender;
 };
 
-/**
- * == processTextForJD ========================================================
+/* == optionsClassListForEveryLine ============================================
+ *
+ * If options contains a `classListForEveryLine`, add it to the existing class
+ * list. Otherwise, just return the same array.
+ */
+const optionsClassListForEveryLine = (
+  arrayToRender: Array<JDLine>
+): Array<JDLine> => {
+  return arrayToRender.map((line) => {
+    if (line.options && line.options.classListForEveryLine) {
+      return {
+        text: line.text,
+        classes: line.classes + " " + line.options.classListForEveryLine,
+        options: line.options,
+      };
+    } else {
+      return line;
+    }
+  });
+};
+
+/* == processTextForJD ========================================================
  *
  * We have `arrayToRender` which contains objects with a text property. Now we
  * parse those values and look for JD-like strings. If we find them, we change
@@ -68,15 +79,38 @@ const processTextForJD = (arrayToRender: JDLine[]): JDLine[] => {
   // We start with an array of JDLine...
 
   // Create a new array by mapping over each item in the input array
-  const returnArray = arrayToRender.map((line, i) => {
+  return arrayToRender.map((line, i) => {
     console.log("🆚 jdBlockFunctions.ts/line:", line);
     // If item.options.ignoreLine[n] matches map.index, return item as is
     if (line.options?.ignoreLine && line.options.ignoreLine[i]) {
       return line;
     } else {
-      return {
-        text: "not ignored",
-      };
+      // Detect whether this line is a PRO.AC.ID
+      switch (true) {
+        // Area -- hacky as, make me better
+        case /^\d\d-\d\d /.test(line.text):
+          return {
+            text: `<span>${line.text.substring(
+              0,
+              6
+            )}</span><span class="area-title">${line.text.substring(6)}</span>`,
+            classes: line.classes + " area",
+            options: line.options,
+          };
+        case /^\d\d /.test(line.text.trim()):
+          return {
+            text: `<span class="category-indent"></span><span>${line.text
+              .trim()
+              .substring(0, 2)}</span><span class="category-title">${line.text
+              .trim()
+              .substring(3)}</span>`,
+            classes: line.classes + " category",
+            options: line.options,
+          };
+        default:
+          return line;
+      }
+      // And add a class to it accordingly
     }
   });
 
@@ -89,7 +123,7 @@ const processTextForJD = (arrayToRender: JDLine[]): JDLine[] => {
 /**
  * == processJDBlock ==========================================================
  *
- * Back in JDBlock.astro we only want to import/call one function. It's this
+ * Back in JDBlock.astro we only want to import & call one function. It's this
  * one, which then handles everything else.
  */
 export const processJDBlock = (
@@ -105,7 +139,9 @@ export const processJDBlock = (
     options
   );
 
-  const array2 = processTextForJD(array1);
+  const array2 = optionsClassListForEveryLine(array1);
 
-  return array2;
+  const array3 = processTextForJD(array2);
+
+  return array3;
 };

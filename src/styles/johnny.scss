@@ -210,6 +210,22 @@ a {
   // <ends> .jdcontent
 }
 
+.JDBlock {
+  & .area {
+    grid-template-columns: 6ch auto;
+    display: grid;
+    font-weight: bold;
+  }
+
+  & .category {
+    display: grid;
+    grid-template-columns: 6ch 3ch auto;
+    & .category-title {
+      text-decoration: underline;
+    }
+  }
+}
+
 /* == .jdbox ==
    A nice box to contain a bunch of non-standard JD numbers.
 
