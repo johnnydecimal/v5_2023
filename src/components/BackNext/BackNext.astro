@@ -49,7 +49,7 @@ const { backNextDisplay } = Astro.props;
         {backPath ? (
           <>
             <div class="back-arrow">
-              <a href={backPath}>&#x25C1;</a>
+              <a href={backPath}>&#x25C1;&nbsp;</a>
             </div>
             <div class="back">
               <a href={backPath}> {backTitle}</a>
@@ -68,7 +68,7 @@ const { backNextDisplay } = Astro.props;
               <a href={nextPath}>{nextTitle}</a>
             </div>
             <div class="next-arrow">
-              <a href={nextPath}>&#x25B6;</a>
+              <a href={nextPath}>&nbsp;&#x25B6;</a>
             </div>
           </>
         ) : (
@@ -98,7 +98,7 @@ const { backNextDisplay } = Astro.props;
     padding: $space-medium $space-small;
 
     @include for-tablet-landscape-up {
-      margin: $space-large auto;
+      margin: $space-xl auto;
       padding: 0;
     }
   }
