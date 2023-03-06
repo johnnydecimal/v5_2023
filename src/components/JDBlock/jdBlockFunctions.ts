@@ -85,18 +85,19 @@ const processTextForJD = (arrayToRender: JDLine[]): JDLine[] => {
     if (line.options?.ignoreLine && line.options.ignoreLine[i]) {
       return line;
     } else {
-      // Detect whether this line is a PRO.AC.ID
+      // Detect whether this line is a AC.ID
       switch (true) {
         // Area -- hacky as, make me better
         case /^\d\d-\d\d /.test(line.text):
           return {
             text: `<span>${line.text.substring(
               0,
-              6
+              5
             )}</span><span class="area-title">${line.text.substring(6)}</span>`,
             classes: line.classes + " area",
             options: line.options,
           };
+        // Category
         case /^\d\d /.test(line.text.trim()):
           return {
             text: `<span class="category-indent"></span><span>${line.text
@@ -105,6 +106,17 @@ const processTextForJD = (arrayToRender: JDLine[]): JDLine[] => {
               .trim()
               .substring(3)}</span>`,
             classes: line.classes + " category",
+            options: line.options,
+          };
+        // ID
+        case /^\d\d\.\d\d /.test(line.text.trim()):
+          return {
+            text: `<span class="id-indent"></span><span>${line.text
+              .trim()
+              .substring(0, 5)}</span><span class="id-title">${line.text
+              .trim()
+              .substring(6)}</span>`,
+            classes: line.classes + " id",
             options: line.options,
           };
         default:

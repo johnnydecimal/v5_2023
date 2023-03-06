@@ -109,7 +109,7 @@ a {
     &:first-child {
       margin-top: $space-small;
 
-      @include for-tablet-portrait-up {
+      @include for-tablet-portrait-up() {
         margin-top: $space-large;
       }
     }
@@ -211,17 +211,45 @@ a {
 }
 
 .JDBlock {
+  font-size: 1.3rem;
+  margin: $space-large 0;
+
+  /* prettier-ignore */
+  box-shadow:
+    0 2.8px 2.2px rgba(20, 0, 0, 0.024),
+    0 6.7px 5.3px rgba(20, 0, 0, 0.028),
+    0 12.5px 10px rgba(20, 0, 0, 0.04),
+    0 18.3px 14.9px rgba(20, 0, 0, 0.06);
+
+  @include for-tablet-portrait-up() {
+    font-size: 1.6rem;
+  }
+
   & .area {
     grid-template-columns: 6ch auto;
     display: grid;
     font-weight: bold;
+
+    &:not(:first-child) {
+      margin-top: 1.6rem;
+    }
   }
 
   & .category {
     display: grid;
-    grid-template-columns: 6ch 3ch auto;
+    grid-template-columns: 3ch 3ch auto;
+
     & .category-title {
       text-decoration: underline;
+    }
+  }
+
+  & .id {
+    display: grid;
+    grid-template-columns: 3ch 6ch auto;
+
+    @include for-tablet-portrait-up() {
+      grid-template-columns: 6ch 6ch auto;
     }
   }
 }
@@ -281,7 +309,7 @@ a {
       padding: $space-small $space-medium;
       margin-right: $space-medium;
 
-      @include for-tablet-portrait-up {
+      @include for-tablet-portrait-up() {
         font-size: 2.4rem;
       }
     }

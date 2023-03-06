@@ -22,7 +22,7 @@ Before we go any further it's worth reinforcing the philosophy behind all of thi
 
 ## So that you can find your stuff
 
-This is all a waste of time if it doesn't help you find your stuff quicker and with less stress than you can today.
+This is all a waste of time if it doesn't help you find your stuff **quicker** and with **less stress** than you can today.
 
 **Nothing else matters.**
 
@@ -45,13 +45,16 @@ We've all seen group drives at work that look something like this:
 ├─ Accounts
 ├─ Accounting
 ├─ Budget
+├─ Drawings of products
 ├─ Expenses
+├─ Final photos of products
 ├─ Finance
 ├─ FINANCE 2023
 ├─ Fred's project folder
 ├─ Group files
 ├─ H drive backups for Finance team
 ├─ Last year's accounts Jim copy of copy (2)
+├─ Product photography
 ├─ ...
 ├─ x_archive
 └─ x_DELETE ME
@@ -71,16 +74,27 @@ There is no chance of you finding anything in a system like this, and every chan
 
 ## J.D limits your choices
 
-When you encounter a Johnny.Decimal system -- even one you've never seen before -- you are presented with, at most, ten choices: the **areas** that have been defined.
+When you encounter a Johnny.Decimal system -- even one you've never seen before -- you are presented with, at most, ten choices: the **areas** that have been defined:
 
 <JDBlock
   text={`
 10-19 Finance and accounts
-20-29 ...
+20-29 Products
+30-39 ...and so on
 `}
-  options={{
-    ignoreLine: {
-      1: true,
-    },
-  }}
+/>
+
+And when you go a level deeper, you're still limited to ten things:
+
+<JDBlock
+  text={`
+10-19 Finance and accounts
+   11 Budget
+   12 Expenses
+   13 Accounts
+20-29 Products
+   21 Drawings
+   22 Photography
+30-39 ...and so on
+`}
 />
