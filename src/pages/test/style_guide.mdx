@@ -8,6 +8,8 @@ category: 09 Test
 area: 00-09 Test
 ---
 
+import JDFootnote from "../../components/JDFootnote/JDFootnote.astro";
+
 # H1 header
 
 With some text after it.
@@ -81,6 +83,17 @@ Instead just use a trusty `<img>` tag, and specify the image in `srcset` with ` 
 They get a border, some padding, a shadow, and they're centered using `margin: auto`. Do you really want them centered by default?
 
 You should probably be serving 1x images as `src` but you're not.
+
+### Footnotes
+
+We reference a footnote<sup>1</sup> with a regular `<sup>`, then pass `number` and `text` to `<JDFootnote />`.
+
+The browser's styles take care of the superscript, and we make the font smaller.
+
+<JDFootnote
+  number="1"
+  text="Like this one. It flows nicely on to multiple lines, which is always nice."
+/>
 
 ---
 
