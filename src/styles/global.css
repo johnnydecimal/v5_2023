@@ -8,34 +8,38 @@
 /* == Register Berkeley Mono =================================================
  *
  * You import @fontsource definitions as CSS later.
+ *
+ * https://kld.dev/this-is-not-a-google-font/ convinced you to switch
+ * font-display: fallback; (from :swap;).
+ *
  */
 @font-face {
   font-family: "Berkeley Mono";
   src: url("/fonts/BerkeleyMono/BerkeleyMono-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: fallback;
 }
 @font-face {
   font-family: "Berkeley Mono";
   src: url("/fonts/BerkeleyMono/BerkeleyMono-Bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
-  font-display: swap;
+  font-display: fallback;
 }
 @font-face {
   font-family: "Berkeley Mono";
   src: url("/fonts/BerkeleyMono/BerkeleyMono-Italic.woff2") format("woff2");
   font-weight: normal;
   font-style: italic;
-  font-display: swap;
+  font-display: fallback;
 }
 @font-face {
   font-family: "Berkeley Mono";
   src: url("/fonts/BerkeleyMono/BerkeleyMono-BoldItalic.woff2") format("woff2");
   font-weight: bold;
   font-style: italic;
-  font-display: swap;
+  font-display: fallback;
 }
 
 /* == Josh Comeau's CSS resets ============================================= */
